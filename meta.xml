@@ -1,32 +1,32 @@
-<!--
-#---------------------------------------------------------------#
-----*			DayZ MTA Script meta.xml					*----
-----* This Script is owned by Marwin, you are not allowed to use or own it.
-----* Owner: Marwin W., Germany, Lower Saxony, Otterndorf
-----* Skype: xxmavxx96										*----
-#---------------------------------------------------------------#
--->
 <meta>
-    <info author="Stanley Sathler" description="MTA:DayZ - Dead Walkers" version="1.0.1" type="gamemode" />
+
+    <info author="Stanley Sathler" description="" version="1.0.0" type="gamemode" />
+    
+
     <script src="editor_server.lua" type="server" />
     <script src="editor_client.lua" type="client" />
-    <script src="pickups.lua" type="server" />
-    <script src="spawn.lua" type="server" />
-    <script src="vehicle_spawns.lua" type="server" />
     <script src="survivorSystem.lua" type="server" />
-    <script src="zombies.lua" type="server" />
-    <script src="zombies_client.lua" type="client" />
-    <script src="animals.lua" type="server" />
-    <script src="weather.lua" type="server" />
-    <script src="login.lua" type="server" />
     <script src="tools/jq_server.lua" type="server" />
     <script src="menu_client.lua" type="client" />
     <script src="inventory.lua" type="client" />
     <script src="survivorSystem_client.lua" type="client" />
-    <script src="animals_client.lua" type="client" />
     <script src="tools/jq_client.lua" type="client" />
     <script src="textlib.lua" type="client" />
-	<script src="addons.lua" type="server" />
+
+    <!--
+        Those files are essentials to the gamemode
+    -->
+    <script src="Addon_s.lua" type="server" />
+    <script src="Animal_s.lua" type="server" />
+    <script src="Animal_c.lua" type="client" />
+    <script src="Login_s.lua" type="server" />
+    <script src="Pickup_s.lua" type="server" />
+    <script src="Player_s.lua" type="server" />
+    <script src="Vehicle_s.lua" type="server" />
+    <script src="Weather_s.lua" type="server" />
+    <script src="Zombie_s.lua" type="server" />
+    <script src="Zombie_c.lua" type="client" />
+    
     <script src="shader/motion/motion_c.lua" type="client" />
     <file src="shader/motion/motion.fx" />
     <script src="shader/blackwhite/blackwhite_c.lua" type="client" />
@@ -56,6 +56,12 @@
         <setting name="*gang_list_command" value="gangs" />
         <setting name="*gang_create_command" value="creategang" />
     </settings>
+
+
+    <!--    
+        These files are loaded by gamemode, and contains 
+        images and mod files (.dff and .txd)
+    -->
     <file src="images/scrollmenu_1.png" />
     <file src="images/background_scoreboard.png" />
     <file src="images/white.png" />
