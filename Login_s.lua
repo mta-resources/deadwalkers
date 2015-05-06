@@ -612,8 +612,10 @@ function saveallvehicles(ps, command)
 					setAccountData(account, "isExploded", getElementData(vehicle, "isExploded") or false)
 				end
 			end
-		setAccountData(vehicleManager, "vehicleamount", counter)
-		setAccountData(vehicleManager, "tentamount", counterTent)
+    if vehicleManager ~= false then
+  		setAccountData(vehicleManager, "vehicleamount", counter)
+  		setAccountData(vehicleManager, "tentamount", counterTent)
+    end
 	end
 end
 addEventHandler("onResourceStop", getResourceRootElement(getThisResource()), saveallvehicles)

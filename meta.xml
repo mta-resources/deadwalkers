@@ -3,8 +3,8 @@
     <info author="Stanley Sathler" description="" version="1.0.0" type="gamemode" />
     
 
-    <script src="editor_server.lua" type="server" />
-    <script src="editor_client.lua" type="client" />
+    <script src="Configs_s.lua" type="server" />
+    <script src="Configs_c.lua" type="client" />
     <script src="survivorSystem.lua" type="server" />
     <script src="tools/jq_server.lua" type="server" />
     <script src="menu_client.lua" type="client" />
@@ -19,6 +19,8 @@
     <script src="Addon_s.lua" type="server" />
     <script src="Animal_s.lua" type="server" />
     <script src="Animal_c.lua" type="client" />
+    <script src="Item_c.lua" type="client" />
+    <script src="Item_s.lua" type="server" />
     <script src="Login_s.lua" type="server" />
     <script src="Pickup_s.lua" type="server" />
     <script src="Player_s.lua" type="server" />
@@ -178,6 +180,10 @@
 	<file src="sounds/hit2.mp3" />
 	<file src="sounds/hit3.mp3" />
 	<file src="sounds/brokenbone.mp3" />
+
+    <!-- 
+        Here are all mods used by items. 
+    -->
     <file src="items/assault_ammo.txd" />
     <file src="items/assault_ammo.dff" />
 	<file src="items/armor_clothes.txd" />
@@ -236,6 +242,11 @@
     <file src="items/wirefence_pickup.dff" />
     <file src="items/camera.txd" />
     <file src="items/camera.dff" />
+
+    <!--    
+        Files imported from BoneAttach, used to attach 
+        items to the players.
+    -->
     <script src="bone_attach/bone_attach.lua" />
     <script src="bone_attach/bone_attach_c.lua" type="client" />
     <script src="bone_attach/attach_func.lua" />
