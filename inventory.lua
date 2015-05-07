@@ -1,4 +1,4 @@
-﻿
+
 inventoryItems = {
 ["Weapons"] = {
 ["Primary Weapon"] = {
@@ -26,7 +26,7 @@ inventoryItems = {
 	{Weapon_Parachute, 1},
 	{gameWeapons["TearGas"]["name"], 1},
 	{gameWeapons["Grenade"]["name"], 1},
-	{Weapon_Binoculars, 1},
+	{gameWeapons["Camera"]["name"], 1},
 }
 },
 ["Ammo"] = {
@@ -44,14 +44,14 @@ inventoryItems = {
 	{gameWeapons["CountryRifle_Ammo"]["name"],0.1},
 },
 ["Food"] = {
-	{Item_FullWaterBottle,1},
-	{Item_PastaCan, 1},
-	{Item_BeansCan, 1},
-	{Item_Burger, 1},
-	{Item_Pizza, 1},
-	{Item_SodaBottle,1 },
-	{Item_Milk, 1},
-	{Item_CookedMeat,1},
+	{gameFoodItems["FullWaterBottle"]["name"],1},
+	{gameFoodItems["PastaCan"]["name"], 1},
+	{gameFoodItems["BeansCan"]["name"], 1},
+	{gameFoodItems["Burger"]["name"], 1},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullSodaCan"]["name"],1 },
+	{gameFoodItems["Milk"]["name"], 1},
+	{gameFoodItems["CookedMeat"]["name"],1},
 },
 ["Items"] = {
 	{Item_WoodPile, 2},
@@ -65,12 +65,12 @@ inventoryItems = {
 	{gameMedicItems["Morphine"]["name"],1,"Usar"},
 	{gameMedicItems["BloodBag"]["name"],1,"Usar"},
 	{Item_WireFence,1,"Colocar cerca"},
-	{Item_RawMeat, 1},
+	{gameFoodItems["RawMeat"]["name"], 1},
 	{Item_Tire, 2},
 	{"Motor", 5},
 	{Item_Tent,3,"Montar tenda"},
-	{Item_EmptyWaterBottle,1,"Encher garrafa"},
-	{Item_EmptySodaCan,1},
+	{gameFoodItems["EmptyWaterBottle"]["name"],1,"Encher garrafa"},
+	{gameFoodItems["EmptySodaCan"]["name"],1},
 	{Item_ScruffyBurger,1},
 	{Skin_Military,1,"Usar Skin"},
 	{Skin_Civilian,1,"Usar Skin"},
@@ -900,7 +900,7 @@ function getInventoryInfosForRightClickMenu(itemName)
   end
   for i, itemInfo in ipairs(inventoryItems.Food) do
     if itemName == itemInfo[1] then
-      if itemInfo[1] == Item_FullWaterBottle or itemInfo[1] == Item_Milk or itemInfo[1] == Item_SodaBottle then
+      if itemInfo[1] == gameFoodItems["FullWaterBottle"]["name"] or itemInfo[1] == gameFoodItems["Milk"]["name"] or itemInfo[1] == gameFoodItems["FullSodaCan"]["name"] then
         info = "Beber"
       else
         info = "Comer"
@@ -965,7 +965,7 @@ function playerUseItem(itemName, itemInfo)
     triggerServerEvent("onPlayerRequestChangingStats", getLocalPlayer(), itemName, itemInfo, "food")
   elseif itemInfo == "Usar Skin" then
     triggerServerEvent("onPlayerChangeSkin", getLocalPlayer(), itemName)
-  elseif itemName == Item_EmptyWaterBottle then
+  elseif itemName == gameFoodItems["EmptyWaterBottle"]["name"] then
     triggerServerEvent("onPlayerRefillWaterBottle", getLocalPlayer(), itemName)
   elseif itemName == Item_Tent then
     triggerServerEvent("onPlayerPitchATent", getLocalPlayer(), itemName)
@@ -1008,7 +1008,7 @@ weaponAmmoTable = {
 [gameWeapons["SPAZ12_Ammo"]["name"]] = {{gameWeapons["SPAZ12"]["name"], 27}},
 [gameWeapons["Sniper_Ammo"]["name"]] = {{gameWeapons["Sniper"]["name"], 34}},
 [gameWeapons["CountryRifle_Ammo"]["name"]] = {{gameWeapons["CountryRifle"]["name"], 33}},
-["others"] = {{Weapon_Parachute, 46},{gameWeapons["TearGas"]["name"], 17},{gameWeapons["Grenade"]["name"], 16},{gameWeapons["Knife"]["name"], 4},{gameWeapons["Katana"]["name"], 8},{Weapon_Binoculars, 43},{gameWeapons["BaseballBat"]["name"], 5},{gameWeapons["Shovel"]["name"], 6},{gameWeapons["GolfClub"]["name"], 2}}
+["others"] = {{Weapon_Parachute, 46},{gameWeapons["TearGas"]["name"], 17},{gameWeapons["Grenade"]["name"], 16},{gameWeapons["Knife"]["name"], 4},{gameWeapons["Katana"]["name"], 8},{gameWeapons["Camera"]["name"], 43},{gameWeapons["BaseballBat"]["name"], 5},{gameWeapons["Shovel"]["name"], 6},{gameWeapons["GolfClub"]["name"], 2}}
 }
 
 function getWeaponAmmoType2(weaponName)

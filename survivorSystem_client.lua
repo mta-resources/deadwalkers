@@ -1,4 +1,4 @@
-﻿
+
 -- Cria texto no canto da tela, logo acima da versão
 --[[
 addEventHandler("onClientResourceStart", getResourceRootElement(), function()
@@ -750,7 +750,7 @@ weaponAmmoTable = {
     {gameWeapons["Grenade"]["name"], 16},
     {gameWeapons["Knife"]["name"], 4},
     {gameWeapons["Katana"]["name"], 8},
-    {Weapon_Binoculars, 43},
+    {gameWeapons["Camera"]["name"], 43},
     {gameWeapons["BaseballBat"]["name"], 5},
     {gameWeapons["Shovel"]["name"], 6},
     {gameWeapons["GolfClub"]["name"], 2},

@@ -1,4 +1,4 @@
-﻿
+
 local spalten = {}
 local spalteGuiImage = {}
 local spalteGuiText = {}
@@ -143,10 +143,10 @@ function showClientMenuItem(arg1, arg2, arg3, arg4)
     guiSetVisible(spalteGuiImage[number], true)
     guiSetText(spalteGuiText[number], "Analisar corpo")
   end
-  if arg1 == "Fireplace" and 1 <= getElementData(getLocalPlayer(), Item_RawMeat) then
+  if arg1 == "Fireplace" and 1 <= getElementData(getLocalPlayer(), gameFoodItems["RawMeat"]["name"]) then
     number = number + 1
     guiSetVisible(spalteGuiImage[number], true)
-    guiSetText(spalteGuiText[number], Item_CookedMeat)
+    guiSetText(spalteGuiText[number], gameFoodItems["CookedMeat"]["name"])
     guiLabelSetColor(spalteGuiText[number], 50, 255, 50)
     setElementData(spalteGuiText[number], "markedMenuItem", true)
     setElementData(spalteGuiText[number], "usedItem", "fireplace")
@@ -294,7 +294,7 @@ NECESSÁRIO: ]]..Item_Toolbox, source)
       setElementData(getLocalPlayer(), "loot", false)
       setNewbieInfo(true, "Fogueira", [[
 Pressione '-' ou 'scroll do mouse' para cozinhar a carne!
-NECESSÁRIO: ]]..Item_RawMeat, source)
+NECESSÁRIO: ]]..gameFoodItems["RawMeat"]["name"], source)
       isInFirePlace = true
       return
     end

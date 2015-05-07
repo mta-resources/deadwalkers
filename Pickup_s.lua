@@ -1,4 +1,4 @@
-﻿getResourceRootElement(getThisResource())
+getResourceRootElement(getThisResource())
 
 --[[ table structure:
 	[1] item name
@@ -24,35 +24,35 @@ local itemTable = {
       4
     },
     {
-      Item_FullWaterBottle,
+      gameFoodItems["FullWaterBottle"]["name"],
       2683,
       1,
       0,
       6
     },
     {
-      Item_PastaCan,
+      gameFoodItems["PastaCan"]["name"],
       2770,
       1,
       0,
       6
     },
     {
-      Item_BeansCan,
+      gameFoodItems["BeansCan"]["name"],
       2601,
       1,
       0,
       6
     },
     {
-      Item_Burger,
+      gameFoodItems["Burger"]["name"],
       2768,
       1,
       0,
       6
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -66,7 +66,7 @@ local itemTable = {
       12
     },
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -243,14 +243,14 @@ local itemTable = {
       1
     },
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
       7
     },
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -271,7 +271,7 @@ local itemTable = {
       9
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -292,7 +292,7 @@ local itemTable = {
       7
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -411,21 +411,21 @@ local itemTable = {
       3
     },
     {
-      Item_PastaCan,
+      gameFoodItems["PastaCan"]["name"],
       2770,
       1,
       0,
       7
     },
     {
-      Item_BeansCan,
+      gameFoodItems["BeansCan"]["name"],
       2601,
       1,
       0,
       7
     },
     {
-      Item_Burger,
+      gameFoodItems["Burger"]["name"],
       2768,
       1,
       0,
@@ -512,7 +512,7 @@ local itemTable = {
     },
 	--[[
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
@@ -521,7 +521,7 @@ local itemTable = {
 	]]
 	--[[
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -543,7 +543,7 @@ local itemTable = {
       4
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -558,7 +558,7 @@ local itemTable = {
     },
 	--[[
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -645,7 +645,7 @@ local itemTable = {
       4
     },
     {
-      Weapon_Binoculars,
+      gameWeapons["Camera"]["name"],
       369,
       1,
       0,
@@ -829,35 +829,35 @@ local itemTable = {
       3
     },
     {
-      Item_FullWaterBottle,
+      gameFoodItems["FullWaterBottle"]["name"],
       2683,
       1,
       0,
       4
     },
     {
-      Item_PastaCan,
+      gameFoodItems["PastaCan"]["name"],
       2770,
       1,
       0,
       4
     },
     {
-      Item_BeansCan,
+      gameFoodItems["BeansCan"]["name"],
       2601,
       1,
       0,
       4
     },
     {
-      Item_Burger,
+      gameFoodItems["Burger"]["name"],
       2768,
       1,
       0,
       4
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -873,7 +873,7 @@ local itemTable = {
     },
 	]]
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -950,7 +950,7 @@ local itemTable = {
       1.5
     },
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
@@ -964,7 +964,7 @@ local itemTable = {
       5
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -1029,7 +1029,7 @@ local itemTable = {
   },
   supermarket = {
     {
-      Item_RawMeat,
+      gameFoodItems["RawMeat"]["name"],
       2804,
       0.5,
       90,
@@ -1078,14 +1078,14 @@ local itemTable = {
       2.1
     },
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
       7
     },
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -1106,7 +1106,7 @@ local itemTable = {
       6
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -1120,21 +1120,21 @@ local itemTable = {
       6
     },
     {
-      Item_PastaCan,
+      gameFoodItems["PastaCan"]["name"],
       2770,
       1,
       0,
       7
     },
     {
-      Item_BeansCan,
+      gameFoodItems["BeansCan"]["name"],
       2601,
       1,
       0,
       7
     },
     {
-      Item_Burger,
+      gameFoodItems["Burger"]["name"],
       2768,
       1,
       0,
@@ -1148,7 +1148,7 @@ local itemTable = {
       7
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -1269,13 +1269,13 @@ local itemTable = {
   },
   other = {
     {
-      Item_RawMeat,
+      gameFoodItems["RawMeat"]["name"],
       2804,
       0.5,
       90
     },
     {
-      Item_CookedMeat,
+      gameFoodItems["CookedMeat"]["name"],
       2806,
       0.5,
       90
@@ -1287,7 +1287,7 @@ local itemTable = {
       0
     },
     {
-      Item_EmptyWaterBottle,
+      gameFoodItems["EmptyWaterBottle"]["name"],
       2683,
       1,
       0
@@ -1431,14 +1431,14 @@ local itemTable = {
       1.8
     },
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
       7
     },
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -1459,7 +1459,7 @@ local itemTable = {
       6
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -1480,7 +1480,7 @@ local itemTable = {
       7
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,
@@ -1592,7 +1592,7 @@ local itemTable = {
       2
     },
     {
-      Item_FullWaterBottle,
+      gameFoodItems["FullWaterBottle"]["name"],
       2683,
       1,
       0,
@@ -1627,7 +1627,7 @@ local itemTable = {
       1.9
     },
     {
-      Weapon_Binoculars,
+      gameWeapons["Camera"]["name"],
       369,
       1,
       0,
@@ -1683,21 +1683,21 @@ local itemTable = {
       4
     },
     {
-      Item_PastaCan,
+      gameFoodItems["PastaCan"]["name"],
       2770,
       1,
       0,
       5
     },
     {
-      Item_BeansCan,
+      gameFoodItems["BeansCan"]["name"],
       2601,
       1,
       0,
       6
     },
     {
-      Item_Burger,
+      gameFoodItems["Burger"]["name"],
       2768,
       1,
       0,
@@ -1834,7 +1834,7 @@ weaponAmmoTable = {
       4
     },
     {gameWeapons["Katana"]["name"], 8},
-    {Weapon_Binoculars, 43},
+    {gameWeapons["Camera"]["name"], 43},
     {gameWeapons["BaseballBat"]["name"],5},
     {gameWeapons["GolfClub"]["name"], 2},
     {gameWeapons["Shovel"]["name"], 6},

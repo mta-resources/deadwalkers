@@ -311,6 +311,15 @@
 		["nothing"] = 0,
 		["damage"]	= 0,
 	},
+	["Camera"] = {
+		["id"]		= 43,
+		["model"]	= 367,
+		["name"] 	= "Binóculos",
+		["slots"]	= 1,
+		["objScale"] = 4,
+		["nothing"] = 0,
+		["damage"]	= 0,
+	},
 }
 
 
@@ -368,136 +377,111 @@ gameMedicItems = {
 }
 
 
-gameMedicItems = {
+
+gameFoodItems = {
 	
-	["MedicKit"] = {
-		["model"]	= 2891,
-		["name"] 	= "Kit Médico",
-		["slots"]	= 2,
-		["objScale"] = 2.2,
+	["Burger"] = {
+		["model"]	= 2768,
+		["name"] 	= "Hambúrguer",
+		["slots"]	= 1,
+		["objScale"] = 1,
 		["nothing"] = 0,
-		["heal"]	= 12000,
+		["heal"]	= 1000,
+		["food"]	= 100,
 	},
-	["Bandage"] = {
-		["model"]	= 1578,
-		["name"] 	= "Curativo",
-		["slots"]	= 0.5,
+	["Pizza"] = {
+		["model"]	= 1582,
+		["name"] 	= "Pizza",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 1300,
+		["food"]	= 100,
+	},
+	["RawMeat"] = {
+		["model"]	= 2804,
+		["name"] 	= "Carne Crua",
+		["slots"]	= 1,
+		["objScale"] = 0.5,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["food"]	= 100,
+	},
+	["CookedMeat"] = {
+		["model"]	= 2806,
+		["name"] 	= "Carne Cozida",
+		["slots"]	= 1,
+		["objScale"] = 0.5,
+		["nothing"] = 0,
+		["heal"]	= 1500,
+		["food"]	= 100,
+	},
+	["PastaCan"] = {
+		["model"]	= 2770,
+		["name"] 	= "Macarrão",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["food"]	= 100,
+	},
+	["BeansCan"] = {
+		["model"]	= 2601,
+		["name"] 	= "Feijão",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["food"]	= 100,
+	},
+	["Milk"] = {
+		["model"]	= 2856,
+		["name"] 	= "Leite",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["thirst"]	= 100,
+	},
+	["FullWaterBottle"] = {
+		["model"]	= 2683,
+		["name"] 	= "Garrafa D'água",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["thirst"]	= 100,
+	},
+	["EmptyWaterBottle"] = {
+		["model"]	= 2683,
+		["name"] 	= "Garrafa D'água (vazia)",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 0,
+		["thirst"]	= 0,
+	},
+	["FullSodaCan"] = {
+		["model"]	= 2673,
+		["name"] 	= "Lata de Suco",
+		["slots"]	= 1,
+		["objScale"] = 0.5,
+		["nothing"] = 0,
+		["heal"]	= 800,
+		["thirst"]	= 100,
+	},
+	["EmptySodaCan"] = {
+		["model"]	= 2673,
+		["name"] 	= "Lata de Suco (vazia)",
+		["slots"]	= 1,
 		["objScale"] = 0.5,
 		["nothing"] = 0,
 		["heal"]	= 0,
-	},
-	["BloodBag"] = {
-		["model"]	= 1580,
-		["name"] 	= "Bolsa de Sangue",
-		["slots"]	= 1,
-		["objScale"] = 1,
-		["nothing"] = 0,
-		["heal"]	= 10000,
-	},
-	["HeatPack"] = {
-		["model"]	= 1576,
-		["name"] 	= "Bolsa Quente",
-		["slots"]	= 1,
-		["objScale"] = 5,
-		["nothing"] = 0,
-		["heal"]	= 0,
-	},
-	["Morphine"] = {
-		["model"]	= 1579,
-		["name"] 	= "Morfina",
-		["slots"]	= 0.5,
-		["objScale"] = 1,
-		["nothing"] = 0,
-		["heal"]	= 0,
-	},
-	["Painkiller"] = {
-		["model"]	= 2709,
-		["name"] 	= "Analgésico",
-		["slots"]	= 0.5,
-		["objScale"] = 3,
-		["nothing"] = 0,
-		["heal"]	= 0,
+		["thirst"]	= 0,
 	},
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
 	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
 	
 	-- Skins
 	Skin_Survivor	= "Roupa de Sobrevivente"
@@ -525,14 +509,13 @@ gameMedicItems = {
 	Item_Toolbox	= "Ferramentas"
 	Item_BoxOfMatches	= "Caixa de Fósforo"
 	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
+
 	-- Database keys
 	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
 	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
 		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
 		So the name of the item must be the name in the database. ]]
+		
 
 --SERVER OUTPUTS
 shownInfos = {}

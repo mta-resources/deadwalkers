@@ -1,4 +1,4 @@
-﻿	
+	
 hunterSpawns = gameplayVariables.hunterspawns
 rancherSpawns = gameplayVariables.rancherspawns
 mesaSpawns = gameplayVariables.mesaspawns
@@ -641,14 +641,14 @@ lootItems = {
       3
     },
     {
-      Item_Pizza,
+      gameFoodItems["Pizza"]["name"],
       1582,
       1,
       0,
       2
     },
     {
-      Item_SodaBottle,
+      gameFoodItems["FullSodaCan"]["name"],
       2647,
       1,
       0,
@@ -669,7 +669,7 @@ lootItems = {
       2
     },
     {
-      Item_Milk,
+      gameFoodItems["Milk"]["name"],
       2856,
       1,
       0,
@@ -683,7 +683,7 @@ lootItems = {
       4
     },
     {
-      Item_EmptySodaCan,
+      gameFoodItems["EmptySodaCan"]["name"],
       2673,
       0.5,
       0,

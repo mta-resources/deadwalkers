@@ -1,4 +1,4 @@
-﻿
+
 animals = {
 {-1350.775390625,-1070.8291015625,160.71176147461},
 {-1369.1123046875,-1094.70703125,163.45556640625},
@@ -71,11 +71,11 @@ function createDeadAnimal()
 		local hours, minutes = getTime()
 		setElementData(pedCol,"deadreason","Este animal foi morto às "..hours..":"..minutes..".")
 		if getElementModel(source) == 12 then
-			setElementData(pedCol,Item_RawMeat,math.random(3,8))
+			setElementData(pedCol,gameFoodItems["RawMeat"]["name"],math.random(3,8))
 		elseif getElementModel(source) == 13 then
-			setElementData(pedCol,Item_RawMeat,math.random(1,4))
+			setElementData(pedCol,gameFoodItems["RawMeat"]["name"],math.random(1,4))
 		elseif getElementModel(source) == 14 then
-			setElementData(pedCol,Item_RawMeat,math.random(1,2))	
+			setElementData(pedCol,gameFoodItems["RawMeat"]["name"],math.random(1,2))	
 		end
 		destroyElement(source)
 		setTimer(destroyDeadAnimalAndRespawn,1800000,1,ped,pedCol,x,y,z)

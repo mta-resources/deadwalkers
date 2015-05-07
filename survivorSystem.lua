@@ -1,11 +1,11 @@
-﻿
+
 local vehicleDataTableForTent = {
   {Item_WoodPile},
   {gameMedicItems["Bandage"]["name"]},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
   {gameWeapons["Pistol_Ammo"]["name"]},
   {gameWeapons["SilencedPistol_Ammo"]["name"]},
@@ -17,12 +17,12 @@ local vehicleDataTableForTent = {
   {gameWeapons["Knife"]["name"]},
   {gameMedicItems["Morphine"]["name"]},
   {gameWeapons["Katana"]["name"]},
-  {Item_Pizza},
-  {Item_SodaBottle},
+  {gameFoodItems["Pizza"]["name"]},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {Item_FullPatrol},
   {Item_RoadFlare},
-  {Item_Milk},
+  {gameFoodItems["Milk"]["name"]},
   {gameWeapons["Uzi_Ammo"]["name"]},
   {gameWeapons["MP5_Ammo"]["name"]},
   {gameWeapons["AK47_Ammo"]["name"]},
@@ -53,17 +53,17 @@ local vehicleDataTableForTent = {
   {gameWeapons["Infrared"]["name"]},
   {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
-  {Item_RawMeat},
-  {Item_CookedMeat},
+  {gameFoodItems["RawMeat"]["name"]},
+  {gameFoodItems["CookedMeat"]["name"]},
   {Skin_Military},
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
   {gameMedicItems["Painkiller"]["name"]},
-  {Weapon_Binoculars},
-  {Item_EmptyWaterBottle},
-  {Item_EmptySodaCan},
+  {gameWeapons["Camera"]["name"]},
+  {gameFoodItems["EmptyWaterBottle"]["name"]},
+  {gameFoodItems["EmptySodaCan"]["name"]},
   {Item_ScruffyBurger},
   {gameWeapons["Shotgun_Ammo"]["name"]},
   {gameWeapons["SawnOff_Ammo"]["name"]},
@@ -77,8 +77,9 @@ local vehicleDataTableForTent = {
   {gameWeapons["Shovel"]["name"]},
   {gameWeapons["GolfClub"]["name"]}
 }
+
 weaponAmmoTable = {
-  [gameWeapons["Pistol_Ammo"]["name"]] = {
+    [gameWeapons["Pistol_Ammo"]["name"]] = {
     {gameWeapons["Pistol"]["name"], 22}
   },
   [gameWeapons["SilencedPistol_Ammo"]["name"]] = {
@@ -132,7 +133,7 @@ weaponAmmoTable = {
     {gameWeapons["Grenade"]["name"], 16},
     {gameWeapons["Knife"]["name"], 4},
     {gameWeapons["Katana"]["name"], 8},
-    {Weapon_Binoculars, 43},
+    {gameWeapons["Camera"]["name"], 43},
     {gameWeapons["BaseballBat"]["name"], 5},
     {gameWeapons["Shovel"]["name"], 6},
     {gameWeapons["GolfClub"]["name"], 2},
@@ -594,15 +595,15 @@ setTimer(checkHumanity, 60000, 0)
 
 function onPlayerRequestChangingStats(itemName, itemInfo, data)
   if data == "food" then
-    if itemName == Item_Burger then
+    if itemName == gameFoodItems["Burger"]["name"] then
       blood = 300
-    elseif itemName == Item_Pizza then
+    elseif itemName == gameFoodItems["Pizza"]["name"] then
       blood = 300
-    elseif itemName == Item_CookedMeat then
+    elseif itemName == gameFoodItems["CookedMeat"]["name"] then
       blood = 2000
-    elseif itemName == Item_BeansCan then
+    elseif itemName == gameFoodItems["BeansCan"]["name"] then
       blood = 200
-    elseif itemName == Item_PastaCan then
+    elseif itemName == gameFoodItems["PastaCan"]["name"] then
       blood = 200
     end
     setPedAnimation(source, "FOOD", "EAT_Burger", -1, false, false, nil, false)
@@ -613,8 +614,8 @@ function onPlayerRequestChangingStats(itemName, itemInfo, data)
     setElementData(source, itemName, getElementData(source, itemName) - 1)
     addPlayerStats(source, data, gameplayVariables.thirstrestore)
     setPedAnimation(source, "VENDING", "VEND_Drink2_P", -1, false, false, nil, false)
-    if itemName == Item_FullWaterBottle then
-      setElementData(source, Item_EmptyWaterBottle, (getElementData(source, Item_EmptyWaterBottle) or 0) + 1)
+    if itemName == gameFoodItems["FullWaterBottle"]["name"] then
+      setElementData(source, gameFoodItems["EmptyWaterBottle"]["name"], (getElementData(source, gameFoodItems["EmptyWaterBottle"]["name"]) or 0) + 1)
     end
   end
   triggerClientEvent(source, "displayClientInfo", source, "Food", shownInfos.youconsumed .. " " .. itemName, 22, 255, 0)
@@ -736,12 +737,12 @@ addEventHandler("onPlayerChangeSkin", getRootElement(), addPlayerSkin)
 -- When player refill his water bottle // Quando jogador enche garrafa d'agua
 function onPlayerRefillWaterBottle(itemName)
   if isElementInWater(source) then
-    setElementData(source, Item_FullWaterBottle, getElementData(source, Item_FullWaterBottle) + 1)
+    setElementData(source, gameFoodItems["FullWaterBottle"]["name"], getElementData(source, gameFoodItems["FullWaterBottle"]["name"]) + 1)
     setElementData(source, itemName, getElementData(source, itemName) - 1)
     triggerClientEvent(source, "refreshInventoryManual", source)
-    triggerClientEvent(source, "displayClientInfo", source, Item_FullWaterBottle, shownInfos.filledup, 22, 255, 0)
+    triggerClientEvent(source, "displayClientInfo", source, gameFoodItems["FullWaterBottle"]["name"], shownInfos.filledup, 22, 255, 0)
   else
-    triggerClientEvent(source, "displayClientInfo", source, Item_FullWaterBottle, shownInfos.needwatersource, 255, 22, 0)
+    triggerClientEvent(source, "displayClientInfo", source, gameFoodItems["FullWaterBottle"]["name"], shownInfos.needwatersource, 255, 22, 0)
   end
 end
 addEvent("onPlayerRefillWaterBottle", true)
@@ -838,10 +839,10 @@ addEventHandler("removeTent", getRootElement(), removeTent)
 function addPlayerCookMeat()
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
-  local meat = getElementData(playersource, Item_RawMeat)
+  local meat = getElementData(playersource, gameFoodItems["RawMeat"]["name"])
   setTimer(function()
-    setElementData(playersource, Item_RawMeat, 0)
-    setElementData(playersource, Item_CookedMeat, getElementData(playersource, Item_CookedMeat) + meat)
+    setElementData(playersource, gameFoodItems["RawMeat"]["name"], 0)
+    setElementData(playersource, gameFoodItems["CookedMeat"]["name"], getElementData(playersource, gameFoodItems["CookedMeat"]["name"]) + meat)
     triggerClientEvent(playersource, "displayClientInfo", playersource, "Fireplace", "Você cozinhou " .. meat .. " Carne Cozida.", 22, 255, 0)
   end, 5000, 1)
 end

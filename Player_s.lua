@@ -1,4 +1,4 @@
-﻿
+
 local spawnPositions = {
   {
     -278.6669921875,
@@ -85,10 +85,10 @@ local playerDataTable = {
   {"banditskilled"},
   {Item_WoodPile},
   {gameMedicItems["Bandage"]["name"]},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
   {gameWeapons["Pistol_Ammo"]["name"]},
   {gameWeapons["SilencedPistol_Ammo"]["name"]},
@@ -99,13 +99,13 @@ local playerDataTable = {
   {gameWeapons["Uzi"]["name"]},
   {gameWeapons["Knife"]["name"]},
   {gameWeapons["Katana"]["name"]},
-  {Item_Pizza},
+  {gameFoodItems["Pizza"]["name"]},
   {gameMedicItems["Morphine"]["name"]},
-  {Item_SodaBottle},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {Item_FullPatrol},
   {Item_RoadFlare},
-  {Item_Milk},
+  {gameFoodItems["Milk"]["name"]},
   {gameWeapons["Uzi_Ammo"]["name"]},
   {gameWeapons["MP5_Ammo"]["name"]},
   {gameWeapons["AK47_Ammo"]["name"]},
@@ -137,22 +137,22 @@ local playerDataTable = {
   {gameWeapons["Infrared"]["name"]},
   {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
-  {Item_RawMeat},
-  {Item_CookedMeat},
+  {gameFoodItems["RawMeat"]["name"]},
+  {gameFoodItems["CookedMeat"]["name"]},
   {Skin_Military},
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
   {gameMedicItems["Painkiller"]["name"]},
-  {Item_EmptyWaterBottle},
-  {Item_EmptySodaCan},
+  {gameFoodItems["EmptyWaterBottle"]["name"]},
+  {gameFoodItems["EmptySodaCan"]["name"]},
   {Item_ScruffyBurger},
   {gameWeapons["Shotgun_Ammo"]["name"]},
   {gameWeapons["SawnOff_Ammo"]["name"]},
   {gameWeapons["SPAZ12_Ammo"]["name"]},
   {Item_Radio},
-  {Weapon_Binoculars},
+  {gameWeapons["Camera"]["name"]},
   {gameWeapons["BaseballBat"]["name"]},
   {gameWeapons["Shovel"]["name"]},
   {gameWeapons["GolfClub"]["name"]},
@@ -166,10 +166,10 @@ local vehicleDataTable = {
   {"fuel"},
   {Item_WoodPile},
   {gameMedicItems["Bandage"]["name"]},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
   {gameWeapons["Pistol_Ammo"]["name"]},
   {gameWeapons["Pistol"]["name"]},
@@ -180,14 +180,14 @@ local vehicleDataTable = {
   {gameWeapons["Knife"]["name"]},
   {gameMedicItems["Morphine"]["name"]},
   {gameWeapons["Katana"]["name"]},
-  {Item_Pizza},
-  {Item_SodaBottle},
+  {gameFoodItems["Pizza"]["name"]},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {
     Item_FullPatrol
   },
   {Item_RoadFlare},
-  {Item_Milk},
+  {gameFoodItems["Milk"]["name"]},
   {gameWeapons["Uzi_Ammo"]["name"]},
   {gameWeapons["MP5_Ammo"]["name"]},
   {gameWeapons["AK47_Ammo"]["name"]},
@@ -232,21 +232,21 @@ local vehicleDataTable = {
     gameWeapons["NightVision"]["name"]
   },
   {Item_Tent},
-  {Item_RawMeat},
+  {gameFoodItems["RawMeat"]["name"]},
   {
-    Item_CookedMeat
+    gameFoodItems["CookedMeat"]["name"]
   },
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
   {gameMedicItems["Painkiller"]["name"]},
-  {Weapon_Binoculars},
+  {gameWeapons["Camera"]["name"]},
   {
-    Item_EmptyWaterBottle
+    gameFoodItems["EmptyWaterBottle"]["name"]
   },
   {
-    Item_EmptySodaCan
+    gameFoodItems["EmptySodaCan"]["name"]
   },
   {
     Item_ScruffyBurger
@@ -344,8 +344,8 @@ function spawnDayZPlayer(player)
 	{gameWeapons["Katana"]["name"], 1},
 	{gameWeapons["Uzi"]["name"], 1},
 	{gameWeapons["Uzi_Ammo"]["name"], 30},
-	{Item_Pizza, 1},
-	{Item_SodaBottle, 1},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullSodaCan"]["name"], 1},
 	{Item_Map, 1},
   }
   
@@ -356,8 +356,8 @@ function spawnDayZPlayer(player)
 	{gameWeapons["Uzi_Ammo"]["name"], 30},
 	{Weapon_Shotgun, 1},
 	{gameWeapons["Shotgun_Ammo"]["name"], 14},
-	{Item_Pizza, 1},
-	{Item_FullWaterBottle, 1},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullWaterBottle"]["name"], 1},
 	{Item_Map, 1},
   }
   
@@ -368,8 +368,8 @@ function spawnDayZPlayer(player)
 	{gameWeapons["M4_Ammo"]["name"], 60},
 	{gameWeapons["Sniper"]["name"], 1},
 	{gameWeapons["Sniper_Ammo"]["name"], 5},
-	{Item_Pizza, 1},
-	{Item_FullWaterBottle, 1},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullWaterBottle"]["name"], 1},
 	{Item_Map, 1},
 	{Item_GPS, 1},
   }

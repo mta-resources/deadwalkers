@@ -1,4 +1,4 @@
-﻿
+
 ZombiePedSkins = {13,22,56,67,68,69,70,92,97,105,107,108,126,127,128,152,162,167,188,195,206,209,212,229,230,258,264,277,280} --ALTERNATE SKIN LISTS FOR ZOMBIES (SHORTER LIST IS TEXTURED ZOMBIES ONLY)
 
 setElementData(getRootElement(),"zombiestotal",0)
@@ -14,14 +14,14 @@ itemTableZombies = {
 {gameWeapons["Uzi"]["name"],352,1,90,0.3},
 {gameWeapons["Knife"]["name"],335,1,90,7},
 {Weapon_Hatchet,339,1,90,7},
-{Item_Pizza,1582,1,0,7},
-{Item_SodaBottle,2647,1,0,7},
+{gameFoodItems["Pizza"]["name"],1582,1,0,7},
+{gameFoodItems["FullSodaCan"]["name"],2647,1,0,7},
 {Item_EmptyPatrol,1650,1,0,5},
 {Item_Roadflare,324,1,90,9},
-{Item_Milk,2856,1,0,5},
+{gameFoodItems["Milk"]["name"],2856,1,0,5},
 {"Assault Pack (ACU)",3026,0.5,0,6},
 {gameMedicItems["Painkiller"]["name"],2709,0.5,0,7},
-{Item_EmptySodaCan,2673,0.5,0,6},
+{gameFoodItems["EmptySodaCan"]["name"],2673,0.5,0,6},
 {Item_ScruffyBurger,2675,0.5,0,6},
 {gameWeapons["Grenade"]["name"],342,1,0,0.5},
 {gameWeapons["DesertEagle"]["name"],348,1,90,0.3},
@@ -38,9 +38,9 @@ itemTableZombies = {
 {Skin_Civilian,1577,1,0,12},
 {Item_Map,1277,0.8,90,4},
 {Item_GPS,2976,0.15,0,1},
-{Item_PastaCan,2770,0.1,0,5},
-{Item_BeansCan,2601,1,0,5},
-{Item_Burger,2768,1,0,2},
+{gameFoodItems["PastaCan"]["name"],2770,0.1,0,5},
+{gameFoodItems["BeansCan"]["name"],2601,1,0,5},
+{gameFoodItems["Burger"]["name"],2768,1,0,2},
 {Item_Radio,2966,0.5,0,3},
 {gameWeapons["GolfClub"]["name"],333,1,90,0.5},
 {gameWeapons["BaseballBat"]["name"],336,1,90,0.5},
