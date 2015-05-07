@@ -2,30 +2,30 @@
 inventoryItems = {
 ["Weapons"] = {
 ["Primary Weapon"] = {
-	{Weapon_M4,3},
-	{Weapon_Sniper,3},
+	{gameWeapons["M4"]["name"],3},
+	{gameWeapons["Sniper"]["name"],3},
 	{Weapon_Shotgun,3},
-	{Weapon_Spas,3},
+	{gameWeapons["SPAZ12"]["name"],3},
 	{Weapon_SawnOff,3},
-	{Weapon_AK,3},
-	{Weapon_Country,3},
+	{gameWeapons["AK47"]["name"],3},
+	{gameWeapons["CountryRifle"]["name"],3},
 },
 ["Secondary Weapon"] = {
-	{Weapon_Pistol,2},
-	{Weapon_Silenced,2},
-	{Weapon_Uzi,2},
-	{Weapon_MP5,3},
-	{Weapon_Desert,2},
-	{Weapon_Knife,1},
-	{Weapon_Katana, 2},
-	{Weapon_Baseball,2},
-	{Weapon_Shovel, 2},
-	{Weapon_Crowbar, 2},
+	{gameWeapons["Pistol"]["name"],2},
+	{gameWeapons["SilencedPistol"]["name"],2},
+	{gameWeapons["Uzi"]["name"],2},
+	{gameWeapons["MP5"]["name"],3},
+	{gameWeapons["DesertEagle"]["name"],2},
+	{gameWeapons["Knife"]["name"],1},
+	{gameWeapons["Katana"]["name"], 2},
+	{gameWeapons["BaseballBat"]["name"],2},
+	{gameWeapons["Shovel"]["name"], 2},
+	{gameWeapons["GolfClub"]["name"], 2},
 },
 ["Specially Weapon"] = {
 	{Weapon_Parachute, 1},
-	{Weapon_TearGas, 1},
-	{Weapon_Grenade, 1},
+	{gameWeapons["TearGas"]["name"], 1},
+	{gameWeapons["Grenade"]["name"], 1},
 	{Weapon_Binoculars, 1},
 }
 },
@@ -55,15 +55,15 @@ inventoryItems = {
 },
 ["Items"] = {
 	{Item_WoodPile, 2},
-	{Item_Bandage,1,"Usar curativo"},
+	{gameMedicItems["Bandage"]["name"],1,"Usar curativo"},
 	{Item_RoadFlare,1,"Acender"},
 	{Item_EmptyPatrol,2},
 	{Item_FullPatrol,2},
-	{Item_MedicKit,2,"Usar"},
-	{Item_HeatPack,1,"Usar"},
-	{Item_Painkiller,1,"Usar"},
-	{Item_Morphine,1,"Usar"},
-	{Item_BloodBag,1,"Usar"},
+	{gameMedicItems["MedicKit"]["name"],2,"Usar"},
+	{gameMedicItems["HeatPack"]["name"],1,"Usar"},
+	{gameMedicItems["Painkiller"]["name"],1,"Usar"},
+	{gameMedicItems["Morphine"]["name"],1,"Usar"},
+	{gameMedicItems["BloodBag"]["name"],1,"Usar"},
 	{Item_WireFence,1,"Colocar cerca"},
 	{Item_RawMeat, 1},
 	{Item_Tire, 2},
@@ -85,8 +85,8 @@ inventoryItems = {
 	{"Coyote Backpack",0},
 },
 ["Toolbelt"] = {
-	{Item_NightVision, 1},
-	{Item_InfraredVision,1},
+	{gameWeapons["NightVision"]["name"], 1},
+	{gameWeapons["Infrared"]["name"],1},
 	{Item_Map,1},
 	{Item_BoxOfMatches,1,"Fazer fogueira"},
 	{Item_Watch,1},
@@ -631,7 +631,7 @@ function onPlayerMoveItemOutOFInventory(itemName, loot)
     itemPlus = 10
   elseif itemName == Item_Tire then
     itemPlus = 1
-  elseif itemName == Weapon_M4 or itemName == Weapon_AK or itemName == Weapon_Sniper or itemName == Weapon_Shotgun or itemName == Weapon_Spas or itemName == Weapon_SawnOff or itemName == Weapon_Country then
+  elseif itemName == gameWeapons["M4"]["name"] or itemName == gameWeapons["AK47"]["name"] or itemName == gameWeapons["Sniper"]["name"] or itemName == Weapon_Shotgun or itemName == gameWeapons["SPAZ12"]["name"] or itemName == Weapon_SawnOff or itemName == gameWeapons["CountryRifle"]["name"] then
     triggerServerEvent("removeBackWeaponOnDrop", getLocalPlayer())
   end
   
@@ -853,22 +853,22 @@ function onPlayerPressRightKeyInInventory()
     if itemName == Item_BoxOfMatches and getElementData(getLocalPlayer(), Item_WoodPile) == 0 then
       return
     end
-    if itemName == Item_Bandage and getElementData(getLocalPlayer(), "bleeding") == 0 then
+    if itemName == gameMedicItems["Bandage"]["name"] and getElementData(getLocalPlayer(), "bleeding") == 0 then
       return
     end
-    if itemName == Item_MedicKit and getElementData(getLocalPlayer(), "blood") > 10500 then
+    if itemName == gameMedicItems["MedicKit"]["name"] and getElementData(getLocalPlayer(), "blood") > 10500 then
       return
     end
-    if itemName == Item_HeatPack and getElementData(getLocalPlayer(), "temperature") > 35 then
+    if itemName == gameMedicItems["HeatPack"]["name"] and getElementData(getLocalPlayer(), "temperature") > 35 then
       return
     end
-    if itemName == Item_Painkiller and not getElementData(getLocalPlayer(), "pain") then
+    if itemName == gameMedicItems["Painkiller"]["name"] and not getElementData(getLocalPlayer(), "pain") then
       return
     end
-    if itemName == Item_Morphine and not getElementData(getLocalPlayer(), "brokenbone") then
+    if itemName == gameMedicItems["Morphine"]["name"] and not getElementData(getLocalPlayer(), "brokenbone") then
       return
     end
-    if itemName == Item_BloodBag then
+    if itemName == gameMedicItems["BloodBag"]["name"] then
       return
     end
     showRightClickInventoryMenu(itemName, itemInfo)
@@ -977,7 +977,7 @@ function playerUseItem(itemName, itemInfo)
     triggerServerEvent("onPlayerMakeAFire", getLocalPlayer(), itemName)
   elseif itemInfo == "Usar" then
     triggerServerEvent("onPlayerUseMedicObject", getLocalPlayer(), itemName)
-  elseif itemName == Item_Bandage then
+  elseif itemName == gameMedicItems["Bandage"]["name"] then
     triggerServerEvent("onPlayerUseMedicObject", getLocalPlayer(), itemName)
   elseif itemInfo == "Usar Equipamento" then
     triggerServerEvent("onPlayerChangeView", getLocalPlayer(), itemName)
@@ -996,19 +996,19 @@ end
 
 
 weaponAmmoTable = {
-[Weapon_PistolAmmo] = {{Weapon_Pistol, 22}},
-[Weapon_SilencedAmmo] = {{Weapon_Silenced, 23}},
-[Weapon_DesertAmmo] = {{Weapon_Desert, 24}},
-[Weapon_UziAmmo] = {{Weapon_Uzi, 28}},
-[Weapon_MP5Ammo] = {{Weapon_MP5, 29}},
-[Weapon_AKAmmo] = {{Weapon_AK, 30}},
-[Weapon_M4Ammo] = {{Weapon_M4, 31}},
+[Weapon_PistolAmmo] = {{gameWeapons["Pistol"]["name"], 22}},
+[Weapon_SilencedAmmo] = {{gameWeapons["SilencedPistol"]["name"], 23}},
+[Weapon_DesertAmmo] = {{gameWeapons["DesertEagle"]["name"], 24}},
+[Weapon_UziAmmo] = {{gameWeapons["Uzi"]["name"], 28}},
+[Weapon_MP5Ammo] = {{gameWeapons["MP5"]["name"], 29}},
+[Weapon_AKAmmo] = {{gameWeapons["AK47"]["name"], 30}},
+[Weapon_M4Ammo] = {{gameWeapons["M4"]["name"], 31}},
 [Weapon_ShotgunAmmo] = {{Weapon_Shotgun, 25}},
 [Weapon_SawnOffAmmo] = {{Weapon_SawnOff, 26}},
-[Weapon_SpasAmmo] = {{Weapon_Spas, 27}},
-[Weapon_SniperAmmo] = {{Weapon_Sniper, 34}},
-[Weapon_CountryAmmo] = {{Weapon_Country, 33}},
-["others"] = {{Weapon_Parachute, 46},{Weapon_TearGas, 17},{Weapon_Grenade, 16},{Weapon_Knife, 4},{Weapon_Katana, 8},{Weapon_Binoculars, 43},{Weapon_Baseball, 5},{Weapon_Shovel, 6},{Weapon_Crowbar, 2}}
+[Weapon_SpasAmmo] = {{gameWeapons["SPAZ12"]["name"], 27}},
+[Weapon_SniperAmmo] = {{gameWeapons["Sniper"]["name"], 34}},
+[Weapon_CountryAmmo] = {{gameWeapons["CountryRifle"]["name"], 33}},
+["others"] = {{Weapon_Parachute, 46},{gameWeapons["TearGas"]["name"], 17},{gameWeapons["Grenade"]["name"], 16},{gameWeapons["Knife"]["name"], 4},{gameWeapons["Katana"]["name"], 8},{Weapon_Binoculars, 43},{gameWeapons["BaseballBat"]["name"], 5},{gameWeapons["Shovel"]["name"], 6},{gameWeapons["GolfClub"]["name"], 2}}
 }
 
 function getWeaponAmmoType2(weaponName)

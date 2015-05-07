@@ -1,4 +1,5 @@
-﻿--[[
+﻿
+--[[
 #---------------------------------------------------------------#
 ----*			DayZ MTA Script addons.lua					*----
 ----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----

@@ -17,7 +17,7 @@ local itemTable = {
       13
     },
     {
-      Item_Bandage,
+      gameMedicItems["Bandage"]["name"],
       1578,
       0.5,
       0,
@@ -80,7 +80,7 @@ local itemTable = {
       10
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
@@ -94,14 +94,14 @@ local itemTable = {
       8
     },
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       348,
       1,
       90,
       0.2
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -115,21 +115,21 @@ local itemTable = {
       0.5
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       4
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       3,
       0,
       3.5
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -201,14 +201,14 @@ local itemTable = {
 	  3
 	},
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       1.5
     },
     {
-      Weapon_Silenced,
+      gameWeapons["SilencedPistol"]["name"],
       347,
       1,
       90,
@@ -222,21 +222,21 @@ local itemTable = {
       0.1
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       1
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       3
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -285,7 +285,7 @@ local itemTable = {
       6
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       3,
       0,
@@ -306,14 +306,14 @@ local itemTable = {
       12
     },
     {
-      Weapon_Grenade,
+      gameWeapons["Grenade"]["name"],
       342,
       1,
       0,
       0.01
     },
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       348,
       1,
       90,
@@ -327,14 +327,14 @@ local itemTable = {
       0.3
     },
     {
-      Weapon_Spas,
+      gameWeapons["SPAZ12"]["name"],
       351,
       1,
       90,
       0.4
     },
     {
-      Weapon_MP5,
+      gameWeapons["MP5"]["name"],
       353,
       1,
       90,
@@ -348,7 +348,7 @@ local itemTable = {
       3
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       5,
       0,
@@ -362,7 +362,7 @@ local itemTable = {
       1
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -383,7 +383,7 @@ local itemTable = {
       1
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -432,21 +432,21 @@ local itemTable = {
       7
     },
     {
-      Weapon_Crowbar,
+      gameWeapons["GolfClub"]["name"],
       333,
       1,
       90,
       3
     },
     {
-      Weapon_Baseball,
+      gameWeapons["BaseballBat"]["name"],
       336,
       1,
       90,
       3
     },
     {
-      Weapon_Shovel,
+      gameWeapons["Shovel"]["name"],
       337,
       1,
       90,
@@ -469,14 +469,14 @@ local itemTable = {
 	  1
 	},
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       5
     },
     {
-      Weapon_Silenced,
+      gameWeapons["SilencedPistol"]["name"],
       347,
       1,
       90,
@@ -490,21 +490,21 @@ local itemTable = {
       3
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       4
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       2.4
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -550,7 +550,7 @@ local itemTable = {
       1
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       3,
       0,
@@ -575,7 +575,7 @@ local itemTable = {
     },
 	]]
     {
-      Weapon_Grenade,
+      gameWeapons["Grenade"]["name"],
       342,
       1,
       0,
@@ -589,14 +589,14 @@ local itemTable = {
       2.3
     },
     {
-      Weapon_Spas,
+      gameWeapons["SPAZ12"]["name"],
       351,
       1,
       90,
       2.3
     },
     {
-      Weapon_MP5,
+      gameWeapons["MP5"]["name"],
       353,
       1,
       90,
@@ -610,7 +610,7 @@ local itemTable = {
       4
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       5,
       0,
@@ -624,7 +624,7 @@ local itemTable = {
       1
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -638,7 +638,7 @@ local itemTable = {
       4
     },
     {
-      Item_NightVision,
+      gameWeapons["NightVision"]["name"],
       368,
       1,
       90,
@@ -659,7 +659,7 @@ local itemTable = {
       2
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -680,7 +680,7 @@ local itemTable = {
       3
     },
     {
-      Weapon_AK,
+      gameWeapons["AK47"]["name"],
       355,
       1,
       90,
@@ -736,21 +736,21 @@ local itemTable = {
 	  0.3
 	},
     {
-      Weapon_M4,
+      gameWeapons["M4"]["name"],
       356,
       1,
       90,
       3.8
     },
     {
-      Weapon_Sniper,
+      gameWeapons["Sniper"]["name"],
       358,
       1,
       90,
       3.3
     },
     {
-      Item_InfraredVision,
+      gameWeapons["Infrared"]["name"],
       369,
       1,
       90,
@@ -785,7 +785,7 @@ local itemTable = {
       2
     },
     {
-      Weapon_Shovel,
+      gameWeapons["Shovel"]["name"],
       337,
       1,
       90,
@@ -922,28 +922,28 @@ local itemTable = {
       2
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       1.5
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       2
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       2
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -992,28 +992,28 @@ local itemTable = {
       6
     },
     {
-      Weapon_Crowbar,
+      gameWeapons["GolfClub"]["name"],
       333,
       1,
       90,
       1.5
     },
     {
-      Weapon_Baseball,
+      gameWeapons["BaseballBat"]["name"],
       336,
       1,
       90,
       1.5
     },
     {
-      Weapon_Shovel,
+      gameWeapons["Shovel"]["name"],
       337,
       1,
       90,
       1.5
     },
     {
-      Item_NightVision,
+      gameWeapons["NightVision"]["name"],
       368,
       1,
       90,
@@ -1050,28 +1050,28 @@ local itemTable = {
       5
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       3.5
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       2
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       3
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -1141,7 +1141,7 @@ local itemTable = {
       7
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       3,
       0,
@@ -1162,7 +1162,7 @@ local itemTable = {
       12
     },
     {
-      Weapon_MP5,
+      gameWeapons["MP5"]["name"],
       353,
       1,
       90,
@@ -1176,7 +1176,7 @@ local itemTable = {
       3
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       5,
       0,
@@ -1190,7 +1190,7 @@ local itemTable = {
       1
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -1211,7 +1211,7 @@ local itemTable = {
       1
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -1246,21 +1246,21 @@ local itemTable = {
       6
     },
     {
-      Weapon_Crowbar,
+      gameWeapons["GolfClub"]["name"],
       333,
       1,
       90,
       1.9
     },
     {
-      Weapon_Baseball,
+      gameWeapons["BaseballBat"]["name"],
       336,
       1,
       90,
       1.4
     },
     {
-      Weapon_Shovel,
+      gameWeapons["Shovel"]["name"],
       337,
       1,
       90,
@@ -1299,13 +1299,13 @@ local itemTable = {
       0
     },
     {
-      Item_NightVision,
+      gameWeapons["NightVision"]["name"],
       368,
       1,
       90
     },
     {
-      Item_InfraredVision,
+      gameWeapons["Infrared"]["name"],
       369,
       1,
       90
@@ -1403,28 +1403,28 @@ local itemTable = {
       5
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       3.5
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       2
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       2.5
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -1473,7 +1473,7 @@ local itemTable = {
       6
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       3,
       0,
@@ -1494,7 +1494,7 @@ local itemTable = {
       12
     },
     {
-      Weapon_MP5,
+      gameWeapons["MP5"]["name"],
       353,
       1,
       90,
@@ -1508,7 +1508,7 @@ local itemTable = {
       3
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       5,
       0,
@@ -1522,7 +1522,7 @@ local itemTable = {
       1
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -1550,7 +1550,7 @@ local itemTable = {
       1
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -1599,14 +1599,14 @@ local itemTable = {
       4
     },
     {
-      Weapon_Silenced,
+      gameWeapons["SilencedPistol"]["name"],
       347,
       1,
       90,
       5
     },
     {
-      Weapon_Grenade,
+      gameWeapons["Grenade"]["name"],
       342,
       1,
       0,
@@ -1620,7 +1620,7 @@ local itemTable = {
       2
     },
     {
-      Weapon_Spas,
+      gameWeapons["SPAZ12"]["name"],
       351,
       1,
       90,
@@ -1641,7 +1641,7 @@ local itemTable = {
       4.5
     },
     {
-      Weapon_AK,
+      gameWeapons["AK47"]["name"],
       355,
       1,
       90,
@@ -1662,21 +1662,21 @@ local itemTable = {
       0.01
     },
     {
-      Weapon_M4,
+      gameWeapons["M4"]["name"],
       356,
       1,
       90,
       0.9
     },
     {
-      Weapon_Sniper,
+      gameWeapons["Sniper"]["name"],
       358,
       1,
       90,
       0.3
     },
     {
-      Item_Bandage,
+      gameMedicItems["Bandage"]["name"],
       1578,
       0.5,
       0,
@@ -1711,14 +1711,14 @@ local itemTable = {
       0.5
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       3
     },
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       348,
       1,
       90,
@@ -1732,13 +1732,13 @@ local itemTable = {
       1
     },
     {
-      Item_MedicKit,
+      gameMedicItems["MedicKit"]["name"],
       2891,
       2.2,
       0
     },
     {
-      Item_BloodBag,
+      gameMedicItems["BloodBag"]["name"],
       1580,
       1,
       0
@@ -1751,21 +1751,21 @@ local itemTable = {
       5
     },
     {
-      Weapon_Crowbar,
+      gameWeapons["GolfClub"]["name"],
       333,
       1,
       90,
       1.9
     },
     {
-      Weapon_Baseball,
+      gameWeapons["BaseballBat"]["name"],
       336,
       1,
       90,
       1.4
     },
     {
-      Weapon_Shovel,
+      gameWeapons["Shovel"]["name"],
       337,
       1,
       90,
@@ -1775,28 +1775,28 @@ local itemTable = {
 }
 weaponAmmoTable = {
   [Weapon_PistolAmmo] = {
-    {Weapon_Pistol, 22}
+    {gameWeapons["Pistol"]["name"], 22}
   },
   [Weapon_SilencedAmmo] = {
-    {Weapon_Silenced, 23}
+    {gameWeapons["SilencedPistol"]["name"], 23}
   },
   [Weapon_DesertAmmo] = {
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       24
     }
   },
   [Weapon_UziAmmo] = {
-    {Weapon_Uzi, 28}
+    {gameWeapons["Uzi"]["name"], 28}
   },
   [Weapon_MP5Ammo] = {
-    {Weapon_MP5, 29}
+    {gameWeapons["MP5"]["name"], 29}
   },
   [Weapon_AKAmmo] = {
-    {Weapon_AK, 30}
+    {gameWeapons["AK47"]["name"], 30}
   },
   [Weapon_M4Ammo] = {
-    {Weapon_M4, 31}
+    {gameWeapons["M4"]["name"], 31}
   },
   [Weapon_ShotgunAmmo] = {
     {
@@ -1812,32 +1812,32 @@ weaponAmmoTable = {
   },
   [Weapon_SpasAmmo] = {
     {
-      Weapon_Spas,
+      gameWeapons["SPAZ12"]["name"],
       27
     }
   },
   [Weapon_SniperAmmo] = {
-    {Weapon_Sniper, 34}
+    {gameWeapons["Sniper"]["name"], 34}
   },
   [Weapon_CountryAmmo] = {
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       33
     }
   },
   ["others"] = {
     {Weapon_Parachute, 46},
-    {Weapon_TearGas, 17},
-    {Weapon_Grenade, 16},
+    {gameWeapons["TearGas"]["name"], 17},
+    {gameWeapons["Grenade"]["name"], 16},
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       4
     },
-    {Weapon_Katana, 8},
+    {gameWeapons["Katana"]["name"], 8},
     {Weapon_Binoculars, 43},
-    {Weapon_Baseball,5},
-    {Weapon_Crowbar, 2},
-    {Weapon_Shovel, 6},
+    {gameWeapons["BaseballBat"]["name"],5},
+    {gameWeapons["GolfClub"]["name"], 2},
+    {gameWeapons["Shovel"]["name"], 6},
     {Item_Radio,1}
   }
 }
@@ -2132,7 +2132,7 @@ function onPlayerTakeItemFromGround(itemName, col)
     itemPlus = 5
   elseif itemName == Weapon_CountryAmmo then
     itemPlus = 10
-  elseif itemName == Weapon_M4 or itemName == Weapon_AK or itemName == Weapon_Sniper or itemName == Weapon_Shotgun or itemName == Weapon_Spas or itemName == Weapon_SawnOff or itemName == Weapon_Country then
+  elseif itemName == gameWeapons["M4"]["name"] or itemName == gameWeapons["AK47"]["name"] or itemName == gameWeapons["Sniper"]["name"] or itemName == Weapon_Shotgun or itemName == gameWeapons["SPAZ12"]["name"] or itemName == Weapon_SawnOff or itemName == gameWeapons["CountryRifle"]["name"] then
     removeBackWeaponOnDrop()
   end
   local x, y, z = getElementPosition(source)

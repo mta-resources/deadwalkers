@@ -585,7 +585,7 @@ patrolPoints = {
 lootItems = {
   helicrashsides = {
     {
-      Item_NightVision,
+      gameWeapons["NightVision"]["name"],
       368,
       1,
       90,
@@ -599,14 +599,14 @@ lootItems = {
       2
     },
     {
-      Weapon_Pistol,
+      gameWeapons["Pistol"]["name"],
       346,
       1,
       90,
       10
     },
     {
-      Weapon_Silenced,
+      gameWeapons["SilencedPistol"]["name"],
       347,
       1,
       90,
@@ -620,21 +620,21 @@ lootItems = {
       6
     },
     {
-      Weapon_Uzi,
+      gameWeapons["Uzi"]["name"],
       352,
       1,
       90,
       5.5
     },
     {
-      Weapon_Knife,
+      gameWeapons["Knife"]["name"],
       335,
       1,
       90,
       4
     },
     {
-      Weapon_Katana,
+      gameWeapons["Katana"]["name"],
       339,
       1,
       90,
@@ -676,7 +676,7 @@ lootItems = {
       1
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       2709,
       0.5,
       0,
@@ -697,7 +697,7 @@ lootItems = {
       3
     },
     {
-      Weapon_Grenade,
+      gameWeapons["Grenade"]["name"],
       342,
       1,
       0,
@@ -718,14 +718,14 @@ lootItems = {
       5
     },
     {
-      Weapon_Spas,
+      gameWeapons["SPAZ12"]["name"],
       351,
       1,
       90,
       4
     },
     {
-      Weapon_MP5,
+      gameWeapons["MP5"]["name"],
       353,
       1,
       90,
@@ -739,7 +739,7 @@ lootItems = {
       4
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       1,
       0,
@@ -753,7 +753,7 @@ lootItems = {
       1
     },
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       357,
       1,
       90,
@@ -767,7 +767,7 @@ lootItems = {
       4
     },
     {
-      Item_NightVision,
+      gameWeapons["NightVision"]["name"],
       368,
       1,
       90,
@@ -781,7 +781,7 @@ lootItems = {
       2
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0,
@@ -802,7 +802,7 @@ lootItems = {
       3
     },
     {
-      Weapon_AK,
+      gameWeapons["AK47"]["name"],
       355,
       1,
       90,
@@ -858,21 +858,21 @@ lootItems = {
 	  0.5
 	},
     {
-      Weapon_M4,
+      gameWeapons["M4"]["name"],
       356,
       1,
       90,
       1
     },
     {
-      Weapon_Sniper,
+      gameWeapons["Sniper"]["name"],
       358,
       1,
       90,
       1.5
     },
     {
-      Item_InfraredVision,
+      gameWeapons["Infrared"]["name"],
       369,
       1,
       90,
@@ -895,55 +895,55 @@ lootItems = {
   },
   hospital = {
     {
-      Item_MedicKit,
+      gameMedicItems["MedicKit"]["name"],
       2891,
       0.7,
       0
     },
     {
-      Item_HeatPack,
+      gameMedicItems["HeatPack"]["name"],
       1576,
       1,
       0
     },
     {
-      Item_Bandage,
+      gameMedicItems["Bandage"]["name"],
       1578,
       0.5,
       0
     },
     {
-      Item_BloodBag,
+      gameMedicItems["BloodBag"]["name"],
       1580,
       1,
       0
     },
     {
-      Item_Morphine,
+      gameMedicItems["Morphine"]["name"],
       1579,
       1,
       0
     },
     {
-      Item_BloodBag,
+      gameMedicItems["BloodBag"]["name"],
       1580,
       1,
       0
     },
     {
-      Item_MedicKit,
+      gameMedicItems["MedicKit"]["name"],
       2891,
       0.7,
       0
     },
     {
-      Item_BloodBag,
+      gameMedicItems["BloodBag"]["name"],
       1580,
       1,
       0
     },
     {
-      Item_Painkiller,
+      gameMedicItems["Painkiller"]["name"],
       1580,
       1,
       0

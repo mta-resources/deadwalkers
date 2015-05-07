@@ -1,7 +1,7 @@
 ﻿
 local vehicleDataTableForTent = {
   {Item_WoodPile},
-  {Item_Bandage},
+  {gameMedicItems["Bandage"]["name"]},
   {Item_FullWaterBottle},
   {Item_PastaCan},
   {Item_BeansCan},
@@ -10,13 +10,13 @@ local vehicleDataTableForTent = {
   {Weapon_PistolAmmo},
   {Weapon_SilencedAmmo},
   {Weapon_DesertAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Item_Morphine},
-  {Weapon_Katana},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameMedicItems["Morphine"]["name"]},
+  {gameWeapons["Katana"]["name"]},
   {Item_Pizza},
   {Item_SodaBottle},
   {Item_EmptyPatrol},
@@ -27,18 +27,18 @@ local vehicleDataTableForTent = {
   {Weapon_MP5Ammo},
   {Weapon_AKAmmo},
   {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
-  {Weapon_Desert},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
+  {gameWeapons["DesertEagle"]["name"]},
   {Weapon_SawnOff},
-  {Weapon_Spas},
-  {Weapon_MP5},
+  {gameWeapons["SPAZ12"]["name"]},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
-  {Weapon_Country},
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
+  {gameWeapons["CountryRifle"]["name"]},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -48,10 +48,10 @@ local vehicleDataTableForTent = {
   {"Tank Parts"},
   {Weapon_SniperAmmo},
   {Weapon_CountryAmmo},
-  {Weapon_M4},
-  {Weapon_Sniper},
-  {Item_InfraredVision},
-  {Item_NightVision},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
+  {gameWeapons["Infrared"]["name"]},
+  {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
   {Item_RawMeat},
   {Item_CookedMeat},
@@ -60,7 +60,7 @@ local vehicleDataTableForTent = {
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
+  {gameMedicItems["Painkiller"]["name"]},
   {Weapon_Binoculars},
   {Item_EmptyWaterBottle},
   {Item_EmptySodaCan},
@@ -73,34 +73,34 @@ local vehicleDataTableForTent = {
   {Item_Radio},
   {"Coyote Backpack"},
   {"Czech Backpack"},
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar}
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]}
 }
 weaponAmmoTable = {
   [Weapon_PistolAmmo] = {
-    {Weapon_Pistol, 22}
+    {gameWeapons["Pistol"]["name"], 22}
   },
   [Weapon_SilencedAmmo] = {
-    {Weapon_Silenced, 23}
+    {gameWeapons["SilencedPistol"]["name"], 23}
   },
   [Weapon_DesertAmmo] = {
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       24
     }
   },
   [Weapon_UziAmmo] = {
-    {Weapon_Uzi, 28}
+    {gameWeapons["Uzi"]["name"], 28}
   },
   [Weapon_MP5Ammo] = {
-    {Weapon_MP5, 29}
+    {gameWeapons["MP5"]["name"], 29}
   },
   [Weapon_AKAmmo] = {
-    {Weapon_AK, 30}
+    {gameWeapons["AK47"]["name"], 30}
   },
   [Weapon_M4Ammo] = {
-    {Weapon_M4, 31}
+    {gameWeapons["M4"]["name"], 31}
   },
   [Weapon_ShotgunAmmo] = {
     {
@@ -115,27 +115,27 @@ weaponAmmoTable = {
     }
   },
   [Weapon_SpasAmmo] = {
-    {Weapon_Spas,27}
+    {gameWeapons["SPAZ12"]["name"],27}
   },
   [Weapon_SniperAmmo] = {
-    {Weapon_Sniper, 34}
+    {gameWeapons["Sniper"]["name"], 34}
   },
   [Weapon_CountryAmmo] = {
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       33
     }
   },
   ["others"] = {
     {Weapon_Parachute, 46},
-    {Weapon_TearGas, 17},
-    {Weapon_Grenade, 16},
-    {Weapon_Knife, 4},
-    {Weapon_Katana, 8},
+    {gameWeapons["TearGas"]["name"], 17},
+    {gameWeapons["Grenade"]["name"], 16},
+    {gameWeapons["Knife"]["name"], 4},
+    {gameWeapons["Katana"]["name"], 8},
     {Weapon_Binoculars, 43},
-    {Weapon_Baseball, 5},
-    {Weapon_Shovel, 6},
-    {Weapon_Crowbar, 2},
+    {gameWeapons["BaseballBat"]["name"], 5},
+    {gameWeapons["Shovel"]["name"], 6},
+    {gameWeapons["GolfClub"]["name"], 2},
     {Item_Radio, 1}
   }
 }
@@ -628,24 +628,24 @@ function onPlayerUseMedicObject(itemName)
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
   setTimer(function()
-    if itemName == Item_Bandage then
+    if itemName == gameMedicItems["Bandage"]["name"] then
       setElementData(playersource, "bleeding", 0)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_MedicKit then
+    elseif itemName == gameMedicItems["MedicKit"]["name"] then
       addPlayerStats(playersource, "blood", 7000)
       setElementData(playersource, "bleeding", 0)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_HeatPack then
+    elseif itemName == gameMedicItems["HeatPack"]["name"] then
       setElementData(playersource, "cold", false)
       setElementData(playersource, "temperature", 37)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_Painkiller then
+    elseif itemName == gameMedicItems["Painkiller"]["name"] then
       setElementData(playersource, "pain", false)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_Morphine then
+    elseif itemName == gameMedicItems["Morphine"]["name"] then
       setElementData(playersource, "brokenbone", false)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_BloodBag then
+    elseif itemName == gameMedicItems["BloodBag"]["name"] then
       addPlayerStats(playersource, "blood", 12000)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
     end
@@ -660,13 +660,13 @@ function onPlayerGiveMedicObject(itemName, player)
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
   setTimer(function()
-    if itemName == Item_Bandage then
+    if itemName == gameMedicItems["Bandage"]["name"] then
       setElementData(player, "bleeding", 0)
-      setElementData(playersource, Item_Bandage, getElementData(playersource, Item_Bandage) - 1)
+      setElementData(playersource, gameMedicItems["Bandage"]["name"], getElementData(playersource, gameMedicItems["Bandage"]["name"]) - 1)
       addPlayerStats(playersource, humanity, 40)
     elseif itemName == "giveblood" then
       addPlayerStats(player, "blood", 12000)
-      setElementData(playersource, Item_BloodBag, getElementData(playersource, Item_BloodBag) - 1)
+      setElementData(playersource, gameMedicItems["BloodBag"]["name"], getElementData(playersource, gameMedicItems["BloodBag"]["name"]) - 1)
       addPlayerStats(playersource, humanity, 250)
     end
   end, 1500, 1)

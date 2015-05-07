@@ -95,18 +95,18 @@ function showClientMenuItem(arg1, arg2, arg3, arg4)
     end
   end
   if arg1 == "Player" then
-    if 0 < getElementData(arg2, "bleeding") and 1 <= getElementData(getLocalPlayer(), Item_Bandage) then
+    if 0 < getElementData(arg2, "bleeding") and 1 <= getElementData(getLocalPlayer(), gameMedicItems["Bandage"]["name"]) then
       number = number + 1
       guiSetVisible(spalteGuiImage[number], true)
-      guiSetText(spalteGuiText[number], "Dar "..Item_Bandage)
+      guiSetText(spalteGuiText[number], "Dar "..gameMedicItems["Bandage"]["name"])
       guiLabelSetColor(spalteGuiText[1], 50, 255, 50)
       setElementData(spalteGuiText[1], "markedMenuItem", true)
       setElementData(spalteGuiText[number], "usedItem", "bandage")
     end
-    if getElementData(arg2, "blood") < 11900 and 1 <= getElementData(getLocalPlayer(), Item_BloodBag) then
+    if getElementData(arg2, "blood") < 11900 and 1 <= getElementData(getLocalPlayer(), gameMedicItems["BloodBag"]["name"]) then
       number = number + 1
       guiSetVisible(spalteGuiImage[number], true)
-      guiSetText(spalteGuiText[number], "Usar "..Item_BloodBag)
+      guiSetText(spalteGuiText[number], "Usar "..gameMedicItems["BloodBag"]["name"])
       setElementData(spalteGuiText[number], "usedItem", "giveblood")
       if number == 1 then
         guiLabelSetColor(spalteGuiText[number], 50, 255, 50)

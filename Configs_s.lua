@@ -1,13 +1,303 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script editor_server.lua			*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
+﻿gameWeapons = {
+	
+	---------------------------------
+	-- Melee Weapons
+	---------------------------------
+	["GolfClub"] = {
+		["id"] 		= 2,
+		["model"]	= 333,
+		["name"] 	= "Pé-de-cabra",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 950,
+	},
+	["Knife"] = {
+		["id"] 		= 4,
+		["model"]	= 335,
+		["name"] 	= "Faca",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 1200,
+	},
+	["BaseballBat"] = {
+		["id"]		= 5,
+		["model"]	= 336,
+		["name"] 	= "Taco de Beisebol",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 950,
+	},
+	["Shovel"] = {
+		["id"]		= 6,
+		["model"]	= 337,
+		["name"] 	= "Pá",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 950,
+	},
+	["Katana"] = {
+		["id"]		= 8,
+		["model"]	= 339,
+		["name"] 	= "Machado",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 1400,
+	},
 
-	-- Primary Weapons
+
+	---------------------------------
+	-- Handguns
+	---------------------------------
+	["Pistol"] = {
+		["id"]		= 22,
+		["model"]	= 346,
+		["name"] 	= "Pistola",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 1000,
+	},
+	["SilencedPistol"] = {
+		["id"]		= 23,
+		["model"]	= 347,
+		["name"] 	= "Pistola Silenciosa",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 950,
+	},
+	["DesertEagle"] = {
+		["id"]		= 24,
+		["model"]	= 348,
+		["name"] 	= "Desert Eagle",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3000,
+	},
+
+
+	---------------------------------
+	-- Shotguns
+	---------------------------------
+	["Shotgun"] = {
+		["id"]		= 25,
+		["model"]	= 349,
+		["name"] 	= "Escopeta",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3500,
+	},
+	["SawnOff"] = {
+		["id"]		= 26,
+		["model"]	= 350,
+		["name"] 	= "Sawn-Off",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3500,
+	},
+	["SPAZ12"] = {
+		["id"]		= 27,
+		["model"]	= 351,
+		["name"] 	= "SPAZ-12",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3500,
+	},
+
+
+	---------------------------------
+	-- Sub-machines
+	---------------------------------
+	["Uzi"] = {
+		["id"]		= 28,
+		["model"]	= 352,
+		["name"] 	= "Uzi",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 1000,
+	},
+	["MP5"] = {
+		["id"]		= 29,
+		["model"]	= 353,
+		["name"] 	= "MP5",
+		["slots"]	= 2,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 1200,
+	},
+
+
+	---------------------------------
+	-- Assault Rifles
+	---------------------------------
+	["AK47"] = {
+		["id"]		= 30,
+		["model"]	= 355,
+		["name"] 	= "AK-47",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3200,
+	},
+	["M4"] = {
+		["id"]		= 31,
+		["model"]	= 356,
+		["name"] 	= "M16A2",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 3000,
+	},
+
+
+	---------------------------------
+	-- Rifles
+	---------------------------------
+	["CountryRifle"] = {
+		["id"]		= 33,
+		["model"]	= 357,
+		["name"] 	= "Espingarda",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 8000,
+	},
+	["Sniper"] = {
+		["id"]		= 34,
+		["model"]	= 358,
+		["name"] 	= "Sniper",
+		["slots"]	= 3,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 12000,
+	},
+
+
+	---------------------------------
+	-- Projectiles
+	---------------------------------
+	["Grenade"] = {
+		["id"]		= 16,
+		["model"]	= 342,
+		["name"] 	= "Granada",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 12000,
+	},
+	["TearGas"] = {
+		["id"]		= 17,
+		["model"]	= 343,
+		["name"] 	= "Gás Lacrimogêneo",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 700,
+	},
+
+
+	---------------------------------
+	-- Special
+	---------------------------------
+	["NightVision"] = {
+		["id"]		= 44,
+		["model"]	= 368,
+		["name"] 	= "Visão Noturna",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 0,
+	},
+	["Infrared"] = {
+		["id"]		= 45,
+		["model"]	= 369,
+		["name"] 	= "Visão de Calor",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["damage"]	= 0,
+	},
+}
+
+
+
+gameMedicItems = {
+	
+	["MedicKit"] = {
+		["model"]	= 2891,
+		["name"] 	= "Kit Médico",
+		["slots"]	= 2,
+		["objScale"] = 2.2,
+		["nothing"] = 0,
+		["heal"]	= 12000,
+	},
+	["Bandage"] = {
+		["model"]	= 1578,
+		["name"] 	= "Curativo",
+		["slots"]	= 0.5,
+		["objScale"] = 0.5,
+		["nothing"] = 0,
+		["heal"]	= 0,
+	},
+	["BloodBag"] = {
+		["model"]	= 1580,
+		["name"] 	= "Bolsa de Sangue",
+		["slots"]	= 1,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 10000,
+	},
+	["HeatPack"] = {
+		["model"]	= 1576,
+		["name"] 	= "Bolsa Quente",
+		["slots"]	= 1,
+		["objScale"] = 5,
+		["nothing"] = 0,
+		["heal"]	= 0,
+	},
+	["Morphine"] = {
+		["model"]	= 1579,
+		["name"] 	= "Morfina",
+		["slots"]	= 0.5,
+		["objScale"] = 1,
+		["nothing"] = 0,
+		["heal"]	= 0,
+	},
+	["Painkiller"] = {
+		["model"]	= 2709,
+		["name"] 	= "Analgésico",
+		["slots"]	= 0.5,
+		["objScale"] = 3,
+		["nothing"] = 0,
+		["heal"]	= 0,
+	},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Primary Weapons
 	Weapon_Shotgun 		= "Escopeta"
 	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
 	Weapon_SawnOff 		= "Sawn-Off"

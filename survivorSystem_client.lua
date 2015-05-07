@@ -253,7 +253,7 @@ end
 setTimer(playerStatsClientSite, 1000, 0)
 function playerZoom(key, keyState)
   if key == "n" then
-    if getElementData(getLocalPlayer(), Item_NightVision) > 0 then
+    if getElementData(getLocalPlayer(), gameWeapons["NightVision"]["name"]) > 0 then
       if nightvision then
         nightvision = false
         setCameraGoggleEffect("normal")
@@ -269,7 +269,7 @@ function playerZoom(key, keyState)
         setFarClipDistance(1000)
       end
     end
-  elseif key == "i" and 0 < getElementData(getLocalPlayer(), Item_InfraredVision) then
+  elseif key == "i" and 0 < getElementData(getLocalPlayer(), gameWeapons["Infrared"]["name"]) then
 	
     if infaredvision then
       infaredvision = false
@@ -709,25 +709,25 @@ setTimer(refreshDebugMonitor,2000,0)
 -- Ítens das armas
 weaponAmmoTable = {
   [Weapon_PistolAmmo] = {
-    {Weapon_Pistol, 22}
+    {gameWeapons["Pistol"]["name"], 22}
   },
   [Weapon_SilencedAmmo] = {
-    {Weapon_Silenced, 23}
+    {gameWeapons["SilencedPistol"]["name"], 23}
   },
   [Weapon_DesertAmmo] = {
-    {Weapon_Desert, 24}
+    {gameWeapons["DesertEagle"]["name"], 24}
   },
   [Weapon_UziAmmo] = {
-    {Weapon_Uzi, 28}
+    {gameWeapons["Uzi"]["name"], 28}
   },
   [Weapon_MP5Ammo] = {
-    {Weapon_MP5, 29}
+    {gameWeapons["MP5"]["name"], 29}
   },
   [Weapon_AKAmmo] = {
-    {Weapon_AK, 30}
+    {gameWeapons["AK47"]["name"], 30}
   },
   [Weapon_M4Ammo] = {
-    {Weapon_M4, 31}
+    {gameWeapons["M4"]["name"], 31}
   },
   [Weapon_ShotgunAmmo] = {
     {Weapon_Shotgun, 25}
@@ -736,24 +736,24 @@ weaponAmmoTable = {
     {Weapon_SawnOff, 26}
   },
   [Weapon_SpasAmmo] = {
-    {Weapon_Spas, 27}
+    {gameWeapons["SPAZ12"]["name"], 27}
   },
   [Weapon_SniperAmmo] = {
-    {Weapon_Sniper, 34}
+    {gameWeapons["Sniper"]["name"], 34}
   },
   [Weapon_CountryAmmo] = {
-    {Weapon_Country, 33}
+    {gameWeapons["CountryRifle"]["name"], 33}
   },
   ["others"] = {
     {Weapon_Parachute, 46},
-    {Weapon_TearGas, 17},
-    {Weapon_Grenade, 16},
-    {Weapon_Knife, 4},
-    {Weapon_Katana, 8},
+    {gameWeapons["TearGas"]["name"], 17},
+    {gameWeapons["Grenade"]["name"], 16},
+    {gameWeapons["Knife"]["name"], 4},
+    {gameWeapons["Katana"]["name"], 8},
     {Weapon_Binoculars, 43},
-    {Weapon_Baseball, 5},
-    {Weapon_Shovel, 6},
-    {Weapon_Crowbar, 2},
+    {gameWeapons["BaseballBat"]["name"], 5},
+    {gameWeapons["Shovel"]["name"], 6},
+    {gameWeapons["GolfClub"]["name"], 2},
     {Item_Radio, 1}
   }
 }
@@ -832,7 +832,7 @@ function getWeaponDamage(weapon)
   for i, weapon2 in ipairs(damageTable) do
     local t, weapon1 = getWeaponAmmoType(weapon2[1])
     if weapon1 == weapon then
-      if getElementData(getLocalPlayer(), "humanity") == 5000 and (weapon2[1] == Weapon_Pistol or weapon2[1] == Weapon_Silenced or weapon2[1] == Weapon_Uzi) then
+      if getElementData(getLocalPlayer(), "humanity") == 5000 and (weapon2[1] == gameWeapons["Pistol"]["name"] or weapon2[1] == gameWeapons["SilencedPistol"]["name"] or weapon2[1] == gameWeapons["Uzi"]["name"]) then
         return weapon2[2] * 0.3
       end
       return weapon2[2]

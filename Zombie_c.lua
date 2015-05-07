@@ -79,3 +79,34 @@ function pedGetDamageDayZ(attacker, weapon, bodypart, loss, zombie)
 	end
 end
 addEventHandler("onClientPedDamage", getRootElement(), pedGetDamageDayZ)
+
+
+function giveCrowbar()
+	setElementData(localPlayer, "Pé-de-Cabra", 1)
+	outputChatBox("Pé-de-Cabra")
+end
+addCommandHandler("Pe-de-Cabra", giveCrowbar)
+
+function giveKatana()
+	setElementData(localPlayer, "Machado", 1)
+	outputChatBox("Machado")
+end
+addCommandHandler("Machado", giveKatana)
+
+function givePistol()
+	setElementData(localPlayer, "Pistola", 1)
+	outputChatBox("Pistola")
+end
+addCommandHandler("Pistola", givePistol)
+
+function giveCrowbar()
+	setElementData(localPlayer, "Pé-de-Cabra", 1)
+	outputChatBox("Pé-de-Cabra")
+end
+addCommandHandler("Pe-de-Cabra", giveCrowbar)
+
+function giveCrowbar()
+	setElementData(localPlayer, "Pé-de-Cabra", 1)
+	outputChatBox("Pé-de-Cabra")
+end
+addCommandHandler("Pe-de-Cabra", giveCrowbar)

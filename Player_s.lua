@@ -84,7 +84,7 @@ local playerDataTable = {
   {"murders"},
   {"banditskilled"},
   {Item_WoodPile},
-  {Item_Bandage},
+  {gameMedicItems["Bandage"]["name"]},
   {Item_FullWaterBottle},
   {Item_PastaCan},
   {Item_BeansCan},
@@ -93,14 +93,14 @@ local playerDataTable = {
   {Weapon_PistolAmmo},
   {Weapon_SilencedAmmo},
   {Weapon_DesertAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Weapon_Katana},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameWeapons["Katana"]["name"]},
   {Item_Pizza},
-  {Item_Morphine},
+  {gameMedicItems["Morphine"]["name"]},
   {Item_SodaBottle},
   {Item_EmptyPatrol},
   {Item_FullPatrol},
@@ -110,19 +110,19 @@ local playerDataTable = {
   {Weapon_MP5Ammo},
   {Weapon_AKAmmo},
   {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
-  {Weapon_Desert},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
+  {gameWeapons["DesertEagle"]["name"]},
   {Weapon_SawnOff},
-  {Weapon_Spas},
-  {Weapon_MP5},
+  {gameWeapons["SPAZ12"]["name"]},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
-  {Weapon_Country},
-  {Weapon_Uzi},
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
+  {gameWeapons["CountryRifle"]["name"]},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -132,10 +132,10 @@ local playerDataTable = {
   {"Tank Parts"},
   {Weapon_SniperAmmo},
   {Weapon_CountryAmmo},
-  {Weapon_M4},
-  {Weapon_Sniper},
-  {Item_InfraredVision},
-  {Item_NightVision},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
+  {gameWeapons["Infrared"]["name"]},
+  {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
   {Item_RawMeat},
   {Item_CookedMeat},
@@ -144,7 +144,7 @@ local playerDataTable = {
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
+  {gameMedicItems["Painkiller"]["name"]},
   {Item_EmptyWaterBottle},
   {Item_EmptySodaCan},
   {Item_ScruffyBurger},
@@ -153,9 +153,9 @@ local playerDataTable = {
   {Weapon_SpasAmmo},
   {Item_Radio},
   {Weapon_Binoculars},
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar},
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]},
   {Weapon_Parachute}
 }
 local vehicleDataTable = {
@@ -165,21 +165,21 @@ local vehicleDataTable = {
   {"Parts_inVehicle"},
   {"fuel"},
   {Item_WoodPile},
-  {Item_Bandage},
+  {gameMedicItems["Bandage"]["name"]},
   {Item_FullWaterBottle},
   {Item_PastaCan},
   {Item_BeansCan},
   {Item_Burger},
   {Item_BoxOfMatches},
   {Weapon_PistolAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_DesertAmmo},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Item_Morphine},
-  {Weapon_Katana},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameMedicItems["Morphine"]["name"]},
+  {gameWeapons["Katana"]["name"]},
   {Item_Pizza},
   {Item_SodaBottle},
   {Item_EmptyPatrol},
@@ -192,26 +192,26 @@ local vehicleDataTable = {
   {Weapon_MP5Ammo},
   {Weapon_AKAmmo},
   {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
   {
-    Weapon_Desert
+    gameWeapons["DesertEagle"]["name"]
   },
   {
     Weapon_SawnOff
   },
   {
-    Weapon_Spas
+    gameWeapons["SPAZ12"]["name"]
   },
-  {Weapon_MP5},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
   {
-    Weapon_Country
+    gameWeapons["CountryRifle"]["name"]
   },
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -223,13 +223,13 @@ local vehicleDataTable = {
   {
     Weapon_CountryAmmo
   },
-  {Weapon_M4},
-  {Weapon_Sniper},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
   {
-    Item_InfraredVision
+    gameWeapons["Infrared"]["name"]
   },
   {
-    Item_NightVision
+    gameWeapons["NightVision"]["name"]
   },
   {Item_Tent},
   {Item_RawMeat},
@@ -240,7 +240,7 @@ local vehicleDataTable = {
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
+  {gameMedicItems["Painkiller"]["name"]},
   {Weapon_Binoculars},
   {
     Item_EmptyWaterBottle
@@ -269,9 +269,9 @@ local vehicleDataTable = {
   {
     "Czech Backpack"
   },
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar}
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]}
 }
 Skins = {}
 
@@ -298,9 +298,9 @@ function spawnDayZPlayer(player)
 	setElementData(player, "armor", false)
   end -- Just a check ;P
   for i, data in ipairs(playerDataTable) do
-    if data[1] == Item_Bandage then
+    if data[1] == gameMedicItems["Bandage"]["name"] then
       setElementData(player, data[1], 2)
-    elseif data[1] == Item_Painkiller then
+    elseif data[1] == gameMedicItems["Painkiller"]["name"] then
       setElementData(player, data[1], 1)
     elseif data[1] == "MAX_Slots" then
       setElementData(player, data[1], 8)
@@ -341,8 +341,8 @@ function spawnDayZPlayer(player)
   -- VIP ITEMS
   local premiumBronze = {
 	{"MAX_Slots", 16},
-	{Weapon_Katana, 1},
-	{Weapon_Uzi, 1},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["Uzi"]["name"], 1},
 	{Weapon_UziAmmo, 30},
 	{Item_Pizza, 1},
 	{Item_SodaBottle, 1},
@@ -351,8 +351,8 @@ function spawnDayZPlayer(player)
   
   local premiumSilver = {
 	{"MAX_Slots", 26},
-	{Weapon_Katana, 1},
-	{Weapon_Uzi, 1},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["Uzi"]["name"], 1},
 	{Weapon_UziAmmo, 30},
 	{Weapon_Shotgun, 1},
 	{Weapon_ShotgunAmmo, 14},
@@ -363,10 +363,10 @@ function spawnDayZPlayer(player)
   
   local premiumGold = {
 	{"MAX_Slots", 36},
-	{Weapon_Katana, 1},
-	{Weapon_M4, 1},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["M4"]["name"], 1},
 	{Weapon_M4Ammo, 60},
-	{Weapon_Sniper, 1},
+	{gameWeapons["Sniper"]["name"], 1},
 	{Weapon_SniperAmmo, 5},
 	{Item_Pizza, 1},
 	{Item_FullWaterBottle, 1},
@@ -376,9 +376,9 @@ function spawnDayZPlayer(player)
   
   local premiumPartner = {
 	{"MAX_Slots", 26},
-	{Weapon_M4, 1},
+	{gameWeapons["M4"]["name"], 1},
 	{Weapon_M4Ammo, 60},
-	{Weapon_Sniper, 1},
+	{gameWeapons["Sniper"]["name"], 1},
 	{Weapon_SniperAmmo, 5},
 	{"Motor", 1},
 	{Item_Tire, 2},
