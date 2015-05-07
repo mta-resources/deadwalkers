@@ -90,9 +90,9 @@ local playerDataTable = {
   {Item_BeansCan},
   {Item_Burger},
   {Item_BoxOfMatches},
-  {Weapon_PistolAmmo},
-  {Weapon_SilencedAmmo},
-  {Weapon_DesertAmmo},
+  {gameWeapons["Pistol_Ammo"]["name"]},
+  {gameWeapons["SilencedPistol_Ammo"]["name"]},
+  {gameWeapons["DesertEagle_Ammo"]["name"]},
   {gameWeapons["Pistol"]["name"]},
   {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_Shotgun},
@@ -106,10 +106,10 @@ local playerDataTable = {
   {Item_FullPatrol},
   {Item_RoadFlare},
   {Item_Milk},
-  {Weapon_UziAmmo},
-  {Weapon_MP5Ammo},
-  {Weapon_AKAmmo},
-  {Weapon_M4Ammo},
+  {gameWeapons["Uzi_Ammo"]["name"]},
+  {gameWeapons["MP5_Ammo"]["name"]},
+  {gameWeapons["AK47_Ammo"]["name"]},
+  {gameWeapons["M4_Ammo"]["name"]},
   {gameWeapons["TearGas"]["name"]},
   {gameWeapons["Grenade"]["name"]},
   {gameWeapons["DesertEagle"]["name"]},
@@ -130,8 +130,8 @@ local playerDataTable = {
   {Item_Tire},
   {"Motor"},
   {"Tank Parts"},
-  {Weapon_SniperAmmo},
-  {Weapon_CountryAmmo},
+  {gameWeapons["Sniper_Ammo"]["name"]},
+  {gameWeapons["CountryRifle_Ammo"]["name"]},
   {gameWeapons["M4"]["name"]},
   {gameWeapons["Sniper"]["name"]},
   {gameWeapons["Infrared"]["name"]},
@@ -148,9 +148,9 @@ local playerDataTable = {
   {Item_EmptyWaterBottle},
   {Item_EmptySodaCan},
   {Item_ScruffyBurger},
-  {Weapon_ShotgunAmmo},
-  {Weapon_SawnOffAmmo},
-  {Weapon_SpasAmmo},
+  {gameWeapons["Shotgun_Ammo"]["name"]},
+  {gameWeapons["SawnOff_Ammo"]["name"]},
+  {gameWeapons["SPAZ12_Ammo"]["name"]},
   {Item_Radio},
   {Weapon_Binoculars},
   {gameWeapons["BaseballBat"]["name"]},
@@ -171,10 +171,10 @@ local vehicleDataTable = {
   {Item_BeansCan},
   {Item_Burger},
   {Item_BoxOfMatches},
-  {Weapon_PistolAmmo},
+  {gameWeapons["Pistol_Ammo"]["name"]},
   {gameWeapons["Pistol"]["name"]},
   {gameWeapons["SilencedPistol"]["name"]},
-  {Weapon_DesertAmmo},
+  {gameWeapons["DesertEagle_Ammo"]["name"]},
   {Weapon_Shotgun},
   {gameWeapons["Uzi"]["name"]},
   {gameWeapons["Knife"]["name"]},
@@ -188,10 +188,10 @@ local vehicleDataTable = {
   },
   {Item_RoadFlare},
   {Item_Milk},
-  {Weapon_UziAmmo},
-  {Weapon_MP5Ammo},
-  {Weapon_AKAmmo},
-  {Weapon_M4Ammo},
+  {gameWeapons["Uzi_Ammo"]["name"]},
+  {gameWeapons["MP5_Ammo"]["name"]},
+  {gameWeapons["AK47_Ammo"]["name"]},
+  {gameWeapons["M4_Ammo"]["name"]},
   {gameWeapons["TearGas"]["name"]},
   {gameWeapons["Grenade"]["name"]},
   {
@@ -219,9 +219,9 @@ local vehicleDataTable = {
   {Item_Tire},
   {"Motor"},
   {"Tank Parts"},
-  {Weapon_SniperAmmo},
+  {gameWeapons["Sniper_Ammo"]["name"]},
   {
-    Weapon_CountryAmmo
+    gameWeapons["CountryRifle_Ammo"]["name"]
   },
   {gameWeapons["M4"]["name"]},
   {gameWeapons["Sniper"]["name"]},
@@ -251,10 +251,10 @@ local vehicleDataTable = {
   {
     Item_ScruffyBurger
   },
-  {Weapon_ShotgunAmmo},
-  {Weapon_SawnOffAmmo},
+  {gameWeapons["Shotgun_Ammo"]["name"]},
+  {gameWeapons["SawnOff_Ammo"]["name"]},
   {
-    Weapon_SpasAmmo
+    gameWeapons["SPAZ12_Ammo"]["name"]
   },
   {
     "Assault Pack (ACU)"
@@ -343,7 +343,7 @@ function spawnDayZPlayer(player)
 	{"MAX_Slots", 16},
 	{gameWeapons["Katana"]["name"], 1},
 	{gameWeapons["Uzi"]["name"], 1},
-	{Weapon_UziAmmo, 30},
+	{gameWeapons["Uzi_Ammo"]["name"], 30},
 	{Item_Pizza, 1},
 	{Item_SodaBottle, 1},
 	{Item_Map, 1},
@@ -353,9 +353,9 @@ function spawnDayZPlayer(player)
 	{"MAX_Slots", 26},
 	{gameWeapons["Katana"]["name"], 1},
 	{gameWeapons["Uzi"]["name"], 1},
-	{Weapon_UziAmmo, 30},
+	{gameWeapons["Uzi_Ammo"]["name"], 30},
 	{Weapon_Shotgun, 1},
-	{Weapon_ShotgunAmmo, 14},
+	{gameWeapons["Shotgun_Ammo"]["name"], 14},
 	{Item_Pizza, 1},
 	{Item_FullWaterBottle, 1},
 	{Item_Map, 1},
@@ -365,9 +365,9 @@ function spawnDayZPlayer(player)
 	{"MAX_Slots", 36},
 	{gameWeapons["Katana"]["name"], 1},
 	{gameWeapons["M4"]["name"], 1},
-	{Weapon_M4Ammo, 60},
+	{gameWeapons["M4_Ammo"]["name"], 60},
 	{gameWeapons["Sniper"]["name"], 1},
-	{Weapon_SniperAmmo, 5},
+	{gameWeapons["Sniper_Ammo"]["name"], 5},
 	{Item_Pizza, 1},
 	{Item_FullWaterBottle, 1},
 	{Item_Map, 1},
@@ -377,9 +377,9 @@ function spawnDayZPlayer(player)
   local premiumPartner = {
 	{"MAX_Slots", 26},
 	{gameWeapons["M4"]["name"], 1},
-	{Weapon_M4Ammo, 60},
+	{gameWeapons["M4_Ammo"]["name"], 60},
 	{gameWeapons["Sniper"]["name"], 1},
-	{Weapon_SniperAmmo, 5},
+	{gameWeapons["Sniper_Ammo"]["name"], 5},
 	{"Motor", 1},
 	{Item_Tire, 2},
   }
@@ -487,29 +487,29 @@ function killPlayerWithCommand(thePlayer)
 	if pedCol then
 		for i, data in ipairs(playerDataTable) do
 			local plusData = getElementData(thePlayer, data[1])
-			if data[1] == Weapon_PistolAmmo then
+			if data[1] == gameWeapons["Pistol_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SilencedAmmo then
+			elseif data[1] == gameWeapons["SilencedPistol_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 15)
-			elseif data[1] == Weapon_DesertAmmo then
+			elseif data[1] == gameWeapons["DesertEagle_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_UziAmmo then
+			elseif data[1] == gameWeapons["Uzi_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 30)
-			elseif data[1] == Weapon_MP5Ammo then
+			elseif data[1] == gameWeapons["MP5_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 20)
-			elseif data[1] == Weapon_AKAmmo then
+			elseif data[1] == gameWeapons["AK47_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 30)
-			elseif data[1] == Weapon_M4Ammo then
+			elseif data[1] == gameWeapons["M4_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 20)
-			elseif data[1] == Weapon_SniperAmmo then
+			elseif data[1] == gameWeapons["Sniper_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 5)
-			elseif data[1] == Weapon_CountryAmmo then
+			elseif data[1] == gameWeapons["CountryRifle_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 10)
-			elseif data[1] == Weapon_ShotgunAmmo then
+			elseif data[1] == gameWeapons["Shotgun_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SpasAmmo then
+			elseif data[1] == gameWeapons["SPAZ12_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SawnOffAmmo then
+			elseif data[1] == gameWeapons["SawnOff_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 2)
 			end
 			setElementData(pedCol, data[1], plusData)
@@ -595,29 +595,29 @@ function kilLDayZPlayer(killer, headshot, weapon)
   if pedCol then
     for i, data in ipairs(playerDataTable) do
       local plusData = getElementData(source, data[1])
-      if data[1] == Weapon_PistolAmmo then
+      if data[1] == gameWeapons["Pistol_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SilencedAmmo then
+      elseif data[1] == gameWeapons["SilencedPistol_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 15)
-      elseif data[1] == Weapon_DesertAmmo then
+      elseif data[1] == gameWeapons["DesertEagle_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_UziAmmo then
+      elseif data[1] == gameWeapons["Uzi_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 30)
-      elseif data[1] == Weapon_MP5Ammo then
+      elseif data[1] == gameWeapons["MP5_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 20)
-      elseif data[1] == Weapon_AKAmmo then
+      elseif data[1] == gameWeapons["AK47_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 30)
-      elseif data[1] == Weapon_M4Ammo then
+      elseif data[1] == gameWeapons["M4_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 20)
-      elseif data[1] == Weapon_SniperAmmo then
+      elseif data[1] == gameWeapons["Sniper_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 5)
-      elseif data[1] == Weapon_CountryAmmo then
+      elseif data[1] == gameWeapons["CountryRifle_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 10)
-      elseif data[1] == Weapon_ShotgunAmmo then
+      elseif data[1] == gameWeapons["Shotgun_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SpasAmmo then
+      elseif data[1] == gameWeapons["SPAZ12_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SawnOffAmmo then
+      elseif data[1] == gameWeapons["SawnOff_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 2)
       end
       setElementData(pedCol, data[1], plusData)

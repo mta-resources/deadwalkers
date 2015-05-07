@@ -62,6 +62,13 @@
 		["nothing"] = 0,
 		["damage"]	= 1000,
 	},
+	["Pistol_Ammo"] = {
+		["model"]	= 3013,
+		["name"] 	= "Munição de Pistola",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["SilencedPistol"] = {
 		["id"]		= 23,
 		["model"]	= 347,
@@ -71,6 +78,13 @@
 		["nothing"] = 0,
 		["damage"]	= 950,
 	},
+	["SilencedPistol_Ammo"] = {
+		["model"]	= 3013,
+		["name"] 	= "Munição de P. Silenciosa",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["DesertEagle"] = {
 		["id"]		= 24,
 		["model"]	= 348,
@@ -79,6 +93,13 @@
 		["objScale"] = 1,
 		["nothing"] = 0,
 		["damage"]	= 3000,
+	},
+	["DesertEagle_Ammo"] = {
+		["model"]	= 3013,
+		["name"] 	= "Munição de Desert",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
 	},
 
 
@@ -94,6 +115,13 @@
 		["nothing"] = 0,
 		["damage"]	= 3500,
 	},
+	["Shotgun_Ammo"] = {
+		["model"]	= 2358,
+		["name"] 	= "Munição de Escopeta",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["SawnOff"] = {
 		["id"]		= 26,
 		["model"]	= 350,
@@ -103,6 +131,13 @@
 		["nothing"] = 0,
 		["damage"]	= 3500,
 	},
+	["SawnOff_Ammo"] = {
+		["model"]	= 2358,
+		["name"] 	= "Munição de Sawn-Off",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["SPAZ12"] = {
 		["id"]		= 27,
 		["model"]	= 351,
@@ -111,6 +146,13 @@
 		["objScale"] = 1,
 		["nothing"] = 0,
 		["damage"]	= 3500,
+	},
+	["SPAZ12_Ammo"] = {
+		["model"]	= 2358,
+		["name"] 	= "Munição de SPAZ-12",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
 	},
 
 
@@ -126,6 +168,13 @@
 		["nothing"] = 0,
 		["damage"]	= 1000,
 	},
+	["Uzi_Ammo"] = {
+		["model"]	= 2041,
+		["name"] 	= "Munição de Uzi",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["MP5"] = {
 		["id"]		= 29,
 		["model"]	= 353,
@@ -134,6 +183,13 @@
 		["objScale"] = 1,
 		["nothing"] = 0,
 		["damage"]	= 1200,
+	},
+	["MP5_Ammo"] = {
+		["model"]	= 2041,
+		["name"] 	= "Munição de MP5",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
 	},
 
 
@@ -149,6 +205,13 @@
 		["nothing"] = 0,
 		["damage"]	= 3200,
 	},
+	["AK47_Ammo"] = {
+		["model"]	= 1271,
+		["name"] 	= "Munição de AK-47",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["M4"] = {
 		["id"]		= 31,
 		["model"]	= 356,
@@ -157,6 +220,13 @@
 		["objScale"] = 1,
 		["nothing"] = 0,
 		["damage"]	= 3000,
+	},
+	["M4_Ammo"] = {
+		["model"]	= 1271,
+		["name"] 	= "Munição de M16A2",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
 	},
 
 
@@ -172,6 +242,13 @@
 		["nothing"] = 0,
 		["damage"]	= 8000,
 	},
+	["CountryRifle_Ammo"] = {
+		["model"]	= 2358,
+		["name"] 	= "Munição de Espingarda",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
+	},
 	["Sniper"] = {
 		["id"]		= 34,
 		["model"]	= 358,
@@ -180,6 +257,13 @@
 		["objScale"] = 1,
 		["nothing"] = 0,
 		["damage"]	= 12000,
+	},
+	["Sniper_Ammo"] = {
+		["model"]	= 2358,
+		["name"] 	= "Munição de Sniper",
+		["slots"]	= 0.5,
+		["objScale"] = 2,
+		["nothing"] = 0,
 	},
 
 

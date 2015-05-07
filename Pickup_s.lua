@@ -1311,79 +1311,79 @@ local itemTable = {
       90
     },
     {
-      Weapon_ShotgunAmmo,
+      gameWeapons["Shotgun_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_SawnOffAmmo,
+      gameWeapons["SawnOff_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_SpasAmmo,
+      gameWeapons["SPAZ12_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_MP5Ammo,
+      gameWeapons["MP5_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_AKAmmo,
+      gameWeapons["AK47_Ammo"]["name"],
       1271,
       2,
       0
     },
     {
-      Weapon_M4Ammo,
+      gameWeapons["M4_Ammo"]["name"],
       1271,
       2,
       0
     },
     {
-      Weapon_PistolAmmo,
+      gameWeapons["Pistol_Ammo"]["name"],
       3013,
       2,
       0
     },
     {
-      Weapon_SilencedAmmo,
+      gameWeapons["SilencedPistol_Ammo"]["name"],
       3013,
       2,
       0
     },
     {
-      Weapon_DesertAmmo,
+      gameWeapons["DesertEagle_Ammo"]["name"],
       3013,
       2,
       0
     },
     {
-      Weapon_SniperAmmo,
+      gameWeapons["Sniper_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_CountryAmmo,
+      gameWeapons["CountryRifle_Ammo"]["name"],
       2358,
       2,
       0
     },
     {
-      Weapon_UziAmmo,
+      gameWeapons["Uzi_Ammo"]["name"],
       2041,
       2,
       0
     },
     {
-      Weapon_MP5Ammo,
+      gameWeapons["MP5_Ammo"]["name"],
       2041,
       2,
       0
@@ -1774,52 +1774,52 @@ local itemTable = {
   }
 }
 weaponAmmoTable = {
-  [Weapon_PistolAmmo] = {
+  [gameWeapons["Pistol_Ammo"]["name"]] = {
     {gameWeapons["Pistol"]["name"], 22}
   },
-  [Weapon_SilencedAmmo] = {
+  [gameWeapons["SilencedPistol_Ammo"]["name"]] = {
     {gameWeapons["SilencedPistol"]["name"], 23}
   },
-  [Weapon_DesertAmmo] = {
+  [gameWeapons["DesertEagle_Ammo"]["name"]] = {
     {
       gameWeapons["DesertEagle"]["name"],
       24
     }
   },
-  [Weapon_UziAmmo] = {
+  [gameWeapons["Uzi_Ammo"]["name"]] = {
     {gameWeapons["Uzi"]["name"], 28}
   },
-  [Weapon_MP5Ammo] = {
+  [gameWeapons["MP5_Ammo"]["name"]] = {
     {gameWeapons["MP5"]["name"], 29}
   },
-  [Weapon_AKAmmo] = {
+  [gameWeapons["AK47_Ammo"]["name"]] = {
     {gameWeapons["AK47"]["name"], 30}
   },
-  [Weapon_M4Ammo] = {
+  [gameWeapons["M4_Ammo"]["name"]] = {
     {gameWeapons["M4"]["name"], 31}
   },
-  [Weapon_ShotgunAmmo] = {
+  [gameWeapons["Shotgun_Ammo"]["name"]] = {
     {
       Weapon_Shotgun,
       25
     }
   },
-  [Weapon_SawnOffAmmo] = {
+  [gameWeapons["SawnOff_Ammo"]["name"]] = {
     {
       Weapon_SawnOff,
       26
     }
   },
-  [Weapon_SpasAmmo] = {
+  [gameWeapons["SPAZ12_Ammo"]["name"]] = {
     {
       gameWeapons["SPAZ12"]["name"],
       27
     }
   },
-  [Weapon_SniperAmmo] = {
+  [gameWeapons["Sniper_Ammo"]["name"]] = {
     {gameWeapons["Sniper"]["name"], 34}
   },
-  [Weapon_CountryAmmo] = {
+  [gameWeapons["CountryRifle_Ammo"]["name"]] = {
     {
       gameWeapons["CountryRifle"]["name"],
       33
@@ -1849,64 +1849,64 @@ function getWeaponAmmoType(weaponName, notOthers)
       end
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_PistolAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Pistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_PistolAmmo, weaponData[2]
+      return gameWeapons["Pistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SilencedAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SilencedPistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SilencedAmmo, weaponData[2]
+      return gameWeapons["SilencedPistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_DesertAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["DesertEagle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_DesertAmmo, weaponData[2]
+      return gameWeapons["DesertEagle_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_UziAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Uzi_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_UziAmmo, weaponData[2]
+      return gameWeapons["Uzi_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_MP5Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["MP5_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_MP5Ammo, weaponData[2]
+      return gameWeapons["MP5_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_AKAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["AK47_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_AKAmmo, weaponData[2]
+      return gameWeapons["AK47_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_M4Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["M4_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_M4Ammo, weaponData[2]
+      return gameWeapons["M4_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_ShotgunAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Shotgun_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_ShotgunAmmo, weaponData[2]
+      return gameWeapons["Shotgun_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SawnOffAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SawnOff_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SawnOffAmmo, weaponData[2]
+      return gameWeapons["SawnOff_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SpasAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SPAZ12_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SpasAmmo, weaponData[2]
+      return gameWeapons["SPAZ12_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SniperAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Sniper_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SniperAmmo, weaponData[2]
+      return gameWeapons["Sniper_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_CountryAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["CountryRifle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_CountryAmmo, weaponData[2]
+      return gameWeapons["CountryRifle_Ammo"]["name"], weaponData[2]
     end
   end
   return false
@@ -2108,29 +2108,29 @@ end
 
 function onPlayerTakeItemFromGround(itemName, col)
   itemPlus = 1
-  if itemName == Weapon_PistolAmmo then
+  if itemName == gameWeapons["Pistol_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SilencedAmmo then
+  elseif itemName == gameWeapons["SilencedPistol_Ammo"]["name"] then
     itemPlus = 15
-  elseif itemName == Weapon_DesertAmmo then
+  elseif itemName == gameWeapons["DesertEagle_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_UziAmmo then
+  elseif itemName == gameWeapons["Uzi_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_MP5Ammo then
+  elseif itemName == gameWeapons["MP5_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_AKAmmo then
+  elseif itemName == gameWeapons["AK47_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_M4Ammo then
+  elseif itemName == gameWeapons["M4_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_ShotgunAmmo then
+  elseif itemName == gameWeapons["Shotgun_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SawnOffAmmo then
+  elseif itemName == gameWeapons["SawnOff_Ammo"]["name"] then
     itemPlus = 6
-  elseif itemName == Weapon_SpasAmmo then
+  elseif itemName == gameWeapons["SPAZ12_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SniperAmmo then
+  elseif itemName == gameWeapons["Sniper_Ammo"]["name"] then
     itemPlus = 5
-  elseif itemName == Weapon_CountryAmmo then
+  elseif itemName == gameWeapons["CountryRifle_Ammo"]["name"] then
     itemPlus = 10
   elseif itemName == gameWeapons["M4"]["name"] or itemName == gameWeapons["AK47"]["name"] or itemName == gameWeapons["Sniper"]["name"] or itemName == Weapon_Shotgun or itemName == gameWeapons["SPAZ12"]["name"] or itemName == Weapon_SawnOff or itemName == gameWeapons["CountryRifle"]["name"] then
     removeBackWeaponOnDrop()

@@ -81,32 +81,12 @@ end
 addEventHandler("onClientPedDamage", getRootElement(), pedGetDamageDayZ)
 
 
-function giveCrowbar()
-	setElementData(localPlayer, "Pé-de-Cabra", 1)
-	outputChatBox("Pé-de-Cabra")
+function giveWeapons()
+	setElementData(localPlayer, "MAX_Slots", 36)
+	setElementData(localPlayer, gameWeapons["MP5"]["name"], 1)
+	setElementData(localPlayer, gameWeapons["MP5_Ammo"]["name"], 30)
+	setElementData(localPlayer, gameWeapons["M4"]["name"], 1)
+	setElementData(localPlayer, gameWeapons["M4_Ammo"]["name"], 30)
+	setElementData(localPlayer, gameWeapons["Grenade"]["name"], 3)
 end
-addCommandHandler("Pe-de-Cabra", giveCrowbar)
-
-function giveKatana()
-	setElementData(localPlayer, "Machado", 1)
-	outputChatBox("Machado")
-end
-addCommandHandler("Machado", giveKatana)
-
-function givePistol()
-	setElementData(localPlayer, "Pistola", 1)
-	outputChatBox("Pistola")
-end
-addCommandHandler("Pistola", givePistol)
-
-function giveCrowbar()
-	setElementData(localPlayer, "Pé-de-Cabra", 1)
-	outputChatBox("Pé-de-Cabra")
-end
-addCommandHandler("Pe-de-Cabra", giveCrowbar)
-
-function giveCrowbar()
-	setElementData(localPlayer, "Pé-de-Cabra", 1)
-	outputChatBox("Pé-de-Cabra")
-end
-addCommandHandler("Pe-de-Cabra", giveCrowbar)
+addCommandHandler("giveWeapons", giveWeapons)
