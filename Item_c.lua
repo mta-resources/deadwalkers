@@ -1,146 +1,60 @@
-gameWeapons = {
+-- --------------------------------------------------------
+-- Almost everything on DayZ has a mod that changes his 
+-- appearance. This function has a list of all items that 
+-- will receive a mod and apply the mod to them.
+-- --------------------------------------------------------
+function DZ_ApplyModsToAllItems()
+	local skinsFolder = "mods/"
+	local itemsFolder = "items/"
 	
-	---------------------------------
-	-- Melee Weapons
-	---------------------------------
-	["GolfClub"] = {
-		["id"] 		= 2,
-		["name"] 	= "Pé-de-cabra",
-		["damage"]	= 950,
-	},
-	["Knife"] = {
-		["id"] 		= 4,
-		["name"] 	= "Faca",
-		["damage"]	= 1200,
-	},
-	["BaseballBat"] = {
-		["id"]		= 5,
-		["name"] 	= "Taco de Beisebol",
-		["damage"]	= 950,
-	},
-	["Shovel"] = {
-		["id"]		= 6,
-		["name"] 	= "Pá",
-		["damage"]	= 950,
-	},
-	["Katana"] = {
-		["id"]		= 8,
-		["name"] 	= "Machado",
-		["damage"]	= 1400,
-	},
+	-- Syntax: folder, fileName, modelId
+	local itemsToApply = {
+		{skinsFolder, "ghillie_desert", 285},
+		{skinsFolder, "ghillie_forest", 284},
+		{skinsFolder, "army", 287},
+		{skinsFolder, "civilian", 179},
+		{skinsFolder, "bandit1", 180},
+		{skinsFolder, "bandit2", 288},
+		{skinsFolder, "standart", 73},
+		{skinsFolder, "femalestandard", 191},
+		{skinsFolder, "hero", 210},
+		{skinsFolder, "staff", 217},
+		{itemsFolder, "armor_clothes", 1272},	
+		{itemsFolder, "army_clothes", 1247},			
+		{itemsFolder, "sniper_clothes", 1213},			
+		{itemsFolder, "civilian_clothes", 1241},			
+		{itemsFolder, "standard_clothes", 1577},			
+		{itemsFolder, "beans_can", 2601},			
+		{itemsFolder, "first_aid_kit", 2891},			
+		{itemsFolder, "gps", 2976},			
+		{itemsFolder, "heat_pack", 1576},			
+		{itemsFolder, "map", 1277},			
+		{itemsFolder, "pain_killers", 2709},			
+		{itemsFolder, "pasta_can", 2770},			
+		{itemsFolder, "pistol_ammo", 3013},			
+		{itemsFolder, "shotgun_ammo", 2358},			
+		{itemsFolder, "backpack_small", 3026},			
+		{itemsFolder, "smg_ammo", 2041},			
+		{itemsFolder, "sniper_ammo", 2358},			
+		{itemsFolder, "soda_can", 2647},			
+		{itemsFolder, "water_bottle", 2683},			
+		{itemsFolder, "assault_ammo", 1271},			
+		{itemsFolder, "backpack_alice", 1248},
+		{itemsFolder, "backpack_coyote", 1252},			
+		{itemsFolder, "backpack_czech", 1575},			
+		{itemsFolder, "tent", 3243},
+		{itemsFolder, "watch", 2710},			
+		{itemsFolder, "wirefence", 983},
+		{itemsFolder, "wirefence_pickup", 933},
+		{itemsFolder, "camera", 367},
+		{itemsFolder, "katana", 339},
+	}
 
-
-	---------------------------------
-	-- Handguns
-	---------------------------------
-	["Pistol"] = {
-		["id"]		= 22,
-		["name"] 	= "Pistola",
-		["damage"]	= 1000,
-	},
-	["SilencedPistol"] = {
-		["id"]		= 23,
-		["name"] 	= "Pistola Silenciosa",
-		["damage"]	= 950,
-	},
-	["DesertEagle"] = {
-		["id"]		= 24,
-		["name"] 	= "Desert Eagle",
-		["damage"]	= 3000,
-	},
-
-
-	---------------------------------
-	-- Shotguns
-	---------------------------------
-	["Shotgun"] = {
-		["id"]		= 25,
-		["name"] 	= "Escopeta",
-		["damage"]	= 3500,
-	},
-	["SawnOff"] = {
-		["id"]		= 26,
-		["name"] 	= "Sawn-Off",
-		["damage"]	= 3500,
-	},
-	["SPAZ12"] = {
-		["id"]		= 27,
-		["name"] 	= "SPAZ-12",
-		["damage"]	= 3500,
-	},
-
-
-	---------------------------------
-	-- Sub-machines
-	---------------------------------
-	["Uzi"] = {
-		["id"]		= 28,
-		["name"] 	= "Uzi",
-		["damage"]	= 1000,
-	},
-	["MP5"] = {
-		["id"]		= 29,
-		["name"] 	= "MP5",
-		["damage"]	= 1200,
-	},
-
-
-	---------------------------------
-	-- Assault Rifles
-	---------------------------------
-	["AK47"] = {
-		["id"]		= 30,
-		["name"] 	= "AK-47",
-		["damage"]	= 3200,
-	},
-	["M4"] = {
-		["id"]		= 31,
-		["name"] 	= "M16A2",
-		["damage"]	= 3000,
-	},
-
-
-	---------------------------------
-	-- Rifles
-	---------------------------------
-	["CountryRifle"] = {
-		["id"]		= 33,
-		["name"] 	= "Espingarda",
-		["damage"]	= 8000,
-	},
-	["Sniper"] = {
-		["id"]		= 34,
-		["name"] 	= "Sniper",
-		["damage"]	= 12000,
-	},
-
-
-	---------------------------------
-	-- Projectiles
-	---------------------------------
-	["Grenade"] = {
-		["id"]		= 16,
-		["name"] 	= "Granada",
-		["damage"]	= 12000,
-	},
-	["TearGas"] = {
-		["id"]		= 17,
-		["name"] 	= "Gás Lacrimogêneo",
-		["damage"]	= 700,
-	},
-
-
-	---------------------------------
-	-- Special
-	---------------------------------
-	["NightVision"] = {
-		["id"]		= 44,
-		["name"] 	= "Visão Noturna",
-		["damage"]	= 0,
-	},
-	["Infrared"] = {
-		["id"]		= 45,
-		["name"] 	= "Visão de Calor"
-		["damage"]	= 0,
-	},
-}
+	for i, line in ipairs(itemsToApply) do
+		local txd = engineLoadTXD(line[1] .. line[2] .. ".txd")
+					engineImportTXD(txd, line[3])
+		local dff = engineLoadDFF(line[1] .. line[2] .. ".dff", line[3])
+					engineReplaceModel(dff, line[3])
+	end
+end
+addEventHandler("onClientResourceStart", resourceRoot, DZ_ApplyModsToAllItems)

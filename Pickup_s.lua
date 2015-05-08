@@ -1964,6 +1964,7 @@ function createItemLoot(lootPlace, x, y, z, id)
   setElementData(col, "MAX_Slots", 12)
   for i, item in ipairs(itemTable[lootPlace]) do
     local value = math.percentChance(item[5], math.random(1, 2))
+    if not item[1] then return end
     setElementData(col, item[1], value)
     local ammoData, weapID = getWeaponAmmoType(item[1], true)
     if ammoData and value > 0 then
@@ -1991,6 +1992,7 @@ function refreshItemLoot(col, place)
   local counter = 0
   local obejctItem = {}
   for i, item in ipairs(itemTable.other) do
+    if not item[1] then return end
     if getElementData(col, item[1]) and getElementData(col, item[1]) > 0 then
       if counter == 3 then
         break
