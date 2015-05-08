@@ -6,7 +6,6 @@
 function DZ_ApplyModsToAllItems()
 	local skinsFolder = "mods/"
 	local itemsFolder = "items/"
-	
 	-- Syntax: folder, fileName, modelId
 	local itemsToApply = {
 		{skinsFolder, "ghillie_desert", 285},
@@ -49,7 +48,6 @@ function DZ_ApplyModsToAllItems()
 		{itemsFolder, "camera", 367},
 		{itemsFolder, "katana", 339},
 	}
-
 	for i, line in ipairs(itemsToApply) do
 		local txd = engineLoadTXD(line[1] .. line[2] .. ".txd")
 					engineImportTXD(txd, line[3])
