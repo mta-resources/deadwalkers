@@ -163,7 +163,7 @@ for i,ped in ipairs(getElementsByType("ped")) do
 	end				
 end
 end
---addEventHandler("kilLDayZPlayer",getRootElement(),destroyTable)
+--addEventHandler("DZ_KillPlayer",getRootElement(),destroyTable)
 --addEventHandler("onPlayerQuit",getRootElement(),destroyTable)
 
 function destroyDeadZombie (ped,pedCol)

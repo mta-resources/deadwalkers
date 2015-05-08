@@ -258,7 +258,7 @@ function playerLogin(username, pass, player)
   local skin = getAccountData(account, "skin")
   createZombieTable(player)
   if getAccountData(account, "isDead") then
-    spawnDayZPlayer(player)
+    DZ_SpawnPlayer(player)
     return
   end
   spawnPlayer(player, x, y, z, math.random(0, 360), skin, 0, 0)

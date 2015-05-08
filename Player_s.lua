@@ -1,66 +1,24 @@
-
-local spawnPositions = {
-  {
-    -278.6669921875,
-    -2882.1572265625,
-    32.104232788086
-  },
-  {
-    -958.5595703125,
-    -2887.9912109375,
-    64.82421875
-  },
-  {
-    -1816.9375,
-    -2748.18359375,
-    1.7327127456665
-  },
-  {
-    -2816.166015625,
-    -2439.0546875,
-    2.4004096984863
-  },
-  {
-    -2941.5673828125,
-    -1206.2373046875,
-    2.7848854064941
-  },
-  {
-    -2911.51171875,
-    -895.22265625,
-    2.4013109207153
-  },
-  {
-    -2185.6669921875,
-    2957.380859375,
-    11.474840164185
-  },
-  {
-    272.2265625,
-    2928.505859375,
-    1.3713493347168
-  },
-  {
-    2803.943359375,
-    595.9365234375,
-    7.7612648010254
-  },
-  {
-    2883.7509765625,
-    -178.4658203125,
-    3.2714653015137
-  },
-  {
-    -233.46484375,
-    -1735.8173828125,
-    1.5520644187927
-  },
-  {
-    -1056.8720703125,
-    2939.068359375,
-    42.311294555664
-  }
+-- --------------------------------------------------------
+-- Here we put all the places where a player can spawn on.
+-- We call these places as "Spawn Points". You can edit, 
+-- add or remove.
+-- --------------------------------------------------------
+gamePlayerSpawns = {
+	{-278.6669921875, -2882.1572265625, 32.104232788086},
+	{-958.5595703125, -2887.9912109375, 64.82421875},
+	{-1816.9375, -2748.18359375, 1.7327127456665},
+	{-2816.166015625, -2439.0546875, 2.4004096984863},
+	{-2941.5673828125, -1206.2373046875, 2.7848854064941},
+	{-2911.51171875, -895.22265625, 2.4013109207153},
+	{-2185.6669921875, 2957.380859375, 11.474840164185},
+	{272.2265625, 2928.505859375, 1.3713493347168},
+	{2803.943359375, 595.9365234375, 7.7612648010254},
+	{2883.7509765625, -178.4658203125, 3.2714653015137},
+	{-233.46484375, -1735.8173828125, 1.5520644187927},
+	{-1056.8720703125, 2939.068359375, 42.311294555664},
 }
+
+
 local playerDataTable = {
   {"alivetime"},
   {"skin"},
@@ -276,10 +234,15 @@ local vehicleDataTable = {
 Skins = {}
 
 
--- Spawns the player on the map // Spawna o jogador
-function spawnDayZPlayer(player)
-  local number = math.random(table.size(spawnPositions))
-  local x, y, z = spawnPositions[number][1], spawnPositions[number][2], spawnPositions[number][3]
+
+-- --------------------------------------------------------
+-- Spawns a player on the map. This function is called from 
+-- various situations. E.g. when a player dies. After die, 
+-- this function is called for respawn him another time.
+-- --------------------------------------------------------
+function DZ_SpawnPlayer(player)
+  local number = math.random(table.size(gamePlayerSpawns))
+  local x, y, z = gamePlayerSpawns[number][1], gamePlayerSpawns[number][2], gamePlayerSpawns[number][3]
   spawnPlayer(player, x, y, z + 0.5, math.random(0, 360), 73, 0, 0)
   fadeCamera(player, true)
   setCameraTarget(player, player)
@@ -421,32 +384,32 @@ end
 
 
 -- Check if the account is bugged
-function checkBuggedAccount()
+function DZ_RespawnBuggedPlayer()
   for i, player in ipairs(getElementsByType("player")) do
     local account = getPlayerAccount(player)
     if not account then
       return
     end
     if getElementData(player, "logedin") and getElementModel(player) == 0 then
-      spawnDayZPlayer(player)
+      DZ_SpawnPlayer(player)
       outputChatBox("A conta de " .. getPlayerName(player) .. " está bugada e está sendo resetada.", getRootElement(), 22, 255, 22, true)
     end
   end
 end
-setTimer(checkBuggedAccount, 90000, 0)
+setTimer(DZ_RespawnBuggedPlayer, 90000, 0)
 
 
 -- Notify about explosion [2]
-function notifyAboutExplosion2()
+function DZ_KillPlayersInsideExplodedVehicle()
   for i, player in pairs(getVehicleOccupants(source)) do
-    triggerEvent("kilLDayZPlayer", player)
+    triggerEvent("DZ_KillPlayer", player)
   end
 end
-addEventHandler("onVehicleExplode", getRootElement(), notifyAboutExplosion2)
+addEventHandler("onVehicleExplode", getRootElement(), DZ_KillPlayersInsideExplodedVehicle)
 
 
 -- Destroy dead body // Destrói corpo morto
-function destroyDeadPlayer(ped, pedCol)
+function DZ_DestroyDeadPlayer(ped, pedCol)
   destroyElement(ped)
   destroyElement(pedCol)
 end
@@ -471,7 +434,7 @@ function killPlayerWithCommand(thePlayer)
 			  local ped = createPed(skin, x, y, z, rotZ)
 			  pedCol = createColSphere(x, y, z, 1.5)
 			  killPed(ped)
-			  setTimer(destroyDeadPlayer, 1200000, 1, ped, pedCol) -- 20 minutes
+			  setTimer(DZ_DestroyDeadPlayer, 1200000, 1, ped, pedCol) -- 20 minutes
 			  attachElements(pedCol, ped, 0, 0, 0)
 			  setElementData(pedCol, "parent", ped)
 			  setElementData(pedCol, "playername", getPlayerName(thePlayer))
@@ -534,13 +497,13 @@ function killPlayerWithCommand(thePlayer)
 	setElementData(thePlayer, "isDead", true)
 	triggerClientEvent("onRollMessageStart", getRootElement(), "#FFFFFF" .. getPlayerName(thePlayer) .. " #FFFFFFmorreu.", 0, 22, 255, "died")
 	destroyElement(getElementData(thePlayer, "playerCol"))
-	setTimer(spawnDayZPlayer, 5000, 1, thePlayer)
+	setTimer(DZ_SpawnPlayer, 5000, 1, thePlayer)
 end
 addCommandHandler("suicidar", killPlayerWithCommand)
 
 
 -- When player die // Quando jogador morre
-function kilLDayZPlayer(killer, headshot, weapon)
+function DZ_KillPlayer(killer, headshot, weapon)
 	pedCol = false
 	local account = getPlayerAccount(source)
 	if not account then
@@ -558,7 +521,7 @@ function kilLDayZPlayer(killer, headshot, weapon)
 			  local ped = createPed(skin, x, y, z, rotZ)
 			  pedCol = createColSphere(x, y, z, 1.5)
 			  killPed(ped)
-			  setTimer(destroyDeadPlayer, 2700000, 1, ped, pedCol)
+			  setTimer(DZ_DestroyDeadPlayer, 2700000, 1, ped, pedCol)
 			  attachElements(pedCol, ped, 0, 0, 0)
 			  setElementData(pedCol, "parent", ped)
 			  setElementData(pedCol, "playername", getPlayerName(source))
@@ -644,7 +607,7 @@ function kilLDayZPlayer(killer, headshot, weapon)
   setElementData(source, "armor", false)
   triggerClientEvent("onRollMessageStart", getRootElement(), "#FFFFFF" .. getPlayerName(source) .. " #FFFFFFmorreu.", 0, 22, 255, "died")
   destroyElement(getElementData(source, "playerCol"))
-  setTimer(spawnDayZPlayer, 5000, 1, source)
+  setTimer(DZ_SpawnPlayer, 5000, 1, source)
 end
-addEvent("kilLDayZPlayer", true)
-addEventHandler("kilLDayZPlayer", getRootElement(), kilLDayZPlayer)
+addEvent("DZ_KillPlayer", true)
+addEventHandler("DZ_KillPlayer", getRootElement(), DZ_KillPlayer)

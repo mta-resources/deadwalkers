@@ -653,7 +653,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
   elseif weapon == 63 or weapon == 51 or weapon == 19 then -- explosões
     setElementData(getLocalPlayer(), "blood", 0)
     if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") == true then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot)
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot)
     end
   elseif weapon and weapon > 1 and attacker and getElementType(attacker) == "player" then
     do
@@ -696,7 +696,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
         end
       end
       if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") then
-        triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
+        triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
         setElementData(getLocalPlayer(), "isDead", true)
       end
     end
@@ -718,7 +718,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
       setElementData(getLocalPlayer(), "pain", true)
     end
     if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") == true then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
       setElementData(getLocalPlayer(), "isDead", true)
     end
   end
@@ -764,7 +764,7 @@ function checkStats()
       setElementData(getLocalPlayer(), "bleeding", 0)
     end
     if getElementData(getLocalPlayer(), "blood") < 0 and not getElementData(getLocalPlayer(), "isDead") then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), false, false)
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), false, false)
     end
   end
 end
