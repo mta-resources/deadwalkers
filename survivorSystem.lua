@@ -509,7 +509,7 @@ end
 
 function checkTemperature()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if getWeather() == 7 then
         value = -0.01
@@ -533,7 +533,7 @@ setTimer(checkTemperature, 60000, 0)
 
 function checkTemperature2()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if isElementInWater(player) then
         value = gameplayVariables.temperaturewater
@@ -550,7 +550,7 @@ setTimer(checkTemperature2, 10000, 0)
 
 function setHunger()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = gameplayVariables.loseHunger
       addPlayerStats(player, "food", value)
     end
@@ -561,7 +561,7 @@ setTimer(setHunger, 60000, 0)
 
 function setThirsty()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = gameplayVariables.loseThirst
       addPlayerStats(player, "thirst", value)
     end
@@ -570,7 +570,7 @@ end
 setTimer(setThirsty, 60000, 0)
 function checkThirsty()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if getControlState(player, "sprint") then
         value = gameplayVariables.sprintthirst
@@ -582,7 +582,7 @@ end
 setTimer(checkThirsty, 10000, 0)
 function checkHumanity()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") and getElementData(player, "humanity") < 2500 then
+    if getElementData(player, "isLogged") and getElementData(player, "humanity") < 2500 then
       addPlayerStats(player, "humanity", 30)
       if getElementData(player, "humanity") > 2000 then
         setElementData(player, "bandit", false)
@@ -971,7 +971,7 @@ addEventHandler("onPlayerChat", getRootElement(), blockChatMessage)
 
 function checkBandit()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       local current = getElementData(player, "skin")
       if getElementData(player, "bandit") then
         if current == 179 or current == 287 then
@@ -1587,7 +1587,7 @@ function bindTheKeys()
   bindKey(source, ".", "down", funcBindSit)
   bindKey(source, "l", "down", funcBindLie)
 end
-addEventHandler("onPlayerLogin", getRootElement(), bindTheKeys)
+addEventHandler("onDZ_PlayerLogin", getRootElement(), bindTheKeys)
 
 function bindTheKeys2()
 	for i, player in ipairs(getElementsByType("player")) do

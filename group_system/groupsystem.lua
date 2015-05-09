@@ -64,12 +64,12 @@ function refreshPlayerGangMemberList ()
 			if gangmember["member_account"] == groupleader then
 				gangleader = true
 			end
-			logedin = false
+			isLogged = false
 			if getAccountPlayer(getAccount(gangmember["member_account"])) then
-				logedin = true
+				isLogged = true
 				player = getAccountPlayer(getAccount(gangmember["member_account"]))
 			end
-			table.insert(gangmembertable,{gangmember["member_account"],gangleader,logedin,player})	
+			table.insert(gangmembertable,{gangmember["member_account"],gangleader,isLogged,player})	
 	end	
 	setElementData(getRootElement(),"gangmemberlist_"..gang,gangmembertable)
 end

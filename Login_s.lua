@@ -1,6 +1,6 @@
 
 -- Spawns onde o jogador nasce após morrer
-local spawnPositions = {
+local gamePlayerSpawns = {
   {
     -278.6669921875,
     -2882.1572265625,
@@ -250,7 +250,7 @@ local vehicleDataTable = {
 
 
 -- Quando o jogador faz login
-function playerLogin(username, pass, player)
+function DZ_PlayerLogin(username, pass, player)
   if not player then return end
   local playerID = getAccountData(getPlayerAccount(player), "playerID")
   account = getPlayerAccount(player)
@@ -279,7 +279,7 @@ function playerLogin(username, pass, player)
     end
     setElementData(player, data[1], elementData)
   end
-  setElementData(player, "logedin", true)
+  setElementData(player, "isLogged", true)
   local weapon = getElementData(player, "currentweapon_1")
   if weapon then
     local ammoData, weapID = getWeaponAmmoType(weapon)
@@ -353,8 +353,8 @@ function playerLogin(username, pass, player)
 	triggerClientEvent(player, "onClientPlayerDayZLogin", player)
 end
 addEvent("onPlayerDayZLogin", true)
-addEventHandler("onPlayerDayZLogin", getRootElement(), playerLogin)
-addEventHandler("onResourceStart", resourceRoot, playerLogin)
+addEventHandler("onPlayerDayZLogin", getRootElement(), DZ_PlayerLogin)
+addEventHandler("onResourceStart", resourceRoot, DZ_PlayerLogin)
 
 
 
@@ -363,9 +363,9 @@ Skins = {}
 
 
 -- Quando o jogador se registra
-function playerRegister(username, pass, player)
-	local number = math.random(table.size(spawnPositions))
-	local x, y, z = spawnPositions[number][1], spawnPositions[number][2], spawnPositions[number][3]
+function DZ_PlayerRegister(username, pass, player)
+	local number = math.random(table.size(gamePlayerSpawns))
+	local x, y, z = gamePlayerSpawns[number][1], gamePlayerSpawns[number][2], gamePlayerSpawns[number][3]
 	spawnPlayer(player, x, y, z, math.random(0, 360), 73, 0, 0)
 	fadeCamera(player, true)
 	setCameraTarget(player, player)
@@ -373,95 +373,78 @@ function playerRegister(username, pass, player)
 	attachElements(playerCol, player, 0, 0, 0)
 	setElementData(playerCol, "parent", player)
 	setElementData(playerCol, "player", true)
-	for i, data in ipairs(playerDataTable) do
-		if data[1] == gameMedicItems["Bandage"]["name"] then
-		  setElementData(player, data[1], 2)
-		elseif data[1] == gameMedicItems["Painkiller"]["name"] then
-		  setElementData(player, data[1], 1)
-		elseif data[1] == "MAX_Slots" then
-		  setElementData(player, data[1], 8)
-		elseif data[1] == "skin" then
-		  setElementData(player, data[1], 73)
-		elseif data[1] == "blood" then
-		  setElementData(player, data[1], 12000)
-		elseif data[1] == "temperature" then
-		  setElementData(player, data[1], 37)
-		elseif data[1] == "brokenbone" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "pain" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "cold" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "infection" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "food" then
-		  setElementData(player, data[1], 100)
-		elseif data[1] == "thirst" then
-		  setElementData(player, data[1], 100)
-		elseif data[1] == "currentweapon_1" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "currentweapon_2" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "currentweapon_3" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "bandit" then
-		  setElementData(player, data[1], false)
-		elseif data[1] == "humanity" then
-		  setElementData(player, data[1], 2500)
-		elseif data[1] == "armor" then
-		  setElementData(player, data[1], false)
-		else
-		  setElementData(player, data[1], 0)
-		end
-	end
+	
 	account = getAccount(username)
 	local value = getAccounts()
 	local value = #value
 	setElementData(player, "playerID", value + 1)
 	setAccountData(account, "playerID", value + 1)
-	setElementData(player, "logedin", true)
+	setElementData(player, "isLogged", true)
 	createZombieTable(player)
 end
 addEvent("onPlayerDayZRegister", true)
-addEventHandler("onPlayerDayZRegister", getRootElement(), playerRegister)
+addEventHandler("onPlayerDayZRegister", getRootElement(), DZ_PlayerRegister)
 
 
 
--- Salva as contas quando desloga
-function saveAccounts()
+-- --------------------------------------------------------
+-- When a player logout from server, we need to save all 
+-- his data (e.g. items, status and positions).
+-- --------------------------------------------------------
+function DZ_SaveDataWhenPlayerLogout()
 	local account = getPlayerAccount(source)
-	if account then
-		for i, data in ipairs(playerDataTable) do
-			setAccountData(account, data[1], getElementData(source, data[1]))
-		end
-		local x, y, z = getElementPosition(source)
-		setAccountData(account, "last_x", x)
-		setAccountData(account, "last_y", y)
-		setAccountData(account, "last_z", z)
-		destroyElement(getElementData(source, "playerCol"))
+	if not account then
+		outputConsole("[DZ ERROR]: DZ_SaveDataWhenPlayerLogout() has not an account defined, so can not save data. Occurred on file Login_s.lua")
+		return
 	end
-	setElementData(source, "logedin", false)
+	for i, data in ipairs(playerDataTable) do
+		if not data[1] then
+			outputConsole("[DZ WARNING]: DZ_SaveDataWhenPlayerLogout() tries to set an account data, but the data itself contains an undefined value. Occurred on file Login_s.lua")
+			data[1] = "0"
+		end
+		setAccountData(account, data[1], getElementData(source, data[1]))
+	end
+	local x, y, z = getElementPosition(source)
+	DZ_SavePlayerLastPosition(account, x, y, z)
+	destroyElement(getElementData(source, "playerCol"))
+	setElementData(source, "isLogged", false)
 end
-addEventHandler("onPlayerQuit", getRootElement(), saveAccounts)
+addEventHandler("onPlayerQuit", getRootElement(), DZ_SaveDataWhenPlayerLogout)
 
 
 
--- Salva as contas quando o resource para
-function saveAccounts2()
-  for i, player in ipairs(getElementsByType("player")) do
-    local account = getPlayerAccount(player)
-    if account then
-      for i, data in ipairs(playerDataTable) do
-        setAccountData(account, data[1], getElementData(player, data[1]))
-      end
-      local x, y, z = getElementPosition(player)
-      setAccountData(account, "last_x", x)
-      setAccountData(account, "last_y", y)
-      setAccountData(account, "last_z", z)
-    end
-  end
+-- --------------------------------------------------------
+-- When the resource stops, we need to save all data of 
+-- all players. So, they will not lose anything.
+-- --------------------------------------------------------
+function DZ_SavePlayersDataWhenResourceStop()
+	for i, player in ipairs(getElementsByType("player")) do
+    	local account = getPlayerAccount(player)
+    	if not account then return end
+      	for i, data in ipairs(playerDataTable) do
+        	setAccountData(account, data[1], getElementData(player, data[1]))
+      	end
+      	local x, y, z = getElementPosition(player)
+      	DZ_SavePlayerLastPosition(account, x, y, z)
+	end
 end
-addEventHandler("onResourceStop", getRootElement(), saveAccounts2)
+addEventHandler("onResourceStop", getRootElement(), DZ_SavePlayersDataWhenResourceStop)
+
+
+
+-- --------------------------------------------------------
+-- Saves the last position of a player. So, when he came 
+-- back, will spawn on his latest place.
+-- --------------------------------------------------------
+function DZ_SavePlayerLastPosition(account, posX, posY, posZ)
+	if not account then
+		outputConsole("[DZ ERROR]: DZ_SavePlayerLastPosition() gets an account, but got "..account..". Occurred on file Login_s.lua")
+		return
+	end
+	setAccountData(account, "last_x", posX)
+	setAccountData(account, "last_y", posY)
+	setAccountData(account, "last_z", posZ)
+end
 
 
 

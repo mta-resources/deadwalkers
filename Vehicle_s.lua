@@ -1770,6 +1770,6 @@ end
 
 
 -- Bind "k" key // Binda a tecla "k"
-addEventHandler("onPlayerLogin", getRootElement(), function()
+addEventHandler("onDZ_PlayerLogin", getRootElement(), function()
 	bindKey(source, "k", "down", setEngineStateByPlayer)
 end)

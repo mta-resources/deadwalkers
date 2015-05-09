@@ -136,7 +136,7 @@ guiSetVisible(inventoryWindows, false)
 
 -- Show the inventory
 function showInventory(key, keyState)
-if getElementData(getLocalPlayer(), "logedin") and keyState == "down" then
+if getElementData(getLocalPlayer(), "isLogged") and keyState == "down" then
     guiSetVisible(inventoryWindows, not guiGetVisible(inventoryWindows))
     showCursor(not isCursorShowing())
     refreshInventory()

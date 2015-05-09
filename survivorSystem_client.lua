@@ -11,7 +11,7 @@ local screenWidth, screenHeight = guiGetScreenSize()
 			
 -- Funções para desabilitar alguns huds e itens na tela
 function playerStatsClientSite()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     toggleControl("radar", false)
     showPlayerHudComponent("clock", false)
     showPlayerHudComponent("radar", false)
@@ -434,7 +434,7 @@ end
 
 
 
-if getElementData(localPlayer,"logedin") then
+if getElementData(localPlayer,"isLogged") then
     guiSetVisible(statsWindows,true)
 else
     guiSetVisible(statsWindows,false)
@@ -453,7 +453,7 @@ addEvent("onClientPlayerDayZLogin", true)
 addEventHandler("onClientPlayerDayZLogin", root, showDebugMintorOnLogin)
 
 function refreshDebugMonitor()
-    if getElementData(getLocalPlayer(),"logedin") then
+    if getElementData(getLocalPlayer(),"isLogged") then
     local value = getElementData(getLocalPlayer(),getElementData(statsLabel["zombieskilled1"],"identifikation"))
         guiSetText(statsLabel["zombieskilled1"]," "..value)
         
@@ -757,7 +757,7 @@ addEventHandler("onClientPedDamage", getRootElement(), pedGetDamageDayZ)
 
 -- Checa os estados dos jogadores
 function checkStats()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     if getElementData(getLocalPlayer(), "bleeding") > 20 then
       setElementData(getLocalPlayer(), "blood", getElementData(getLocalPlayer(), "blood") - getElementData(getLocalPlayer(), "bleeding"))
     else
@@ -773,7 +773,7 @@ setTimer(checkStats, 3000, 0)
 
 -- Cria o sangue para os jogadores que estiverem sangrando
 function createBloodForBleedingPlayers()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local x, y, z = getElementPosition(getLocalPlayer())
     for i, player in ipairs(getElementsByType("player")) do
       local bleeding = getElementData(player, "bleeding") or 0
@@ -800,7 +800,7 @@ setTimer(createBloodForBleedingPlayers, 300, 0)
 
 -- Checa se está com o osso quebrado
 function checkBrokenbone()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     if getElementData(getLocalPlayer(), "brokenbone") then
       if not isPedDucked(getLocalPlayer()) then
       end
@@ -816,7 +816,7 @@ setTimer(checkBrokenbone, 1400, 0)
 
 -- Define dor de cabeça
 function setPain()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "pain") then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "pain") then
     local x, y, z = getElementPosition(getLocalPlayer())
     createExplosion(x, y, z + 15, 8, false, 1, false)
     local x, y, z, lx, ly, lz = getCameraMatrix()
@@ -829,7 +829,7 @@ setTimer(setPain, 1500, 0)
 
 -- Checa a temperatura
 function checkCold()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "temperature") <= 31 then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "temperature") <= 31 then
     setElementData(getLocalPlayer(), "cold", true)
   end
 end
@@ -837,7 +837,7 @@ setTimer(checkCold, 3000, 0)
 
 -- Define a temperatura
 function setCold()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "cold") then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "cold") then
     local x, y, z = getElementPosition(getLocalPlayer())
     createExplosion(x, y, z + 15, 8, false, 0.5, false)
     local x, y, z, lx, ly, lz = getCameraMatrix()
@@ -1032,7 +1032,7 @@ local screenWidth, screenHeight = guiGetScreenSize()
 function updateIcons()
 
 
-	if getElementData(getLocalPlayer(), "logedin") then
+	if getElementData(getLocalPlayer(), "isLogged") then
     if fading >= 0 and fading2 == "up" then
       fading = fading + 5
     elseif fading <= 255 and fading2 == "down" then
@@ -1394,7 +1394,7 @@ function outputSupportChat(sourcePlayer, text)
   local row = guiGridListAddRow(supportGridlist)
   if sourcePlayer == "Sandra" or sourcePlayer == "James" or sourcePlayer == "Paul" then
     name = sourcePlayer .. " (Bot)"
-  elseif not getElementData(sourcePlayer, "logedin") then
+  elseif not getElementData(sourcePlayer, "isLogged") then
     name = string.gsub(getPlayerName(sourcePlayer), "#%x%x%x%x%x%x", "") .. " (Visitante)"
   elseif getElementData(sourcePlayer, "DW-Administrador") then
 	name = string.gsub(getPlayerName(sourcePlayer), "#%x%x%x%x%x%x", "") .. " (Administrador)"
@@ -1546,7 +1546,7 @@ function scoreBoard()
   if getKeyState("tab") == false then
     return
   end
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local offset = dxGetFontHeight(1.55, "default-bold")
 	dxDrawRectangle(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, tocolor(0, 0, 0, 200))
     --dxDrawImage(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, "images/window_bg.png", 0, 0, 0, tocolor(255, 255, 255))
@@ -1635,7 +1635,7 @@ addEventHandler("checkVehicleInWaterClient", getRootElement(), checkVehicleInWat
 
 -- Atualiza o tempo de jogo
 function updatePlayTime()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local playtime = getElementData(getLocalPlayer(), "alivetime")
     setElementData(getLocalPlayer(), "alivetime", playtime + 1)
   end

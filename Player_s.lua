@@ -254,7 +254,7 @@ function DZ_SpawnPlayer(player)
   local account = getPlayerAccount(player)
   setAccountData(account, "isDead", false)
   setElementData(player, "isDead", false)
-  setElementData(player, "logedin", true)
+  setElementData(player, "isLogged", true)
   setElementData(player, "admin", getAccountData(account, "admin") or false)
   setElementData(player, "supporter", getAccountData(account, "supporter") or false)
   if getElementData(player, "armor") then
@@ -383,32 +383,82 @@ function DZ_SpawnPlayer(player)
 end
 
 
--- Check if the account is bugged
+
+-- --------------------------------------------------------
+-- When a player register or die, he get some initial datas. 
+-- E.g. default skin, status, initial items.
+-- --------------------------------------------------------
+function DZ_GivePlayerInitialData(thePlayer)
+	-- @toDo: we need to set value 0 to all the other items that are not listed on list below, like weapons 
+	--			and all the other items.
+	local playerInitialData = {
+		{"skin", 73},
+		{"blood", 12000},
+		{"temperature", 37},
+		{"brokenbone", false},
+		{"pain", false},
+		{"cold", false},
+		{"food", 100},
+		{"thirst", 100},
+		{"currentweapon_1", false},
+		{"currentweapon_2", false},
+		{"currentweapon_3", false},
+		{"bandit", false},
+		{"humanity", 2500},
+		{"MAX_Slots", 12},
+		{gameMedicItems["Bandage"]["name"], 2},
+		{gameMedicItems["Painkiller"]["name"], 1},
+	}
+	if not thePlayer then
+		outputConsole("[DW ERROR]: DZ_GivePlayerInitialData() gets a player, but got "..thePlayer..". Occurred on file Player_s.lua")
+		return
+	end
+	for i, line in ipairs(gameDatabaseIndex) do
+		setElementData(thePlayer, line[1], false)
+	end
+	outputChatBox(gameDatabaseIndex[1][1])
+	for i, line in ipairs(playerInitialData) do
+		setElementData(thePlayer, line[1], line[2])
+	end
+end
+
+
+
+-- --------------------------------------------------------
+-- Sometimes, an account gets bugged. His skin is not setted, 
+-- and the player stays in the underground. This function 
+-- check if an account is bugged and, if yes, respawn it.
+-- --------------------------------------------------------
 function DZ_RespawnBuggedPlayer()
-  for i, player in ipairs(getElementsByType("player")) do
-    local account = getPlayerAccount(player)
-    if not account then
-      return
-    end
-    if getElementData(player, "logedin") and getElementModel(player) == 0 then
-      DZ_SpawnPlayer(player)
-      outputChatBox("A conta de " .. getPlayerName(player) .. " está bugada e está sendo resetada.", getRootElement(), 22, 255, 22, true)
-    end
+	for i, player in ipairs(getElementsByType("player")) do
+    	local account = getPlayerAccount(player)
+    	if not account then return end
+    	if getElementData(player, "isLogged") and getElementModel(player) == 0 then
+      		DZ_SpawnPlayer(player)
+      		outputChatBox("A conta de " .. getPlayerName(player) .. " está bugada e está sendo resetada.", getRootElement(), 22, 255, 22, true)
+    	end
   end
 end
 setTimer(DZ_RespawnBuggedPlayer, 90000, 0)
 
 
--- Notify about explosion [2]
+
+-- --------------------------------------------------------
+-- Kill all players that were inside a vehicle when this 
+-- vehicle explodes.
+-- --------------------------------------------------------
 function DZ_KillPlayersInsideExplodedVehicle()
-  for i, player in pairs(getVehicleOccupants(source)) do
-    triggerEvent("DZ_KillPlayer", player)
-  end
+	for i, player in pairs(getVehicleOccupants(source)) do
+		triggerEvent("DZ_KillPlayer", player)
+	end
 end
 addEventHandler("onVehicleExplode", getRootElement(), DZ_KillPlayersInsideExplodedVehicle)
 
 
--- Destroy dead body // Destrói corpo morto
+
+-- --------------------------------------------------------
+-- When a player dies, destroy his body and his colshape.
+-- --------------------------------------------------------
 function DZ_DestroyDeadPlayer(ped, pedCol)
   destroyElement(ped)
   destroyElement(pedCol)

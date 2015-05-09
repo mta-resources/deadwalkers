@@ -31,6 +31,7 @@ nightAddon ()
 
 
 --Load Addons
+--[[
 function loadAddons( res )
 
 	setGameType("MTA:DayZ")
@@ -44,6 +45,7 @@ function loadAddons( res )
 end
 end
 addEventHandler ( "onResourceStart", getResourceRootElement(getThisResource()), loadAddons )
+]]
 
 --[[
 function unloadAddons ( res )
