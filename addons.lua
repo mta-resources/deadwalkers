@@ -28,21 +28,21 @@ nightAddon ()
 ]]
 
 
--- oxi mainha
+
 --Load Addons
 function loadAddons( res )
-
 	setGameType("MTA:DayZ")
-
 	for resourceKey, resourceValue in ipairs(getResources()) do
 	local name = getResourceName(resourceValue)
 	if string.find(name,"DWaddon_") or string.find(name, "DWbase_") then
 		setTimer(startResource,2000,1,resourceValue)
 	end
-
 end
 end
 addEventHandler ( "onResourceStart", getResourceRootElement(getThisResource()), loadAddons )
+
+-- This line has nothing useful, and was added just for 
+-- learning purposes (teaching how to use Git)
 
 --[[
 function unloadAddons ( res )
