@@ -1,13 +1,3 @@
-﻿
---[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script addons.lua					*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
-
 --[[
 addons = "DayZ Addons: "
 function addAddonInfo (name,description)
@@ -17,15 +7,15 @@ end
 
 --night addon
 function nightAddon1 ()
-if gameplayVariables["enablenight"] then 
+if gameplayVariables["enablenight"] then
 	addAddonInfo ("night","Night time with fading effect.")
 end
 end
 
-function nightAddon () 
+function nightAddon ()
 	setTimer(nightAddon1,10000,1)
 end
-nightAddon () 
+nightAddon ()
 ]]
 
 
@@ -44,7 +34,7 @@ end
 addEventHandler ( "onResourceStart", getResourceRootElement(getThisResource()), loadAddons )
 ]]
 
--- This line has nothing useful, and was added just for 
+-- This line has nothing useful, and was added just for
 -- learning purposes (teaching how to use Git)
 
 --[[

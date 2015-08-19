@@ -1,12 +1,3 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script animals_client.lua			*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
-
 snipertxd = engineLoadTXD ("mods/bear.txd");
 engineImportTXD (snipertxd, 12);
 sniperdff = engineLoadDFF ("mods/bear.dff", 12);
@@ -29,6 +20,6 @@ if attacker == getLocalPlayer() then
 			triggerServerEvent("createDeadAnimal",source)
 		end
 	end
-end	
+end
 end
 addEventHandler ( "onClientPedDamage",getRootElement(),animalDamage)
