@@ -57,7 +57,7 @@ playerGroupWindow["invite_member_list_name"] = 		guiGridListAddColumn( playerGro
 playerGroupWindow["invite_member_list_invite"] = 	guiCreateButton(0.2,0.775,0.6,0.15, "Convidar", true, playerGroupWindow["invite_member_list_window"] )
 
 function openPlayerGroupWindow ()
-	if not getElementData(getLocalPlayer(),"gang") == "logedin" then return end
+	if not getElementData(getLocalPlayer(),"gang") == "isLogged" then return end
 	local showing = guiGetVisible(playerGroupWindow["window"])
 	if showing == false then
 		if isSpamTimer2() then return end

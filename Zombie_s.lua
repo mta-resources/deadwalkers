@@ -1,113 +1,5 @@
-﻿--[[
-	# ------------------------------------------------------------------------- #
-	----* Items list - Translate here if you want to change item's names *-------
-	# ------------------------------------------------------------------------- #
-]]
 
-	-- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
-	
-	-- Skins
-	Skin_Survivor	= "Roupa de Sobrevivente"
-	Skin_Civilian	= "Roupa de Civil"
-	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
-	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
-	Skin_Military	= "Roupa Militar"
-	
-	-- Items
-	Item_RoadFlare		= "Sinalizador"
-	Item_WoodPile		= "Lenha"
-	Item_ScruffyBurger 	= "Comida Estragada"
-	Item_EmptyPatrol 	= "Gasolina [vazio]"
-	Item_FullPatrol		= "Gasolina [cheio]"
-	Item_WireFence		= "Cerca de Arame"
-	Item_Tent			= "Tenda"
-	Item_Tire			= "Pneu"
-	Item_Armor			= "Colete"
-	Item_CDKRose		= "CD: K-Rose"
-	
-	-- Utils
-	Item_Watch		= "Relógio"
-	Item_GPS		= "GPS"
-	Item_Map		= "Mapa"
-	Item_Toolbox	= "Ferramentas"
-	Item_BoxOfMatches	= "Caixa de Fósforo"
-	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
-	-- Database keys
-	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
-	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
-		So the name of the item must be the name in the database. ]]
-	
-
-
-
-ZombiePedSkins = {13,22,56,67,68,69,70,92,97,105,107,108,126,127,128,152,162,167,188,195,206,209,212,229,230,258,264,277,280 } --ALTERNATE SKIN LISTS FOR ZOMBIES (SHORTER LIST IS TEXTURED ZOMBIES ONLY)
+ZombiePedSkins = {13,22,56,67,68,69,70,92,97,105,107,108,126,127,128,152,162,167,188,195,206,209,212,229,230,258,264,277,280} --ALTERNATE SKIN LISTS FOR ZOMBIES (SHORTER LIST IS TEXTURED ZOMBIES ONLY)
 
 setElementData(getRootElement(),"zombiestotal",0)
 setElementData(getRootElement(),"zombiesalive",0)
@@ -116,43 +8,43 @@ createTeam("Zombies")
 itemTableZombies = {
 {Item_BoxOfMatches,328,0.4,90,5},
 {Item_WoodPile,1463,0.4,0,5},
-{Weapon_Pistol,346,1,90,0.4},
-{Weapon_Silenced,347,1,90,0.4},
+{gameWeapons["Pistol"]["name"],346,1,90,0.4},
+{gameWeapons["SilencedPistol"]["name"],347,1,90,0.4},
 {Weapon_Shotgun,349,1,90,0.4},
-{Weapon_Uzi,352,1,90,0.3},
-{Weapon_Knife,335,1,90,7},
+{gameWeapons["Uzi"]["name"],352,1,90,0.3},
+{gameWeapons["Knife"]["name"],335,1,90,7},
 {Weapon_Hatchet,339,1,90,7},
-{Item_Pizza,1582,1,0,7},
-{Item_SodaBottle,2647,1,0,7},
+{gameFoodItems["Pizza"]["name"],1582,1,0,7},
+{gameFoodItems["FullSodaCan"]["name"],2647,1,0,7},
 {Item_EmptyPatrol,1650,1,0,5},
 {Item_Roadflare,324,1,90,9},
-{Item_Milk,2856,1,0,5},
+{gameFoodItems["Milk"]["name"],2856,1,0,5},
 {"Assault Pack (ACU)",3026,0.5,0,6},
-{Item_Painkiller,2709,0.5,0,7},
-{Item_EmptySodaCan,2673,0.5,0,6},
+{gameMedicItems["Painkiller"]["name"],2709,0.5,0,7},
+{gameFoodItems["EmptySodaCan"]["name"],2673,0.5,0,6},
 {Item_ScruffyBurger,2675,0.5,0,6},
-{Weapon_Grenade,342,1,0,0.5},
-{Weapon_Desert,348,1,90,0.3},
+{gameWeapons["Grenade"]["name"],342,1,0,0.5},
+{gameWeapons["DesertEagle"]["name"],348,1,90,0.3},
 {Weapon_SawnOff,350,1,90,0.2},
-{Weapon_Spas,351,1,90,0.2},
-{Weapon_MP5,353,1,90,0.1},
+{gameWeapons["SPAZ12"]["name"],351,1,90,0.2},
+{gameWeapons["MP5"]["name"],353,1,90,0.1},
 {Item_Watch,2710,1,0,3},
-{Item_HeatPack,1576,1,0,6},
+{gameMedicItems["HeatPack"]["name"],1576,1,0,6},
 {Item_WireFence,933,0.25,0,1},
-{Weapon_Country,357,1,90,0.2},
+{gameWeapons["CountryRifle"]["name"],357,1,90,0.2},
 {"Alice Pack",3026,1,0,0.5},
 {Item_Tire,1073,1,0,1},
-{Item_Morphine,1579,1,0,2},
+{gameMedicItems["Morphine"]["name"],1579,1,0,2},
 {Skin_Civilian,1577,1,0,12},
 {Item_Map,1277,0.8,90,4},
 {Item_GPS,2976,0.15,0,1},
-{Item_PastaCan,2770,0.1,0,5},
-{Item_BeansCan,2601,1,0,5},
-{Item_Burger,2768,1,0,2},
+{gameFoodItems["PastaCan"]["name"],2770,0.1,0,5},
+{gameFoodItems["BeansCan"]["name"],2601,1,0,5},
+{gameFoodItems["Burger"]["name"],2768,1,0,2},
 {Item_Radio,2966,0.5,0,3},
-{Weapon_Crowbar,333,1,90,0.5},
-{Weapon_Baseball,336,1,90,0.5},
-{Weapon_Shovel,337,1,90,0.5},
+{gameWeapons["GolfClub"]["name"],333,1,90,0.5},
+{gameWeapons["BaseballBat"]["name"],336,1,90,0.5},
+{gameWeapons["Shovel"]["name"],337,1,90,0.5},
 }
 
 
@@ -271,7 +163,7 @@ for i,ped in ipairs(getElementsByType("ped")) do
 	end				
 end
 end
---addEventHandler("kilLDayZPlayer",getRootElement(),destroyTable)
+--addEventHandler("DZ_KillPlayer",getRootElement(),destroyTable)
 --addEventHandler("onPlayerQuit",getRootElement(),destroyTable)
 
 function destroyDeadZombie (ped,pedCol)

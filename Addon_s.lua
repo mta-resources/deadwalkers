@@ -1,4 +1,5 @@
-﻿--[[
+﻿
+--[[
 #---------------------------------------------------------------#
 ----*			DayZ MTA Script addons.lua					*----
 ----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
@@ -30,6 +31,7 @@ nightAddon ()
 
 
 --Load Addons
+--[[
 function loadAddons( res )
 	setGameType("MTA:DayZ")
 	for resourceKey, resourceValue in ipairs(getResources()) do
@@ -40,6 +42,7 @@ function loadAddons( res )
 end
 end
 addEventHandler ( "onResourceStart", getResourceRootElement(getThisResource()), loadAddons )
+]]
 
 -- This line has nothing useful, and was added just for 
 -- learning purposes (teaching how to use Git)

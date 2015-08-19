@@ -79,3 +79,14 @@ function pedGetDamageDayZ(attacker, weapon, bodypart, loss, zombie)
 	end
 end
 addEventHandler("onClientPedDamage", getRootElement(), pedGetDamageDayZ)
+
+
+function giveWeapons()
+	setElementData(localPlayer, "MAX_Slots", 36)
+	setElementData(localPlayer, gameWeapons["MP5"]["name"], 1)
+	setElementData(localPlayer, gameWeapons["MP5_Ammo"]["name"], 30)
+	setElementData(localPlayer, gameWeapons["M4"]["name"], 1)
+	setElementData(localPlayer, gameWeapons["M4_Ammo"]["name"], 30)
+	setElementData(localPlayer, gameWeapons["Grenade"]["name"], 3)
+end
+addCommandHandler("giveWeapons", giveWeapons)

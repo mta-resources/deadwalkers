@@ -1,142 +1,3 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script survivorSystem_client.lua	*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
-
-
---[[
-	# ------------------------------------------------------------------------- #
-	----* Items list - Translate here if you want to change item's names *-------
-	# ------------------------------------------------------------------------- #
-]]
-
-	-- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
-	
-	-- Skins
-	Skin_Survivor	= "Roupa de Sobrevivente"
-	Skin_Civilian	= "Roupa de Civil"
-	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
-	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
-	Skin_Military	= "Roupa Militar"
-	
-	-- Items
-	Item_RoadFlare		= "Sinalizador"
-	Item_WoodPile		= "Lenha"
-	Item_ScruffyBurger 	= "Comida Estragada"
-	Item_EmptyPatrol 	= "Gasolina [vazio]"
-	Item_FullPatrol		= "Gasolina [cheio]"
-	Item_WireFence		= "Cerca de Arame"
-	Item_Tent			= "Tenda"
-	Item_Tire			= "Pneu"
-	Item_Armor			= "Colete"
-	Item_CDKRose		= "CD: K-Rose"
-	
-	-- Utils
-	Item_Watch		= "Relógio"
-	Item_GPS		= "GPS"
-	Item_Map		= "Mapa"
-	Item_Toolbox	= "Ferramentas"
-	Item_BoxOfMatches	= "Caixa de Fósforo"
-	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
-	-- Database keys
-	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
-	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
-		So the name of the item must be the name in the database. ]]
-	
-	
-
--- Cria texto no canto da tela, logo acima da versão
---[[
-addEventHandler("onClientResourceStart", getResourceRootElement(), function()
-  dayzVersion = "Dead Walkers | chromegames.com.br"
-  versionLabel = guiCreateLabel(1, 1, 0.3, 0.3, dayzVersion, true)
-  guiSetSize(versionLabel, guiLabelGetTextExtent(versionLabel), guiLabelGetFontHeight(versionLabel), false)
-  x, y = guiGetSize(versionLabel, true)
-  guiSetPosition(versionLabel, 1 - x, 1 - y * 1.8, true)
-  guiSetAlpha(versionLabel, 0.5)
-end)
-]]
-
---[[
-addEventHandler("onClientResourceStart", getResourceRootElement(), function()
-	svText	= "Dead Walkers | Brasil & Portugal | outset-gaming.com.br |"
-	sWidth, sHeight = guiGetScreenSize()
-	svLabel = guiCreateLabel(sWidth-400, sHeight-16, 400, 25, svText, false)
-	guiSetAlpha(svLabel, 0.5)
-end)
-]]
-
 -- Dead Walkers text
 addEventHandler("onClientResourceStart", getResourceRootElement(), function()
 	svText	= "Dead Walkers | Brasil & Portugal | mta-deadwalkers.com |"
@@ -146,210 +7,11 @@ addEventHandler("onClientResourceStart", getResourceRootElement(), function()
 end)
 
 
-
--- Substitui as skins
-snipertxd = engineLoadTXD("mods/ghillie_desert.txd")
-			engineImportTXD(snipertxd, 285)
-sniperdff = engineLoadDFF("mods/ghillie_desert.dff", 285)
-			engineReplaceModel(sniperdff, 285)
-
-snipertxd = engineLoadTXD("mods/ghillie_forest.txd")
-			engineImportTXD(snipertxd, 284)
-sniperdff = engineLoadDFF("mods/ghillie_forest.dff", 284)
-			engineReplaceModel(sniperdff, 284)
-			
-snipertxd = engineLoadTXD("mods/army.txd")
-			engineImportTXD(snipertxd, 287)
-sniperdff = engineLoadDFF("mods/army.dff", 287)
-			engineReplaceModel(sniperdff, 287)
-
-snipertxd = engineLoadTXD("mods/civilian.txd")
-			engineImportTXD(snipertxd, 179)
-sniperdff = engineLoadDFF("mods/civilian.dff", 179)
-			engineReplaceModel(sniperdff, 179)
-			
-snipertxd = engineLoadTXD("mods/bandit1.txd")
-			engineImportTXD(snipertxd, 180)
-sniperdff = engineLoadDFF("mods/bandit1.dff", 180)
-			engineReplaceModel(sniperdff, 180)
-
-snipertxd = engineLoadTXD("mods/bandit2.txd")
-			engineImportTXD(snipertxd, 288)
-sniperdff = engineLoadDFF("mods/bandit2.dff", 288)
-			engineReplaceModel(sniperdff, 288)
-			
-snipertxd = engineLoadTXD("mods/standart.txd")
-			engineImportTXD(snipertxd, 73)
-sniperdff = engineLoadDFF("mods/standart.dff", 73)
-			engineReplaceModel(sniperdff, 73)
-			
-snipertxd = engineLoadTXD("mods/femalestandard.txd")
-			engineImportTXD(snipertxd, 191)
-sniperdff = engineLoadDFF("mods/femalestandard.dff", 191)
-			engineReplaceModel(sniperdff, 191)
-			
-snipertxd = engineLoadTXD("mods/hero.txd")
-			engineImportTXD(snipertxd, 210)
-sniperdff = engineLoadDFF("mods/hero.dff", 210)
-			engineReplaceModel(sniperdff, 210)
-			
-snipertxd = engineLoadTXD("mods/staff.txd")
-			engineImportTXD(snipertxd, 217)
-
-
--- Substitui os ítens		
-itemTXD =	engineLoadTXD("items/armor_clothes.txd")
-			engineImportTXD(itemTXD, 1272)
-itemDFF =	engineLoadDFF("items/armor_clothes.dff", 1272)
-			engineReplaceModel(itemDFF, 1272)
-	
-itemTXD = 	engineLoadTXD("items/army_clothes.txd")
-			engineImportTXD(itemTXD, 1247)
-itemDFF = 	engineLoadDFF("items/army_clothes.dff", 1247)
-			engineReplaceModel(itemDFF, 1247)
-			
-itemTXD = 	engineLoadTXD("items/sniper_clothes.txd")
-			engineImportTXD(itemTXD, 1213)
-itemDFF = 	engineLoadDFF("items/sniper_clothes.dff", 1213)
-			engineReplaceModel(itemDFF, 1213)
-			
-itemTXD = 	engineLoadTXD("items/civilian_clothes.txd")
-			engineImportTXD(itemTXD, 1241)
-itemDFF = 	engineLoadDFF("items/civilian_clothes.dff", 1241)
-			engineReplaceModel(itemDFF, 1241)
-			
-itemTXD = 	engineLoadTXD("items/standard_clothes.txd")
-			engineImportTXD(itemTXD, 1577)
-itemDFF = 	engineLoadDFF("items/standard_clothes.dff", 1577)
-			engineReplaceModel(itemDFF, 1577)
-			
-itemTXD = 	engineLoadTXD("items/beans_can.txd")
-			engineImportTXD(itemTXD, 2601)
-itemDFF = 	engineLoadDFF("items/beans_can.dff", 2601)
-			engineReplaceModel(itemDFF, 2601)
-			
-itemTXD = 	engineLoadTXD("items/first_aid_kit.txd")
-			engineImportTXD(itemTXD, 2891)
-itemDFF = 	engineLoadDFF("items/first_aid_kit.dff", 2891)
-			engineReplaceModel(itemDFF, 2891)
-			
-itemTXD = 	engineLoadTXD("items/gps.txd")
-			engineImportTXD(itemTXD, 2976)
-itemDFF = 	engineLoadDFF("items/gps.dff", 2976)
-			engineReplaceModel(itemDFF, 2976)
-			
-itemTXD = 	engineLoadTXD("items/heat_pack.txd")
-			engineImportTXD(itemTXD, 1576)
-itemDFF = 	engineLoadDFF("items/heat_pack.dff", 1576)
-			engineReplaceModel(itemDFF, 1576)
-			
-itemTXD = 	engineLoadTXD("items/map.txd")
-			engineImportTXD(itemTXD, 1277)
-itemDFF = 	engineLoadDFF("items/map.dff", 1277)
-			engineReplaceModel(itemDFF, 1277)
-			
-itemTXD = 	engineLoadTXD("items/pain_killers.txd")
-			engineImportTXD(itemTXD, 2709)
-itemDFF = 	engineLoadDFF("items/pain_killers.dff", 2709)
-			engineReplaceModel(itemDFF, 2709)
-			
-itemTXD = 	engineLoadTXD("items/pasta_can.txd")
-			engineImportTXD(itemTXD, 2770)
-itemDFF = 	engineLoadDFF("items/pasta_can.dff", 2770)
-			engineReplaceModel(itemDFF, 2770)
-			
-itemTXD = 	engineLoadTXD("items/pistol_ammo.txd")
-			engineImportTXD(itemTXD, 3013)
-itemDFF = 	engineLoadDFF("items/pistol_ammo.dff", 3013)
-			engineReplaceModel(itemDFF, 3013)
-			
-itemTXD = 	engineLoadTXD("items/shotgun_ammo.txd")
-			engineImportTXD(itemTXD, 2358)
-itemDFF = 	engineLoadDFF("items/shotgun_ammo.dff", 2358)
-			engineReplaceModel(itemDFF, 2358)
-			
-itemTXD = 	engineLoadTXD("items/backpack_small.txd")
-			engineImportTXD(itemTXD, 3026)
-itemDFF = 	engineLoadDFF("items/backpack_small.dff", 3026)
-			engineReplaceModel(itemDFF, 3026)
-			
-itemTXD = 	engineLoadTXD("items/smg_ammo.txd")
-			engineImportTXD(itemTXD, 2041)
-itemDFF = 	engineLoadDFF("items/smg_ammo.dff", 2041)
-			engineReplaceModel(itemDFF, 2041)
-			
-itemTXD = 	engineLoadTXD("items/sniper_ammo.txd")
-			engineImportTXD(itemTXD, 2358)
-itemDFF = 	engineLoadDFF("items/sniper_ammo.dff", 2358)
-			engineReplaceModel(itemDFF, 2358)
-			
-itemTXD = 	engineLoadTXD("items/soda_can.txd")
-			engineImportTXD(itemTXD, 2647)
-itemDFF = 	engineLoadDFF("items/soda_can.dff", 2647)
-			engineReplaceModel(itemDFF, 2647)
-			
-itemTXD = 	engineLoadTXD("items/water_bottle.txd")
-			engineImportTXD(itemTXD, 2683)
-itemDFF = 	engineLoadDFF("items/water_bottle.dff", 2683)
-			engineReplaceModel(itemDFF, 2683)
-			
-itemTXD = 	engineLoadTXD("items/assault_ammo.txd")
-			engineImportTXD(itemTXD, 1271)
-itemDFF = 	engineLoadDFF("items/assault_ammo.dff", 1271)
-			engineReplaceModel(itemDFF, 1271)
-			
-itemTXD = 	engineLoadTXD("items/backpack_alice.txd")
-			engineImportTXD(itemTXD, 1248)
-itemDFF = 	engineLoadDFF("items/backpack_alice.dff", 1248)
-			engineReplaceModel(itemDFF, 1248)
-
-itemTXD =	 engineLoadTXD("items/backpack_coyote.txd")
-			engineImportTXD(itemTXD, 1252)
-itemDFF = 	engineLoadDFF("items/backpack_coyote.dff", 1252)
-			engineReplaceModel(itemDFF, 1252)
-			
-itemTXD = 	engineLoadTXD("items/backpack_czech.txd")
-			engineImportTXD(itemTXD, 1575)
-itemDFF = 	engineLoadDFF("items/backpack_czech.dff", 1575)
-			engineReplaceModel(itemDFF, 1575)
-			
-itemTXD =	 engineLoadTXD("items/tent.txd")
-			engineImportTXD(itemTXD, 3243)
-itemDFF = 	engineLoadDFF("items/tent.dff", 3243)
-			engineReplaceModel(itemDFF, 3243)
-
-itemTXD = 	engineLoadTXD("items/watch.txd")
-			engineImportTXD(itemTXD, 2710)
-itemDFF = 	engineLoadDFF("items/watch.dff", 2710)
-			engineReplaceModel(itemDFF, 2710)
-			
-itemTXD = 	engineLoadTXD("items/wirefence.txd")
-			engineImportTXD(itemTXD, 983)
-itemDFF = 	engineLoadDFF("items/wirefence.dff", 983)
-			engineReplaceModel(itemDFF, 983)
-
-itemTXD = 	engineLoadTXD("items/wirefence_pickup.txd")
-			engineImportTXD(itemTXD, 933)
-itemDFF = 	engineLoadDFF("items/wirefence_pickup.dff", 933)
-			engineReplaceModel(itemDFF, 933)
-
-
-weaponTXD = engineLoadTXD("items/camera.txd")
-			engineImportTXD(weaponTXD, 367)
-weaponDFF = engineLoadDFF("items/camera.dff", 367)
-			engineReplaceModel(weaponDFF, 367)
-			
-weaponTXD = engineLoadTXD("items/katana.txd")
-			engineImportTXD(weaponTXD, 339)
-weaponDFF = engineLoadDFF("items/katana.dff", 339)
-			engineReplaceModel(weaponDFF, 339)
-
-
 local screenWidth, screenHeight = guiGetScreenSize()
 			
 -- Funções para desabilitar alguns huds e itens na tela
 function playerStatsClientSite()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     toggleControl("radar", false)
     showPlayerHudComponent("clock", false)
     showPlayerHudComponent("radar", false)
@@ -370,7 +32,7 @@ end
 setTimer(playerStatsClientSite, 1000, 0)
 function playerZoom(key, keyState)
   if key == "n" then
-    if getElementData(getLocalPlayer(), Item_NightVision) > 0 then
+    if getElementData(getLocalPlayer(), gameWeapons["NightVision"]["name"]) > 0 then
       if nightvision then
         nightvision = false
         setCameraGoggleEffect("normal")
@@ -386,7 +48,7 @@ function playerZoom(key, keyState)
         setFarClipDistance(1000)
       end
     end
-  elseif key == "i" and 0 < getElementData(getLocalPlayer(), Item_InfraredVision) then
+  elseif key == "i" and 0 < getElementData(getLocalPlayer(), gameWeapons["Infrared"]["name"]) then
 	
     if infaredvision then
       infaredvision = false
@@ -772,7 +434,7 @@ end
 
 
 
-if getElementData(localPlayer,"logedin") then
+if getElementData(localPlayer,"isLogged") then
     guiSetVisible(statsWindows,true)
 else
     guiSetVisible(statsWindows,false)
@@ -791,7 +453,7 @@ addEvent("onClientPlayerDayZLogin", true)
 addEventHandler("onClientPlayerDayZLogin", root, showDebugMintorOnLogin)
 
 function refreshDebugMonitor()
-    if getElementData(getLocalPlayer(),"logedin") then
+    if getElementData(getLocalPlayer(),"isLogged") then
     local value = getElementData(getLocalPlayer(),getElementData(statsLabel["zombieskilled1"],"identifikation"))
         guiSetText(statsLabel["zombieskilled1"]," "..value)
         
@@ -825,52 +487,52 @@ setTimer(refreshDebugMonitor,2000,0)
 
 -- Ítens das armas
 weaponAmmoTable = {
-  [Weapon_PistolAmmo] = {
-    {Weapon_Pistol, 22}
+  [gameWeapons["Pistol_Ammo"]["name"]] = {
+    {gameWeapons["Pistol"]["name"], 22}
   },
-  [Weapon_SilencedAmmo] = {
-    {Weapon_Silenced, 23}
+  [gameWeapons["SilencedPistol_Ammo"]["name"]] = {
+    {gameWeapons["SilencedPistol"]["name"], 23}
   },
-  [Weapon_DesertAmmo] = {
-    {Weapon_Desert, 24}
+  [gameWeapons["DesertEagle_Ammo"]["name"]] = {
+    {gameWeapons["DesertEagle"]["name"], 24}
   },
-  [Weapon_UziAmmo] = {
-    {Weapon_Uzi, 28}
+  [gameWeapons["Uzi_Ammo"]["name"]] = {
+    {gameWeapons["Uzi"]["name"], 28}
   },
-  [Weapon_MP5Ammo] = {
-    {Weapon_MP5, 29}
+  [gameWeapons["MP5_Ammo"]["name"]] = {
+    {gameWeapons["MP5"]["name"], 29}
   },
-  [Weapon_AKAmmo] = {
-    {Weapon_AK, 30}
+  [gameWeapons["AK47_Ammo"]["name"]] = {
+    {gameWeapons["AK47"]["name"], 30}
   },
-  [Weapon_M4Ammo] = {
-    {Weapon_M4, 31}
+  [gameWeapons["M4_Ammo"]["name"]] = {
+    {gameWeapons["M4"]["name"], 31}
   },
-  [Weapon_ShotgunAmmo] = {
+  [gameWeapons["Shotgun_Ammo"]["name"]] = {
     {Weapon_Shotgun, 25}
   },
-  [Weapon_SawnOffAmmo] = {
+  [gameWeapons["SawnOff_Ammo"]["name"]] = {
     {Weapon_SawnOff, 26}
   },
-  [Weapon_SpasAmmo] = {
-    {Weapon_Spas, 27}
+  [gameWeapons["SPAZ12_Ammo"]["name"]] = {
+    {gameWeapons["SPAZ12"]["name"], 27}
   },
-  [Weapon_SniperAmmo] = {
-    {Weapon_Sniper, 34}
+  [gameWeapons["Sniper_Ammo"]["name"]] = {
+    {gameWeapons["Sniper"]["name"], 34}
   },
-  [Weapon_CountryAmmo] = {
-    {Weapon_Country, 33}
+  [gameWeapons["CountryRifle_Ammo"]["name"]] = {
+    {gameWeapons["CountryRifle"]["name"], 33}
   },
   ["others"] = {
     {Weapon_Parachute, 46},
-    {Weapon_TearGas, 17},
-    {Weapon_Grenade, 16},
-    {Weapon_Knife, 4},
-    {Weapon_Katana, 8},
-    {Weapon_Binoculars, 43},
-    {Weapon_Baseball, 5},
-    {Weapon_Shovel, 6},
-    {Weapon_Crowbar, 2},
+    {gameWeapons["TearGas"]["name"], 17},
+    {gameWeapons["Grenade"]["name"], 16},
+    {gameWeapons["Knife"]["name"], 4},
+    {gameWeapons["Katana"]["name"], 8},
+    {gameWeapons["Camera"]["name"], 43},
+    {gameWeapons["BaseballBat"]["name"], 5},
+    {gameWeapons["Shovel"]["name"], 6},
+    {gameWeapons["GolfClub"]["name"], 2},
     {Item_Radio, 1}
   }
 }
@@ -882,64 +544,64 @@ function getWeaponAmmoType(weaponName)
       return weaponData[1], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_PistolAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Pistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_PistolAmmo, weaponData[2]
+      return gameWeapons["Pistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SilencedAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SilencedPistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SilencedAmmo, weaponData[2]
+      return gameWeapons["SilencedPistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_DesertAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["DesertEagle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_DesertAmmo, weaponData[2]
+      return gameWeapons["DesertEagle_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_UziAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Uzi_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_UziAmmo, weaponData[2]
+      return gameWeapons["Uzi_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_MP5Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["MP5_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_MP5Ammo, weaponData[2]
+      return gameWeapons["MP5_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_AKAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["AK47_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_AKAmmo, weaponData[2]
+      return gameWeapons["AK47_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_M4Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["M4_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_M4Ammo, weaponData[2]
+      return gameWeapons["M4_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_ShotgunAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Shotgun_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_ShotgunAmmo, weaponData[2]
+      return gameWeapons["Shotgun_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SpasAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SPAZ12_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SpasAmmo, weaponData[2]
+      return gameWeapons["SPAZ12_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SawnOffAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SawnOff_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SawnOffAmmo, weaponData[2]
+      return gameWeapons["SawnOff_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SniperAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Sniper_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SniperAmmo, weaponData[2]
+      return gameWeapons["Sniper_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_CountryAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["CountryRifle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_CountryAmmo, weaponData[2]
+      return gameWeapons["CountryRifle_Ammo"]["name"], weaponData[2]
     end
   end
 end
@@ -949,7 +611,7 @@ function getWeaponDamage(weapon)
   for i, weapon2 in ipairs(damageTable) do
     local t, weapon1 = getWeaponAmmoType(weapon2[1])
     if weapon1 == weapon then
-      if getElementData(getLocalPlayer(), "humanity") == 5000 and (weapon2[1] == Weapon_Pistol or weapon2[1] == Weapon_Silenced or weapon2[1] == Weapon_Uzi) then
+      if getElementData(getLocalPlayer(), "humanity") == 5000 and (weapon2[1] == gameWeapons["Pistol"]["name"] or weapon2[1] == gameWeapons["SilencedPistol"]["name"] or weapon2[1] == gameWeapons["Uzi"]["name"]) then
         return weapon2[2] * 0.3
       end
       return weapon2[2]
@@ -991,7 +653,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
   elseif weapon == 63 or weapon == 51 or weapon == 19 then -- explosões
     setElementData(getLocalPlayer(), "blood", 0)
     if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") == true then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot)
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot)
     end
   elseif weapon and weapon > 1 and attacker and getElementType(attacker) == "player" then
     do
@@ -1034,7 +696,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
         end
       end
       if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") then
-        triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
+        triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
         setElementData(getLocalPlayer(), "isDead", true)
       end
     end
@@ -1056,7 +718,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
       setElementData(getLocalPlayer(), "pain", true)
     end
     if getElementData(getLocalPlayer(), "blood") <= 0 and not getElementData(getLocalPlayer(), "isDead") == true then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), attacker, headshot, getWeaponNameFromID(weapon))
       setElementData(getLocalPlayer(), "isDead", true)
     end
   end
@@ -1095,14 +757,14 @@ addEventHandler("onClientPedDamage", getRootElement(), pedGetDamageDayZ)
 
 -- Checa os estados dos jogadores
 function checkStats()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     if getElementData(getLocalPlayer(), "bleeding") > 20 then
       setElementData(getLocalPlayer(), "blood", getElementData(getLocalPlayer(), "blood") - getElementData(getLocalPlayer(), "bleeding"))
     else
       setElementData(getLocalPlayer(), "bleeding", 0)
     end
     if getElementData(getLocalPlayer(), "blood") < 0 and not getElementData(getLocalPlayer(), "isDead") then
-      triggerServerEvent("kilLDayZPlayer", getLocalPlayer(), false, false)
+      triggerServerEvent("DZ_KillPlayer", getLocalPlayer(), false, false)
     end
   end
 end
@@ -1111,7 +773,7 @@ setTimer(checkStats, 3000, 0)
 
 -- Cria o sangue para os jogadores que estiverem sangrando
 function createBloodForBleedingPlayers()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local x, y, z = getElementPosition(getLocalPlayer())
     for i, player in ipairs(getElementsByType("player")) do
       local bleeding = getElementData(player, "bleeding") or 0
@@ -1138,7 +800,7 @@ setTimer(createBloodForBleedingPlayers, 300, 0)
 
 -- Checa se está com o osso quebrado
 function checkBrokenbone()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     if getElementData(getLocalPlayer(), "brokenbone") then
       if not isPedDucked(getLocalPlayer()) then
       end
@@ -1154,7 +816,7 @@ setTimer(checkBrokenbone, 1400, 0)
 
 -- Define dor de cabeça
 function setPain()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "pain") then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "pain") then
     local x, y, z = getElementPosition(getLocalPlayer())
     createExplosion(x, y, z + 15, 8, false, 1, false)
     local x, y, z, lx, ly, lz = getCameraMatrix()
@@ -1167,7 +829,7 @@ setTimer(setPain, 1500, 0)
 
 -- Checa a temperatura
 function checkCold()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "temperature") <= 31 then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "temperature") <= 31 then
     setElementData(getLocalPlayer(), "cold", true)
   end
 end
@@ -1175,7 +837,7 @@ setTimer(checkCold, 3000, 0)
 
 -- Define a temperatura
 function setCold()
-  if getElementData(getLocalPlayer(), "logedin") and getElementData(getLocalPlayer(), "cold") then
+  if getElementData(getLocalPlayer(), "isLogged") and getElementData(getLocalPlayer(), "cold") then
     local x, y, z = getElementPosition(getLocalPlayer())
     createExplosion(x, y, z + 15, 8, false, 0.5, false)
     local x, y, z, lx, ly, lz = getCameraMatrix()
@@ -1370,7 +1032,7 @@ local screenWidth, screenHeight = guiGetScreenSize()
 function updateIcons()
 
 
-	if getElementData(getLocalPlayer(), "logedin") then
+	if getElementData(getLocalPlayer(), "isLogged") then
     if fading >= 0 and fading2 == "up" then
       fading = fading + 5
     elseif fading <= 255 and fading2 == "down" then
@@ -1732,7 +1394,7 @@ function outputSupportChat(sourcePlayer, text)
   local row = guiGridListAddRow(supportGridlist)
   if sourcePlayer == "Sandra" or sourcePlayer == "James" or sourcePlayer == "Paul" then
     name = sourcePlayer .. " (Bot)"
-  elseif not getElementData(sourcePlayer, "logedin") then
+  elseif not getElementData(sourcePlayer, "isLogged") then
     name = string.gsub(getPlayerName(sourcePlayer), "#%x%x%x%x%x%x", "") .. " (Visitante)"
   elseif getElementData(sourcePlayer, "DW-Administrador") then
 	name = string.gsub(getPlayerName(sourcePlayer), "#%x%x%x%x%x%x", "") .. " (Administrador)"
@@ -1884,7 +1546,7 @@ function scoreBoard()
   if getKeyState("tab") == false then
     return
   end
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local offset = dxGetFontHeight(1.55, "default-bold")
 	dxDrawRectangle(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, tocolor(0, 0, 0, 200))
     --dxDrawImage(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, "images/window_bg.png", 0, 0, 0, tocolor(255, 255, 255))
@@ -1973,7 +1635,7 @@ addEventHandler("checkVehicleInWaterClient", getRootElement(), checkVehicleInWat
 
 -- Atualiza o tempo de jogo
 function updatePlayTime()
-  if getElementData(getLocalPlayer(), "logedin") then
+  if getElementData(getLocalPlayer(), "isLogged") then
     local playtime = getElementData(getLocalPlayer(), "alivetime")
     setElementData(getLocalPlayer(), "alivetime", playtime + 1)
   end

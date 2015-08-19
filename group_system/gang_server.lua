@@ -19,7 +19,7 @@ addEventHandler("onResourceStart", resourceRoot, function()
   end
 end
 )
-addEventHandler("onPlayerLogin", root, function(_, account)
+addEventHandler("onDZ_PlayerLogin", root, function(_, account)
   local gang = getAccountGang(getAccountName(account))
   setElementData(source, "gang", gang)
 end

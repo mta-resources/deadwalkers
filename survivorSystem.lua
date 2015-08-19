@@ -1,160 +1,44 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script survivorSystem.lua			*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
-
---[[
-	# ------------------------------------------------------------------------- #
-	----* Items list - Translate here if you want to change item's names *-------
-	# ------------------------------------------------------------------------- #
-]]
-
-	-- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
-	
-	-- Skins
-	Skin_Survivor	= "Roupa de Sobrevivente"
-	Skin_Civilian	= "Roupa de Civil"
-	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
-	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
-	Skin_Military	= "Roupa Militar"
-	
-	-- Items
-	Item_RoadFlare		= "Sinalizador"
-	Item_WoodPile		= "Lenha"
-	Item_ScruffyBurger 	= "Comida Estragada"
-	Item_EmptyPatrol 	= "Gasolina [vazio]"
-	Item_FullPatrol		= "Gasolina [cheio]"
-	Item_WireFence		= "Cerca de Arame"
-	Item_Tent			= "Tenda"
-	Item_Tire			= "Pneu"
-	Item_Armor			= "Colete"
-	Item_CDKRose		= "CD: K-Rose"
-	
-	-- Utils
-	Item_Watch		= "Relógio"
-	Item_GPS		= "GPS"
-	Item_Map		= "Mapa"
-	Item_Toolbox	= "Ferramentas"
-	Item_BoxOfMatches	= "Caixa de Fósforo"
-	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
-	-- Database keys
-	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
-	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
-		So the name of the item must be the name in the database. ]]
-	
-	
 
 local vehicleDataTableForTent = {
   {Item_WoodPile},
-  {Item_Bandage},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameMedicItems["Bandage"]["name"]},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
-  {Weapon_PistolAmmo},
-  {Weapon_SilencedAmmo},
-  {Weapon_DesertAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
+  {gameWeapons["Pistol_Ammo"]["name"]},
+  {gameWeapons["SilencedPistol_Ammo"]["name"]},
+  {gameWeapons["DesertEagle_Ammo"]["name"]},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Item_Morphine},
-  {Weapon_Katana},
-  {Item_Pizza},
-  {Item_SodaBottle},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameMedicItems["Morphine"]["name"]},
+  {gameWeapons["Katana"]["name"]},
+  {gameFoodItems["Pizza"]["name"]},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {Item_FullPatrol},
   {Item_RoadFlare},
-  {Item_Milk},
-  {Weapon_UziAmmo},
-  {Weapon_MP5Ammo},
-  {Weapon_AKAmmo},
-  {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
-  {Weapon_Desert},
+  {gameFoodItems["Milk"]["name"]},
+  {gameWeapons["Uzi_Ammo"]["name"]},
+  {gameWeapons["MP5_Ammo"]["name"]},
+  {gameWeapons["AK47_Ammo"]["name"]},
+  {gameWeapons["M4_Ammo"]["name"]},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
+  {gameWeapons["DesertEagle"]["name"]},
   {Weapon_SawnOff},
-  {Weapon_Spas},
-  {Weapon_MP5},
+  {gameWeapons["SPAZ12"]["name"]},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
-  {Weapon_Country},
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
+  {gameWeapons["CountryRifle"]["name"]},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -162,96 +46,97 @@ local vehicleDataTableForTent = {
   {Item_Tire},
   {"Motor"},
   {"Tank Parts"},
-  {Weapon_SniperAmmo},
-  {Weapon_CountryAmmo},
-  {Weapon_M4},
-  {Weapon_Sniper},
-  {Item_InfraredVision},
-  {Item_NightVision},
+  {gameWeapons["Sniper_Ammo"]["name"]},
+  {gameWeapons["CountryRifle_Ammo"]["name"]},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
+  {gameWeapons["Infrared"]["name"]},
+  {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
-  {Item_RawMeat},
-  {Item_CookedMeat},
+  {gameFoodItems["RawMeat"]["name"]},
+  {gameFoodItems["CookedMeat"]["name"]},
   {Skin_Military},
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
-  {Weapon_Binoculars},
-  {Item_EmptyWaterBottle},
-  {Item_EmptySodaCan},
+  {gameMedicItems["Painkiller"]["name"]},
+  {gameWeapons["Camera"]["name"]},
+  {gameFoodItems["EmptyWaterBottle"]["name"]},
+  {gameFoodItems["EmptySodaCan"]["name"]},
   {Item_ScruffyBurger},
-  {Weapon_ShotgunAmmo},
-  {Weapon_SawnOffAmmo},
-  {Weapon_SpasAmmo},
+  {gameWeapons["Shotgun_Ammo"]["name"]},
+  {gameWeapons["SawnOff_Ammo"]["name"]},
+  {gameWeapons["SPAZ12_Ammo"]["name"]},
   {"Assault Pack (ACU)"},
   {"Alice Pack"},
   {Item_Radio},
   {"Coyote Backpack"},
   {"Czech Backpack"},
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar}
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]}
 }
+
 weaponAmmoTable = {
-  [Weapon_PistolAmmo] = {
-    {Weapon_Pistol, 22}
+    [gameWeapons["Pistol_Ammo"]["name"]] = {
+    {gameWeapons["Pistol"]["name"], 22}
   },
-  [Weapon_SilencedAmmo] = {
-    {Weapon_Silenced, 23}
+  [gameWeapons["SilencedPistol_Ammo"]["name"]] = {
+    {gameWeapons["SilencedPistol"]["name"], 23}
   },
-  [Weapon_DesertAmmo] = {
+  [gameWeapons["DesertEagle_Ammo"]["name"]] = {
     {
-      Weapon_Desert,
+      gameWeapons["DesertEagle"]["name"],
       24
     }
   },
-  [Weapon_UziAmmo] = {
-    {Weapon_Uzi, 28}
+  [gameWeapons["Uzi_Ammo"]["name"]] = {
+    {gameWeapons["Uzi"]["name"], 28}
   },
-  [Weapon_MP5Ammo] = {
-    {Weapon_MP5, 29}
+  [gameWeapons["MP5_Ammo"]["name"]] = {
+    {gameWeapons["MP5"]["name"], 29}
   },
-  [Weapon_AKAmmo] = {
-    {Weapon_AK, 30}
+  [gameWeapons["AK47_Ammo"]["name"]] = {
+    {gameWeapons["AK47"]["name"], 30}
   },
-  [Weapon_M4Ammo] = {
-    {Weapon_M4, 31}
+  [gameWeapons["M4_Ammo"]["name"]] = {
+    {gameWeapons["M4"]["name"], 31}
   },
-  [Weapon_ShotgunAmmo] = {
+  [gameWeapons["Shotgun_Ammo"]["name"]] = {
     {
       Weapon_Shotgun,
       25
     }
   },
-  [Weapon_SawnOffAmmo] = {
+  [gameWeapons["SawnOff_Ammo"]["name"]] = {
     {
       Weapon_SawnOff,
       26
     }
   },
-  [Weapon_SpasAmmo] = {
-    {Weapon_Spas,27}
+  [gameWeapons["SPAZ12_Ammo"]["name"]] = {
+    {gameWeapons["SPAZ12"]["name"],27}
   },
-  [Weapon_SniperAmmo] = {
-    {Weapon_Sniper, 34}
+  [gameWeapons["Sniper_Ammo"]["name"]] = {
+    {gameWeapons["Sniper"]["name"], 34}
   },
-  [Weapon_CountryAmmo] = {
+  [gameWeapons["CountryRifle_Ammo"]["name"]] = {
     {
-      Weapon_Country,
+      gameWeapons["CountryRifle"]["name"],
       33
     }
   },
   ["others"] = {
     {Weapon_Parachute, 46},
-    {Weapon_TearGas, 17},
-    {Weapon_Grenade, 16},
-    {Weapon_Knife, 4},
-    {Weapon_Katana, 8},
-    {Weapon_Binoculars, 43},
-    {Weapon_Baseball, 5},
-    {Weapon_Shovel, 6},
-    {Weapon_Crowbar, 2},
+    {gameWeapons["TearGas"]["name"], 17},
+    {gameWeapons["Grenade"]["name"], 16},
+    {gameWeapons["Knife"]["name"], 4},
+    {gameWeapons["Katana"]["name"], 8},
+    {gameWeapons["Camera"]["name"], 43},
+    {gameWeapons["BaseballBat"]["name"], 5},
+    {gameWeapons["Shovel"]["name"], 6},
+    {gameWeapons["GolfClub"]["name"], 2},
     {Item_Radio, 1}
   }
 }
@@ -263,64 +148,64 @@ function getWeaponAmmoType(weaponName, notOthers)
       end
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_PistolAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Pistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_PistolAmmo, weaponData[2]
+      return gameWeapons["Pistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SilencedAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SilencedPistol_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SilencedAmmo, weaponData[2]
+      return gameWeapons["SilencedPistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_DesertAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["DesertEagle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_DesertAmmo, weaponData[2]
+      return gameWeapons["DesertEagle_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_UziAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Uzi_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_UziAmmo, weaponData[2]
+      return gameWeapons["Uzi_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_MP5Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["MP5_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_MP5Ammo, weaponData[2]
+      return gameWeapons["MP5_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_AKAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["AK47_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_AKAmmo, weaponData[2]
+      return gameWeapons["AK47_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_M4Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["M4_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_M4Ammo, weaponData[2]
+      return gameWeapons["M4_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_ShotgunAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Shotgun_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_ShotgunAmmo, weaponData[2]
+      return gameWeapons["Shotgun_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SawnOffAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SawnOff_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SawnOffAmmo, weaponData[2]
+      return gameWeapons["SawnOff_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SpasAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SPAZ12_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SpasAmmo, weaponData[2]
+      return gameWeapons["SPAZ12_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SniperAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Sniper_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SniperAmmo, weaponData[2]
+      return gameWeapons["Sniper_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_CountryAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["CountryRifle_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_CountryAmmo, weaponData[2]
+      return gameWeapons["CountryRifle_Ammo"]["name"], weaponData[2]
     end
   end
   return false
@@ -493,8 +378,8 @@ function removeAttachedOnDeath()
     elementWeaponBack[source] = false
   end
 end
-addEvent("kilLDayZPlayer", true)
-addEventHandler("kilLDayZPlayer", getRootElement(), removeAttachedOnDeath)
+addEvent("DZ_KillPlayer", true)
+addEventHandler("DZ_KillPlayer", getRootElement(), removeAttachedOnDeath)
 
 
 function weaponDelete(dataName, oldValue)
@@ -624,7 +509,7 @@ end
 
 function checkTemperature()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if getWeather() == 7 then
         value = -0.01
@@ -648,7 +533,7 @@ setTimer(checkTemperature, 60000, 0)
 
 function checkTemperature2()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if isElementInWater(player) then
         value = gameplayVariables.temperaturewater
@@ -665,7 +550,7 @@ setTimer(checkTemperature2, 10000, 0)
 
 function setHunger()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = gameplayVariables.loseHunger
       addPlayerStats(player, "food", value)
     end
@@ -676,7 +561,7 @@ setTimer(setHunger, 60000, 0)
 
 function setThirsty()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = gameplayVariables.loseThirst
       addPlayerStats(player, "thirst", value)
     end
@@ -685,7 +570,7 @@ end
 setTimer(setThirsty, 60000, 0)
 function checkThirsty()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       value = 0
       if getControlState(player, "sprint") then
         value = gameplayVariables.sprintthirst
@@ -697,7 +582,7 @@ end
 setTimer(checkThirsty, 10000, 0)
 function checkHumanity()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") and getElementData(player, "humanity") < 2500 then
+    if getElementData(player, "isLogged") and getElementData(player, "humanity") < 2500 then
       addPlayerStats(player, "humanity", 30)
       if getElementData(player, "humanity") > 2000 then
         setElementData(player, "bandit", false)
@@ -710,15 +595,15 @@ setTimer(checkHumanity, 60000, 0)
 
 function onPlayerRequestChangingStats(itemName, itemInfo, data)
   if data == "food" then
-    if itemName == Item_Burger then
+    if itemName == gameFoodItems["Burger"]["name"] then
       blood = 300
-    elseif itemName == Item_Pizza then
+    elseif itemName == gameFoodItems["Pizza"]["name"] then
       blood = 300
-    elseif itemName == Item_CookedMeat then
+    elseif itemName == gameFoodItems["CookedMeat"]["name"] then
       blood = 2000
-    elseif itemName == Item_BeansCan then
+    elseif itemName == gameFoodItems["BeansCan"]["name"] then
       blood = 200
-    elseif itemName == Item_PastaCan then
+    elseif itemName == gameFoodItems["PastaCan"]["name"] then
       blood = 200
     end
     setPedAnimation(source, "FOOD", "EAT_Burger", -1, false, false, nil, false)
@@ -729,8 +614,8 @@ function onPlayerRequestChangingStats(itemName, itemInfo, data)
     setElementData(source, itemName, getElementData(source, itemName) - 1)
     addPlayerStats(source, data, gameplayVariables.thirstrestore)
     setPedAnimation(source, "VENDING", "VEND_Drink2_P", -1, false, false, nil, false)
-    if itemName == Item_FullWaterBottle then
-      setElementData(source, Item_EmptyWaterBottle, (getElementData(source, Item_EmptyWaterBottle) or 0) + 1)
+    if itemName == gameFoodItems["FullWaterBottle"]["name"] then
+      setElementData(source, gameFoodItems["EmptyWaterBottle"]["name"], (getElementData(source, gameFoodItems["EmptyWaterBottle"]["name"]) or 0) + 1)
     end
   end
   triggerClientEvent(source, "displayClientInfo", source, "Food", shownInfos.youconsumed .. " " .. itemName, 22, 255, 0)
@@ -744,24 +629,24 @@ function onPlayerUseMedicObject(itemName)
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
   setTimer(function()
-    if itemName == Item_Bandage then
+    if itemName == gameMedicItems["Bandage"]["name"] then
       setElementData(playersource, "bleeding", 0)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_MedicKit then
+    elseif itemName == gameMedicItems["MedicKit"]["name"] then
       addPlayerStats(playersource, "blood", 7000)
       setElementData(playersource, "bleeding", 0)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_HeatPack then
+    elseif itemName == gameMedicItems["HeatPack"]["name"] then
       setElementData(playersource, "cold", false)
       setElementData(playersource, "temperature", 37)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_Painkiller then
+    elseif itemName == gameMedicItems["Painkiller"]["name"] then
       setElementData(playersource, "pain", false)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_Morphine then
+    elseif itemName == gameMedicItems["Morphine"]["name"] then
       setElementData(playersource, "brokenbone", false)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
-    elseif itemName == Item_BloodBag then
+    elseif itemName == gameMedicItems["BloodBag"]["name"] then
       addPlayerStats(playersource, "blood", 12000)
       setElementData(playersource, itemName, getElementData(playersource, itemName) - 1)
     end
@@ -776,13 +661,13 @@ function onPlayerGiveMedicObject(itemName, player)
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
   setTimer(function()
-    if itemName == Item_Bandage then
+    if itemName == gameMedicItems["Bandage"]["name"] then
       setElementData(player, "bleeding", 0)
-      setElementData(playersource, Item_Bandage, getElementData(playersource, Item_Bandage) - 1)
+      setElementData(playersource, gameMedicItems["Bandage"]["name"], getElementData(playersource, gameMedicItems["Bandage"]["name"]) - 1)
       addPlayerStats(playersource, humanity, 40)
     elseif itemName == "giveblood" then
       addPlayerStats(player, "blood", 12000)
-      setElementData(playersource, Item_BloodBag, getElementData(playersource, Item_BloodBag) - 1)
+      setElementData(playersource, gameMedicItems["BloodBag"]["name"], getElementData(playersource, gameMedicItems["BloodBag"]["name"]) - 1)
       addPlayerStats(playersource, humanity, 250)
     end
   end, 1500, 1)
@@ -852,12 +737,12 @@ addEventHandler("onPlayerChangeSkin", getRootElement(), addPlayerSkin)
 -- When player refill his water bottle // Quando jogador enche garrafa d'agua
 function onPlayerRefillWaterBottle(itemName)
   if isElementInWater(source) then
-    setElementData(source, Item_FullWaterBottle, getElementData(source, Item_FullWaterBottle) + 1)
+    setElementData(source, gameFoodItems["FullWaterBottle"]["name"], getElementData(source, gameFoodItems["FullWaterBottle"]["name"]) + 1)
     setElementData(source, itemName, getElementData(source, itemName) - 1)
     triggerClientEvent(source, "refreshInventoryManual", source)
-    triggerClientEvent(source, "displayClientInfo", source, Item_FullWaterBottle, shownInfos.filledup, 22, 255, 0)
+    triggerClientEvent(source, "displayClientInfo", source, gameFoodItems["FullWaterBottle"]["name"], shownInfos.filledup, 22, 255, 0)
   else
-    triggerClientEvent(source, "displayClientInfo", source, Item_FullWaterBottle, shownInfos.needwatersource, 255, 22, 0)
+    triggerClientEvent(source, "displayClientInfo", source, gameFoodItems["FullWaterBottle"]["name"], shownInfos.needwatersource, 255, 22, 0)
   end
 end
 addEvent("onPlayerRefillWaterBottle", true)
@@ -954,10 +839,10 @@ addEventHandler("removeTent", getRootElement(), removeTent)
 function addPlayerCookMeat()
   local playersource = source
   setPedAnimation(playersource, "BOMBER", "BOM_Plant", 2500, false, false, nil, false)
-  local meat = getElementData(playersource, Item_RawMeat)
+  local meat = getElementData(playersource, gameFoodItems["RawMeat"]["name"])
   setTimer(function()
-    setElementData(playersource, Item_RawMeat, 0)
-    setElementData(playersource, Item_CookedMeat, getElementData(playersource, Item_CookedMeat) + meat)
+    setElementData(playersource, gameFoodItems["RawMeat"]["name"], 0)
+    setElementData(playersource, gameFoodItems["CookedMeat"]["name"], getElementData(playersource, gameFoodItems["CookedMeat"]["name"]) + meat)
     triggerClientEvent(playersource, "displayClientInfo", playersource, "Fireplace", "Você cozinhou " .. meat .. " Carne Cozida.", 22, 255, 0)
   end, 5000, 1)
 end
@@ -1086,7 +971,7 @@ addEventHandler("onPlayerChat", getRootElement(), blockChatMessage)
 
 function checkBandit()
   for i, player in ipairs(getElementsByType("player")) do
-    if getElementData(player, "logedin") then
+    if getElementData(player, "isLogged") then
       local current = getElementData(player, "skin")
       if getElementData(player, "bandit") then
         if current == 179 or current == 287 then
@@ -1702,7 +1587,7 @@ function bindTheKeys()
   bindKey(source, ".", "down", funcBindSit)
   bindKey(source, "l", "down", funcBindLie)
 end
-addEventHandler("onPlayerLogin", getRootElement(), bindTheKeys)
+addEventHandler("onDZ_PlayerLogin", getRootElement(), bindTheKeys)
 
 function bindTheKeys2()
 	for i, player in ipairs(getElementsByType("player")) do

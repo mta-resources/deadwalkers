@@ -1,193 +1,76 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script inventory.lua				*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
 
---[[
-	# ------------------------------------------------------------------------- #
-	----* Items list - Translate here if you want to change item's names *-------
-	# ------------------------------------------------------------------------- #
-]]
-
-	-- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
-	
-	-- Skins
-	Skin_Survivor	= "Roupa de Sobrevivente"
-	Skin_Civilian	= "Roupa de Civil"
-	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
-	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
-	Skin_Military	= "Roupa Militar"
-	
-	-- Items
-	Item_RoadFlare		= "Sinalizador"
-	Item_WoodPile		= "Lenha"
-	Item_ScruffyBurger 	= "Comida Estragada"
-	Item_EmptyPatrol 	= "Gasolina [vazio]"
-	Item_FullPatrol		= "Gasolina [cheio]"
-	Item_WireFence		= "Cerca de Arame"
-	Item_Tent			= "Tenda"
-	Item_Tire			= "Pneu"
-	Item_Armor			= "Colete"
-	Item_CDKRose		= "CD: K-Rose"
-	
-	-- Utils
-	Item_Watch		= "Relógio"
-	Item_GPS		= "GPS"
-	Item_Map		= "Mapa"
-	Item_Toolbox	= "Ferramentas"
-	Item_BoxOfMatches	= "Caixa de Fósforo"
-	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
-	-- Database keys
-	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
-	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
-		So the name of the item must be the name in the database. ]]
-	
-	
-	
-	
 inventoryItems = {
 ["Weapons"] = {
 ["Primary Weapon"] = {
-	{Weapon_M4,3},
-	{Weapon_Sniper,3},
+	{gameWeapons["M4"]["name"],3},
+	{gameWeapons["Sniper"]["name"],3},
 	{Weapon_Shotgun,3},
-	{Weapon_Spas,3},
+	{gameWeapons["SPAZ12"]["name"],3},
 	{Weapon_SawnOff,3},
-	{Weapon_AK,3},
-	{Weapon_Country,3},
+	{gameWeapons["AK47"]["name"],3},
+	{gameWeapons["CountryRifle"]["name"],3},
 },
 ["Secondary Weapon"] = {
-	{Weapon_Pistol,2},
-	{Weapon_Silenced,2},
-	{Weapon_Uzi,2},
-	{Weapon_MP5,3},
-	{Weapon_Desert,2},
-	{Weapon_Knife,1},
-	{Weapon_Katana, 2},
-	{Weapon_Baseball,2},
-	{Weapon_Shovel, 2},
-	{Weapon_Crowbar, 2},
+	{gameWeapons["Pistol"]["name"],2},
+	{gameWeapons["SilencedPistol"]["name"],2},
+	{gameWeapons["Uzi"]["name"],2},
+	{gameWeapons["MP5"]["name"],3},
+	{gameWeapons["DesertEagle"]["name"],2},
+	{gameWeapons["Knife"]["name"],1},
+	{gameWeapons["Katana"]["name"], 2},
+	{gameWeapons["BaseballBat"]["name"],2},
+	{gameWeapons["Shovel"]["name"], 2},
+	{gameWeapons["GolfClub"]["name"], 2},
 },
 ["Specially Weapon"] = {
 	{Weapon_Parachute, 1},
-	{Weapon_TearGas, 1},
-	{Weapon_Grenade, 1},
-	{Weapon_Binoculars, 1},
+	{gameWeapons["TearGas"]["name"], 1},
+	{gameWeapons["Grenade"]["name"], 1},
+	{gameWeapons["Camera"]["name"], 1},
 }
 },
 ["Ammo"] = {
-	{Weapon_PistolAmmo,0.085},
-	{Weapon_SilencedAmmo,0.085},
-	{Weapon_DesertAmmo,0.085},
-	{Weapon_UziAmmo,0.025},
-	{Weapon_MP5Ammo,0.025},
-	{Weapon_AKAmmo,0.035},
-	{Weapon_M4Ammo,0.035},
-	{Weapon_ShotgunAmmo,0.067},
-	{Weapon_SawnOffAmmo,0.067},
-	{Weapon_SpasAmmo,0.067},
-	{Weapon_SniperAmmo, 0.1},
-	{Weapon_CountryAmmo,0.1},
+	{gameWeapons["Pistol_Ammo"]["name"],0.085},
+	{gameWeapons["SilencedPistol_Ammo"]["name"],0.085},
+	{gameWeapons["DesertEagle_Ammo"]["name"],0.085},
+	{gameWeapons["Uzi_Ammo"]["name"],0.025},
+	{gameWeapons["MP5_Ammo"]["name"],0.025},
+	{gameWeapons["AK47_Ammo"]["name"],0.035},
+	{gameWeapons["M4_Ammo"]["name"],0.035},
+	{gameWeapons["Shotgun_Ammo"]["name"],0.067},
+	{gameWeapons["SawnOff_Ammo"]["name"],0.067},
+	{gameWeapons["SPAZ12_Ammo"]["name"],0.067},
+	{gameWeapons["Sniper_Ammo"]["name"], 0.1},
+	{gameWeapons["CountryRifle_Ammo"]["name"],0.1},
 },
 ["Food"] = {
-	{Item_FullWaterBottle,1},
-	{Item_PastaCan, 1},
-	{Item_BeansCan, 1},
-	{Item_Burger, 1},
-	{Item_Pizza, 1},
-	{Item_SodaBottle,1 },
-	{Item_Milk, 1},
-	{Item_CookedMeat,1},
+	{gameFoodItems["FullWaterBottle"]["name"],1},
+	{gameFoodItems["PastaCan"]["name"], 1},
+	{gameFoodItems["BeansCan"]["name"], 1},
+	{gameFoodItems["Burger"]["name"], 1},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullSodaCan"]["name"],1 },
+	{gameFoodItems["Milk"]["name"], 1},
+	{gameFoodItems["CookedMeat"]["name"],1},
 },
 ["Items"] = {
 	{Item_WoodPile, 2},
-	{Item_Bandage,1,"Usar curativo"},
+	{gameMedicItems["Bandage"]["name"],1,"Usar curativo"},
 	{Item_RoadFlare,1,"Acender"},
 	{Item_EmptyPatrol,2},
 	{Item_FullPatrol,2},
-	{Item_MedicKit,2,"Usar"},
-	{Item_HeatPack,1,"Usar"},
-	{Item_Painkiller,1,"Usar"},
-	{Item_Morphine,1,"Usar"},
-	{Item_BloodBag,1,"Usar"},
+	{gameMedicItems["MedicKit"]["name"],2,"Usar"},
+	{gameMedicItems["HeatPack"]["name"],1,"Usar"},
+	{gameMedicItems["Painkiller"]["name"],1,"Usar"},
+	{gameMedicItems["Morphine"]["name"],1,"Usar"},
+	{gameMedicItems["BloodBag"]["name"],1,"Usar"},
 	{Item_WireFence,1,"Colocar cerca"},
-	{Item_RawMeat, 1},
+	{gameFoodItems["RawMeat"]["name"], 1},
 	{Item_Tire, 2},
 	{"Motor", 5},
 	{Item_Tent,3,"Montar tenda"},
-	{Item_EmptyWaterBottle,1,"Encher garrafa"},
-	{Item_EmptySodaCan,1},
+	{gameFoodItems["EmptyWaterBottle"]["name"],1,"Encher garrafa"},
+	{gameFoodItems["EmptySodaCan"]["name"],1},
 	{Item_ScruffyBurger,1},
 	{Skin_Military,1,"Usar Skin"},
 	{Skin_Civilian,1,"Usar Skin"},
@@ -202,8 +85,8 @@ inventoryItems = {
 	{"Coyote Backpack",0},
 },
 ["Toolbelt"] = {
-	{Item_NightVision, 1},
-	{Item_InfraredVision,1},
+	{gameWeapons["NightVision"]["name"], 1},
+	{gameWeapons["Infrared"]["name"],1},
 	{Item_Map,1},
 	{Item_BoxOfMatches,1,"Fazer fogueira"},
 	{Item_Watch,1},
@@ -253,7 +136,7 @@ guiSetVisible(inventoryWindows, false)
 
 -- Show the inventory
 function showInventory(key, keyState)
-if getElementData(getLocalPlayer(), "logedin") and keyState == "down" then
+if getElementData(getLocalPlayer(), "isLogged") and keyState == "down" then
     guiSetVisible(inventoryWindows, not guiGetVisible(inventoryWindows))
     showCursor(not isCursorShowing())
     refreshInventory()
@@ -722,33 +605,33 @@ addEventHandler ( "onClientGUIDoubleClick", buttonItems["inventory"], onPlayerMo
 
 function onPlayerMoveItemOutOFInventory(itemName, loot)
   local itemPlus = 1
-  if itemName == Weapon_PistolAmmo then
+  if itemName == gameWeapons["Pistol_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SilencedAmmo then
+  elseif itemName == gameWeapons["SilencedPistol_Ammo"]["name"] then
     itemPlus = 15
-  elseif itemName == Weapon_DesertAmmo then
+  elseif itemName == gameWeapons["DesertEagle_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_UziAmmo then
+  elseif itemName == gameWeapons["Uzi_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_MP5Ammo then
+  elseif itemName == gameWeapons["MP5_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_AKAmmo then
+  elseif itemName == gameWeapons["AK47_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_M4Ammo then
+  elseif itemName == gameWeapons["M4_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_ShotgunAmmo then
+  elseif itemName == gameWeapons["Shotgun_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SawnOffAmmo then
+  elseif itemName == gameWeapons["SawnOff_Ammo"]["name"] then
     itemPlus = 6
-  elseif itemName == Weapon_SpasAmmo then
+  elseif itemName == gameWeapons["SPAZ12_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SniperAmmo then
+  elseif itemName == gameWeapons["Sniper_Ammo"]["name"] then
     itemPlus = 5
-  elseif itemName == Weapon_CountryAmmo then
+  elseif itemName == gameWeapons["CountryRifle_Ammo"]["name"] then
     itemPlus = 10
   elseif itemName == Item_Tire then
     itemPlus = 1
-  elseif itemName == Weapon_M4 or itemName == Weapon_AK or itemName == Weapon_Sniper or itemName == Weapon_Shotgun or itemName == Weapon_Spas or itemName == Weapon_SawnOff or itemName == Weapon_Country then
+  elseif itemName == gameWeapons["M4"]["name"] or itemName == gameWeapons["AK47"]["name"] or itemName == gameWeapons["Sniper"]["name"] or itemName == Weapon_Shotgun or itemName == gameWeapons["SPAZ12"]["name"] or itemName == Weapon_SawnOff or itemName == gameWeapons["CountryRifle"]["name"] then
     triggerServerEvent("removeBackWeaponOnDrop", getLocalPlayer())
   end
   
@@ -849,29 +732,29 @@ addEventHandler ( "onClientGUIDoubleClick", buttonItems["loot"], onPlayerMoveIte
 
 function onPlayerMoveItemInInventory(itemName, loot)
   local itemPlus = 1
-  if itemName == Weapon_PistolAmmo then
+  if itemName == gameWeapons["Pistol_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SilencedAmmo then
+  elseif itemName == gameWeapons["SilencedPistol_Ammo"]["name"] then
     itemPlus = 15
-  elseif itemName == Weapon_DesertAmmo then
+  elseif itemName == gameWeapons["DesertEagle_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_UziAmmo then
+  elseif itemName == gameWeapons["Uzi_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_MP5Ammo then
+  elseif itemName == gameWeapons["MP5_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_AKAmmo then
+  elseif itemName == gameWeapons["AK47_Ammo"]["name"] then
     itemPlus = 30
-  elseif itemName == Weapon_M4Ammo then
+  elseif itemName == gameWeapons["M4_Ammo"]["name"] then
     itemPlus = 20
-  elseif itemName == Weapon_ShotgunAmmo then
+  elseif itemName == gameWeapons["Shotgun_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SawnOffAmmo then
+  elseif itemName == gameWeapons["SawnOff_Ammo"]["name"] then
     itemPlus = 2
-  elseif itemName == Weapon_SpasAmmo then
+  elseif itemName == gameWeapons["SPAZ12_Ammo"]["name"] then
     itemPlus = 7
-  elseif itemName == Weapon_SniperAmmo then
+  elseif itemName == gameWeapons["Sniper_Ammo"]["name"] then
     itemPlus = 5
-  elseif itemName == Weapon_CountryAmmo then
+  elseif itemName == gameWeapons["CountryRifle_Ammo"]["name"] then
     itemPlus = 10
 
   elseif itemName == "Assault Pack (ACU)" then
@@ -970,22 +853,22 @@ function onPlayerPressRightKeyInInventory()
     if itemName == Item_BoxOfMatches and getElementData(getLocalPlayer(), Item_WoodPile) == 0 then
       return
     end
-    if itemName == Item_Bandage and getElementData(getLocalPlayer(), "bleeding") == 0 then
+    if itemName == gameMedicItems["Bandage"]["name"] and getElementData(getLocalPlayer(), "bleeding") == 0 then
       return
     end
-    if itemName == Item_MedicKit and getElementData(getLocalPlayer(), "blood") > 10500 then
+    if itemName == gameMedicItems["MedicKit"]["name"] and getElementData(getLocalPlayer(), "blood") > 10500 then
       return
     end
-    if itemName == Item_HeatPack and getElementData(getLocalPlayer(), "temperature") > 35 then
+    if itemName == gameMedicItems["HeatPack"]["name"] and getElementData(getLocalPlayer(), "temperature") > 35 then
       return
     end
-    if itemName == Item_Painkiller and not getElementData(getLocalPlayer(), "pain") then
+    if itemName == gameMedicItems["Painkiller"]["name"] and not getElementData(getLocalPlayer(), "pain") then
       return
     end
-    if itemName == Item_Morphine and not getElementData(getLocalPlayer(), "brokenbone") then
+    if itemName == gameMedicItems["Morphine"]["name"] and not getElementData(getLocalPlayer(), "brokenbone") then
       return
     end
-    if itemName == Item_BloodBag then
+    if itemName == gameMedicItems["BloodBag"]["name"] then
       return
     end
     showRightClickInventoryMenu(itemName, itemInfo)
@@ -1017,7 +900,7 @@ function getInventoryInfosForRightClickMenu(itemName)
   end
   for i, itemInfo in ipairs(inventoryItems.Food) do
     if itemName == itemInfo[1] then
-      if itemInfo[1] == Item_FullWaterBottle or itemInfo[1] == Item_Milk or itemInfo[1] == Item_SodaBottle then
+      if itemInfo[1] == gameFoodItems["FullWaterBottle"]["name"] or itemInfo[1] == gameFoodItems["Milk"]["name"] or itemInfo[1] == gameFoodItems["FullSodaCan"]["name"] then
         info = "Beber"
       else
         info = "Comer"
@@ -1082,7 +965,7 @@ function playerUseItem(itemName, itemInfo)
     triggerServerEvent("onPlayerRequestChangingStats", getLocalPlayer(), itemName, itemInfo, "food")
   elseif itemInfo == "Usar Skin" then
     triggerServerEvent("onPlayerChangeSkin", getLocalPlayer(), itemName)
-  elseif itemName == Item_EmptyWaterBottle then
+  elseif itemName == gameFoodItems["EmptyWaterBottle"]["name"] then
     triggerServerEvent("onPlayerRefillWaterBottle", getLocalPlayer(), itemName)
   elseif itemName == Item_Tent then
     triggerServerEvent("onPlayerPitchATent", getLocalPlayer(), itemName)
@@ -1094,7 +977,7 @@ function playerUseItem(itemName, itemInfo)
     triggerServerEvent("onPlayerMakeAFire", getLocalPlayer(), itemName)
   elseif itemInfo == "Usar" then
     triggerServerEvent("onPlayerUseMedicObject", getLocalPlayer(), itemName)
-  elseif itemName == Item_Bandage then
+  elseif itemName == gameMedicItems["Bandage"]["name"] then
     triggerServerEvent("onPlayerUseMedicObject", getLocalPlayer(), itemName)
   elseif itemInfo == "Usar Equipamento" then
     triggerServerEvent("onPlayerChangeView", getLocalPlayer(), itemName)
@@ -1113,19 +996,19 @@ end
 
 
 weaponAmmoTable = {
-[Weapon_PistolAmmo] = {{Weapon_Pistol, 22}},
-[Weapon_SilencedAmmo] = {{Weapon_Silenced, 23}},
-[Weapon_DesertAmmo] = {{Weapon_Desert, 24}},
-[Weapon_UziAmmo] = {{Weapon_Uzi, 28}},
-[Weapon_MP5Ammo] = {{Weapon_MP5, 29}},
-[Weapon_AKAmmo] = {{Weapon_AK, 30}},
-[Weapon_M4Ammo] = {{Weapon_M4, 31}},
-[Weapon_ShotgunAmmo] = {{Weapon_Shotgun, 25}},
-[Weapon_SawnOffAmmo] = {{Weapon_SawnOff, 26}},
-[Weapon_SpasAmmo] = {{Weapon_Spas, 27}},
-[Weapon_SniperAmmo] = {{Weapon_Sniper, 34}},
-[Weapon_CountryAmmo] = {{Weapon_Country, 33}},
-["others"] = {{Weapon_Parachute, 46},{Weapon_TearGas, 17},{Weapon_Grenade, 16},{Weapon_Knife, 4},{Weapon_Katana, 8},{Weapon_Binoculars, 43},{Weapon_Baseball, 5},{Weapon_Shovel, 6},{Weapon_Crowbar, 2}}
+[gameWeapons["Pistol_Ammo"]["name"]] = {{gameWeapons["Pistol"]["name"], 22}},
+[gameWeapons["SilencedPistol_Ammo"]["name"]] = {{gameWeapons["SilencedPistol"]["name"], 23}},
+[gameWeapons["DesertEagle_Ammo"]["name"]] = {{gameWeapons["DesertEagle"]["name"], 24}},
+[gameWeapons["Uzi_Ammo"]["name"]] = {{gameWeapons["Uzi"]["name"], 28}},
+[gameWeapons["MP5_Ammo"]["name"]] = {{gameWeapons["MP5"]["name"], 29}},
+[gameWeapons["AK47_Ammo"]["name"]] = {{gameWeapons["AK47"]["name"], 30}},
+[gameWeapons["M4_Ammo"]["name"]] = {{gameWeapons["M4"]["name"], 31}},
+[gameWeapons["Shotgun_Ammo"]["name"]] = {{Weapon_Shotgun, 25}},
+[gameWeapons["SawnOff_Ammo"]["name"]] = {{Weapon_SawnOff, 26}},
+[gameWeapons["SPAZ12_Ammo"]["name"]] = {{gameWeapons["SPAZ12"]["name"], 27}},
+[gameWeapons["Sniper_Ammo"]["name"]] = {{gameWeapons["Sniper"]["name"], 34}},
+[gameWeapons["CountryRifle_Ammo"]["name"]] = {{gameWeapons["CountryRifle"]["name"], 33}},
+["others"] = {{Weapon_Parachute, 46},{gameWeapons["TearGas"]["name"], 17},{gameWeapons["Grenade"]["name"], 16},{gameWeapons["Knife"]["name"], 4},{gameWeapons["Katana"]["name"], 8},{gameWeapons["Camera"]["name"], 43},{gameWeapons["BaseballBat"]["name"], 5},{gameWeapons["Shovel"]["name"], 6},{gameWeapons["GolfClub"]["name"], 2}}
 }
 
 function getWeaponAmmoType2(weaponName)
@@ -1134,64 +1017,64 @@ function getWeaponAmmoType2(weaponName)
       return weaponData[1], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_PistolAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Pistol_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_PistolAmmo, weaponData[2]
+      return gameWeapons["Pistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SilencedAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SilencedPistol_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_SilencedAmmo, weaponData[2]
+      return gameWeapons["SilencedPistol_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_DesertAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["DesertEagle_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_DesertAmmo, weaponData[2]
+      return gameWeapons["DesertEagle_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_UziAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Uzi_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_UziAmmo, weaponData[2]
+      return gameWeapons["Uzi_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_MP5Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["MP5_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_MP5Ammo, weaponData[2]
+      return gameWeapons["MP5_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_AKAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["AK47_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_AKAmmo, weaponData[2]
+      return gameWeapons["AK47_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_M4Ammo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["M4_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_M4Ammo, weaponData[2]
+      return gameWeapons["M4_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_ShotgunAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Shotgun_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_ShotgunAmmo, weaponData[2]
+      return gameWeapons["Shotgun_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SpasAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SPAZ12_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_SpasAmmo, weaponData[2]
+      return gameWeapons["SPAZ12_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SawnOffAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["SawnOff_Ammo"]["name"]]) do
     if weaponName == weaponData[1] then
-      return Weapon_SawnOffAmmo, weaponData[2]
+      return gameWeapons["SawnOff_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_SniperAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["Sniper_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_SniperAmmo, weaponData[2]
+      return gameWeapons["Sniper_Ammo"]["name"], weaponData[2]
     end
   end
-  for i, weaponData in ipairs(weaponAmmoTable[Weapon_CountryAmmo]) do
+  for i, weaponData in ipairs(weaponAmmoTable[gameWeapons["CountryRifle_Ammo"]["name"]]) do
     if weaponName == weaponData[2] then
-      return Weapon_CountryAmmo, weaponData[2]
+      return gameWeapons["CountryRifle_Ammo"]["name"], weaponData[2]
     end
   end
 end

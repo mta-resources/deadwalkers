@@ -1,182 +1,24 @@
-﻿--[[
-#---------------------------------------------------------------#
-----*			DayZ MTA Script spawn.lua					*----
-----* Núcleo: Marwin W., Germany, Lower Saxony, Otterndorf	*----
-----* Tradutor/Desenvolvedor: Stanley Sathler				*----
-----*														*----
-#---------------------------------------------------------------#
-]]
-
---[[
-	# ------------------------------------------------------------------------- #
-	----* Items list - Translate here if you want to change item's names *-------
-	# ------------------------------------------------------------------------- #
-]]
-
-	-- Primary Weapons
-	Weapon_Shotgun 		= "Escopeta"
-	Weapon_ShotgunAmmo 	= "Munição p/ Escopeta"
-	Weapon_SawnOff 		= "Sawn-Off"
-	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
-	Weapon_Spas			= "SPAS-12"
-	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
-	Weapon_M4 		= "M16A2"
-	Weapon_M4Ammo	= "Munição p/ M16A2"
-	Weapon_AK 		= "AK-47"
-	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
-	Weapon_Sniper 		= "Sniper"
-	Weapon_SniperAmmo 	= "Munição p/ Sniper"
-	Weapon_Country 		= "Country Rifle"
-	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
-	-- Secondary Weapons
-	Weapon_Pistol		= "Pistola"
-	Weapon_PistolAmmo 	= "Munição p/ Pistola"
-	Weapon_Silenced 	= "Pistola Silenciosa"
-	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
-	Weapon_Desert		= "Desert Eagle"
-	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
-	Weapon_Uzi		= "Micro-Uzi"
-	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
-	Weapon_MP5		= "MP5"
-	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
-	Weapon_Knife	= "Faca"
-	Weapon_Katana	= "Machado"
-	Weapon_Baseball = "Taco de Beisebol"
-	Weapon_Crowbar	= "Pé-de-Cabra"
-	Weapon_Shovel	= "Pá"
-	
-	-- Special Weapons
-	Weapon_Binoculars 	= "Binóculos"
-	Weapon_Grenade		= "Granada"
-	Weapon_TearGas		= "Gás Lacrimogêneo"
-	Weapon_Parachute	= "Paraquedas"
-	
-	-- Food
-	Item_Burger 	= "Hambúrguer"
-	Item_Pizza		= "Pizza"
-	Item_RawMeat	= "Carne Crua"
-	Item_CookedMeat = "Carne Cozida"
-	Item_PastaCan	= "Comida Enlatada"
-	Item_BeansCan	= "Feijão Enlatado"
-	
-	Item_FullWaterBottle 	= "Garrafa D'água"
-	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
-	Item_SodaBottle 		= "Lata de Suco"
-	Item_EmptySodaCan		= "Lata de Suco [vazia]"
-	Item_Milk				= "Leite"
-	
-	-- Medics
-	Item_MedicKit	= "Kit Médico"
-	Item_Bandage	= "Curativo"
-	Item_BloodBag	= "Bolsa de Sangue"
-	Item_HeatPack	= "Bolsa c/ Água Quente"
-	Item_Morphine	= "Morfina"
-	Item_Painkiller = "Analgésico"
-	
-	-- Skins
-	Skin_Survivor	= "Roupa de Sobrevivente"
-	Skin_Civilian	= "Roupa de Civil"
-	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
-	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
-	Skin_Military	= "Roupa Militar"
-	
-	-- Items
-	Item_RoadFlare		= "Sinalizador"
-	Item_WoodPile		= "Lenha"
-	Item_ScruffyBurger 	= "Comida Estragada"
-	Item_EmptyPatrol 	= "Gasolina [vazio]"
-	Item_FullPatrol		= "Gasolina [cheio]"
-	Item_WireFence		= "Cerca de Arame"
-	Item_Tent			= "Tenda"
-	Item_Tire			= "Pneu"
-	Item_Armor			= "Colete"
-	Item_CDKRose		= "CD: K-Rose"
-	
-	-- Utils
-	Item_Watch		= "Relógio"
-	Item_GPS		= "GPS"
-	Item_Map		= "Mapa"
-	Item_Toolbox	= "Ferramentas"
-	Item_BoxOfMatches	= "Caixa de Fósforo"
-	Item_Radio		= "Rádio"
-	Item_NightVision	= "Visão Noturna"
-	Item_InfraredVision = "Visão de Calor"
-	
-	-- Database keys
-	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
-	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
-		So the name of the item must be the name in the database. ]]
-	
-	
-
-local spawnPositions = {
-  {
-    -278.6669921875,
-    -2882.1572265625,
-    32.104232788086
-  },
-  {
-    -958.5595703125,
-    -2887.9912109375,
-    64.82421875
-  },
-  {
-    -1816.9375,
-    -2748.18359375,
-    1.7327127456665
-  },
-  {
-    -2816.166015625,
-    -2439.0546875,
-    2.4004096984863
-  },
-  {
-    -2941.5673828125,
-    -1206.2373046875,
-    2.7848854064941
-  },
-  {
-    -2911.51171875,
-    -895.22265625,
-    2.4013109207153
-  },
-  {
-    -2185.6669921875,
-    2957.380859375,
-    11.474840164185
-  },
-  {
-    272.2265625,
-    2928.505859375,
-    1.3713493347168
-  },
-  {
-    2803.943359375,
-    595.9365234375,
-    7.7612648010254
-  },
-  {
-    2883.7509765625,
-    -178.4658203125,
-    3.2714653015137
-  },
-  {
-    -233.46484375,
-    -1735.8173828125,
-    1.5520644187927
-  },
-  {
-    -1056.8720703125,
-    2939.068359375,
-    42.311294555664
-  }
+-- --------------------------------------------------------
+-- Here we put all the places where a player can spawn on.
+-- We call these places as "Spawn Points". You can edit, 
+-- add or remove.
+-- --------------------------------------------------------
+gamePlayerSpawns = {
+	{-278.6669921875, -2882.1572265625, 32.104232788086},
+	{-958.5595703125, -2887.9912109375, 64.82421875},
+	{-1816.9375, -2748.18359375, 1.7327127456665},
+	{-2816.166015625, -2439.0546875, 2.4004096984863},
+	{-2941.5673828125, -1206.2373046875, 2.7848854064941},
+	{-2911.51171875, -895.22265625, 2.4013109207153},
+	{-2185.6669921875, 2957.380859375, 11.474840164185},
+	{272.2265625, 2928.505859375, 1.3713493347168},
+	{2803.943359375, 595.9365234375, 7.7612648010254},
+	{2883.7509765625, -178.4658203125, 3.2714653015137},
+	{-233.46484375, -1735.8173828125, 1.5520644187927},
+	{-1056.8720703125, 2939.068359375, 42.311294555664},
 }
+
+
 local playerDataTable = {
   {"alivetime"},
   {"skin"},
@@ -200,45 +42,45 @@ local playerDataTable = {
   {"murders"},
   {"banditskilled"},
   {Item_WoodPile},
-  {Item_Bandage},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameMedicItems["Bandage"]["name"]},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
-  {Weapon_PistolAmmo},
-  {Weapon_SilencedAmmo},
-  {Weapon_DesertAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
+  {gameWeapons["Pistol_Ammo"]["name"]},
+  {gameWeapons["SilencedPistol_Ammo"]["name"]},
+  {gameWeapons["DesertEagle_Ammo"]["name"]},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Weapon_Katana},
-  {Item_Pizza},
-  {Item_Morphine},
-  {Item_SodaBottle},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameWeapons["Katana"]["name"]},
+  {gameFoodItems["Pizza"]["name"]},
+  {gameMedicItems["Morphine"]["name"]},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {Item_FullPatrol},
   {Item_RoadFlare},
-  {Item_Milk},
-  {Weapon_UziAmmo},
-  {Weapon_MP5Ammo},
-  {Weapon_AKAmmo},
-  {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
-  {Weapon_Desert},
+  {gameFoodItems["Milk"]["name"]},
+  {gameWeapons["Uzi_Ammo"]["name"]},
+  {gameWeapons["MP5_Ammo"]["name"]},
+  {gameWeapons["AK47_Ammo"]["name"]},
+  {gameWeapons["M4_Ammo"]["name"]},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
+  {gameWeapons["DesertEagle"]["name"]},
   {Weapon_SawnOff},
-  {Weapon_Spas},
-  {Weapon_MP5},
+  {gameWeapons["SPAZ12"]["name"]},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
-  {Weapon_Country},
-  {Weapon_Uzi},
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
+  {gameWeapons["CountryRifle"]["name"]},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -246,32 +88,32 @@ local playerDataTable = {
   {Item_Tire},
   {"Motor"},
   {"Tank Parts"},
-  {Weapon_SniperAmmo},
-  {Weapon_CountryAmmo},
-  {Weapon_M4},
-  {Weapon_Sniper},
-  {Item_InfraredVision},
-  {Item_NightVision},
+  {gameWeapons["Sniper_Ammo"]["name"]},
+  {gameWeapons["CountryRifle_Ammo"]["name"]},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
+  {gameWeapons["Infrared"]["name"]},
+  {gameWeapons["NightVision"]["name"]},
   {Item_Tent},
-  {Item_RawMeat},
-  {Item_CookedMeat},
+  {gameFoodItems["RawMeat"]["name"]},
+  {gameFoodItems["CookedMeat"]["name"]},
   {Skin_Military},
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
-  {Item_EmptyWaterBottle},
-  {Item_EmptySodaCan},
+  {gameMedicItems["Painkiller"]["name"]},
+  {gameFoodItems["EmptyWaterBottle"]["name"]},
+  {gameFoodItems["EmptySodaCan"]["name"]},
   {Item_ScruffyBurger},
-  {Weapon_ShotgunAmmo},
-  {Weapon_SawnOffAmmo},
-  {Weapon_SpasAmmo},
+  {gameWeapons["Shotgun_Ammo"]["name"]},
+  {gameWeapons["SawnOff_Ammo"]["name"]},
+  {gameWeapons["SPAZ12_Ammo"]["name"]},
   {Item_Radio},
-  {Weapon_Binoculars},
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar},
+  {gameWeapons["Camera"]["name"]},
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]},
   {Weapon_Parachute}
 }
 local vehicleDataTable = {
@@ -281,53 +123,53 @@ local vehicleDataTable = {
   {"Parts_inVehicle"},
   {"fuel"},
   {Item_WoodPile},
-  {Item_Bandage},
-  {Item_FullWaterBottle},
-  {Item_PastaCan},
-  {Item_BeansCan},
-  {Item_Burger},
+  {gameMedicItems["Bandage"]["name"]},
+  {gameFoodItems["FullWaterBottle"]["name"]},
+  {gameFoodItems["PastaCan"]["name"]},
+  {gameFoodItems["BeansCan"]["name"]},
+  {gameFoodItems["Burger"]["name"]},
   {Item_BoxOfMatches},
-  {Weapon_PistolAmmo},
-  {Weapon_Pistol},
-  {Weapon_Silenced},
-  {Weapon_DesertAmmo},
+  {gameWeapons["Pistol_Ammo"]["name"]},
+  {gameWeapons["Pistol"]["name"]},
+  {gameWeapons["SilencedPistol"]["name"]},
+  {gameWeapons["DesertEagle_Ammo"]["name"]},
   {Weapon_Shotgun},
-  {Weapon_Uzi},
-  {Weapon_Knife},
-  {Item_Morphine},
-  {Weapon_Katana},
-  {Item_Pizza},
-  {Item_SodaBottle},
+  {gameWeapons["Uzi"]["name"]},
+  {gameWeapons["Knife"]["name"]},
+  {gameMedicItems["Morphine"]["name"]},
+  {gameWeapons["Katana"]["name"]},
+  {gameFoodItems["Pizza"]["name"]},
+  {gameFoodItems["FullSodaCan"]["name"]},
   {Item_EmptyPatrol},
   {
     Item_FullPatrol
   },
   {Item_RoadFlare},
-  {Item_Milk},
-  {Weapon_UziAmmo},
-  {Weapon_MP5Ammo},
-  {Weapon_AKAmmo},
-  {Weapon_M4Ammo},
-  {Weapon_TearGas},
-  {Weapon_Grenade},
+  {gameFoodItems["Milk"]["name"]},
+  {gameWeapons["Uzi_Ammo"]["name"]},
+  {gameWeapons["MP5_Ammo"]["name"]},
+  {gameWeapons["AK47_Ammo"]["name"]},
+  {gameWeapons["M4_Ammo"]["name"]},
+  {gameWeapons["TearGas"]["name"]},
+  {gameWeapons["Grenade"]["name"]},
   {
-    Weapon_Desert
+    gameWeapons["DesertEagle"]["name"]
   },
   {
     Weapon_SawnOff
   },
   {
-    Weapon_Spas
+    gameWeapons["SPAZ12"]["name"]
   },
-  {Weapon_MP5},
+  {gameWeapons["MP5"]["name"]},
   {Item_Watch},
-  {Item_MedicKit},
-  {Item_HeatPack},
+  {gameMedicItems["MedicKit"]["name"]},
+  {gameMedicItems["HeatPack"]["name"]},
   {
-    Weapon_Country
+    gameWeapons["CountryRifle"]["name"]
   },
-  {Weapon_AK},
-  {Item_BloodBag},
+  {gameWeapons["AK47"]["name"]},
+  {gameMedicItems["BloodBag"]["name"]},
   {Item_GPS},
   {Item_Map},
   {Item_Toolbox},
@@ -335,42 +177,42 @@ local vehicleDataTable = {
   {Item_Tire},
   {"Motor"},
   {"Tank Parts"},
-  {Weapon_SniperAmmo},
+  {gameWeapons["Sniper_Ammo"]["name"]},
   {
-    Weapon_CountryAmmo
+    gameWeapons["CountryRifle_Ammo"]["name"]
   },
-  {Weapon_M4},
-  {Weapon_Sniper},
+  {gameWeapons["M4"]["name"]},
+  {gameWeapons["Sniper"]["name"]},
   {
-    Item_InfraredVision
+    gameWeapons["Infrared"]["name"]
   },
   {
-    Item_NightVision
+    gameWeapons["NightVision"]["name"]
   },
   {Item_Tent},
-  {Item_RawMeat},
+  {gameFoodItems["RawMeat"]["name"]},
   {
-    Item_CookedMeat
+    gameFoodItems["CookedMeat"]["name"]
   },
   {Skin_GhillieDesert},
   {Skin_GhillieForest},
   {Skin_Civilian},
   {Skin_Survivor},
-  {Item_Painkiller},
-  {Weapon_Binoculars},
+  {gameMedicItems["Painkiller"]["name"]},
+  {gameWeapons["Camera"]["name"]},
   {
-    Item_EmptyWaterBottle
+    gameFoodItems["EmptyWaterBottle"]["name"]
   },
   {
-    Item_EmptySodaCan
+    gameFoodItems["EmptySodaCan"]["name"]
   },
   {
     Item_ScruffyBurger
   },
-  {Weapon_ShotgunAmmo},
-  {Weapon_SawnOffAmmo},
+  {gameWeapons["Shotgun_Ammo"]["name"]},
+  {gameWeapons["SawnOff_Ammo"]["name"]},
   {
-    Weapon_SpasAmmo
+    gameWeapons["SPAZ12_Ammo"]["name"]
   },
   {
     "Assault Pack (ACU)"
@@ -385,17 +227,22 @@ local vehicleDataTable = {
   {
     "Czech Backpack"
   },
-  {Weapon_Baseball},
-  {Weapon_Shovel},
-  {Weapon_Crowbar}
+  {gameWeapons["BaseballBat"]["name"]},
+  {gameWeapons["Shovel"]["name"]},
+  {gameWeapons["GolfClub"]["name"]}
 }
 Skins = {}
 
 
--- Spawns the player on the map // Spawna o jogador
-function spawnDayZPlayer(player)
-  local number = math.random(table.size(spawnPositions))
-  local x, y, z = spawnPositions[number][1], spawnPositions[number][2], spawnPositions[number][3]
+
+-- --------------------------------------------------------
+-- Spawns a player on the map. This function is called from 
+-- various situations. E.g. when a player dies. After die, 
+-- this function is called for respawn him another time.
+-- --------------------------------------------------------
+function DZ_SpawnPlayer(player)
+  local number = math.random(table.size(gamePlayerSpawns))
+  local x, y, z = gamePlayerSpawns[number][1], gamePlayerSpawns[number][2], gamePlayerSpawns[number][3]
   spawnPlayer(player, x, y, z + 0.5, math.random(0, 360), 73, 0, 0)
   fadeCamera(player, true)
   setCameraTarget(player, player)
@@ -407,16 +254,16 @@ function spawnDayZPlayer(player)
   local account = getPlayerAccount(player)
   setAccountData(account, "isDead", false)
   setElementData(player, "isDead", false)
-  setElementData(player, "logedin", true)
+  setElementData(player, "isLogged", true)
   setElementData(player, "admin", getAccountData(account, "admin") or false)
   setElementData(player, "supporter", getAccountData(account, "supporter") or false)
   if getElementData(player, "armor") then
 	setElementData(player, "armor", false)
   end -- Just a check ;P
   for i, data in ipairs(playerDataTable) do
-    if data[1] == Item_Bandage then
+    if data[1] == gameMedicItems["Bandage"]["name"] then
       setElementData(player, data[1], 2)
-    elseif data[1] == Item_Painkiller then
+    elseif data[1] == gameMedicItems["Painkiller"]["name"] then
       setElementData(player, data[1], 1)
     elseif data[1] == "MAX_Slots" then
       setElementData(player, data[1], 8)
@@ -457,45 +304,45 @@ function spawnDayZPlayer(player)
   -- VIP ITEMS
   local premiumBronze = {
 	{"MAX_Slots", 16},
-	{Weapon_Katana, 1},
-	{Weapon_Uzi, 1},
-	{Weapon_UziAmmo, 30},
-	{Item_Pizza, 1},
-	{Item_SodaBottle, 1},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["Uzi"]["name"], 1},
+	{gameWeapons["Uzi_Ammo"]["name"], 30},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullSodaCan"]["name"], 1},
 	{Item_Map, 1},
   }
   
   local premiumSilver = {
 	{"MAX_Slots", 26},
-	{Weapon_Katana, 1},
-	{Weapon_Uzi, 1},
-	{Weapon_UziAmmo, 30},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["Uzi"]["name"], 1},
+	{gameWeapons["Uzi_Ammo"]["name"], 30},
 	{Weapon_Shotgun, 1},
-	{Weapon_ShotgunAmmo, 14},
-	{Item_Pizza, 1},
-	{Item_FullWaterBottle, 1},
+	{gameWeapons["Shotgun_Ammo"]["name"], 14},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullWaterBottle"]["name"], 1},
 	{Item_Map, 1},
   }
   
   local premiumGold = {
 	{"MAX_Slots", 36},
-	{Weapon_Katana, 1},
-	{Weapon_M4, 1},
-	{Weapon_M4Ammo, 60},
-	{Weapon_Sniper, 1},
-	{Weapon_SniperAmmo, 5},
-	{Item_Pizza, 1},
-	{Item_FullWaterBottle, 1},
+	{gameWeapons["Katana"]["name"], 1},
+	{gameWeapons["M4"]["name"], 1},
+	{gameWeapons["M4_Ammo"]["name"], 60},
+	{gameWeapons["Sniper"]["name"], 1},
+	{gameWeapons["Sniper_Ammo"]["name"], 5},
+	{gameFoodItems["Pizza"]["name"], 1},
+	{gameFoodItems["FullWaterBottle"]["name"], 1},
 	{Item_Map, 1},
 	{Item_GPS, 1},
   }
   
   local premiumPartner = {
 	{"MAX_Slots", 26},
-	{Weapon_M4, 1},
-	{Weapon_M4Ammo, 60},
-	{Weapon_Sniper, 1},
-	{Weapon_SniperAmmo, 5},
+	{gameWeapons["M4"]["name"], 1},
+	{gameWeapons["M4_Ammo"]["name"], 60},
+	{gameWeapons["Sniper"]["name"], 1},
+	{gameWeapons["Sniper_Ammo"]["name"], 5},
 	{"Motor", 1},
 	{Item_Tire, 2},
   }
@@ -536,33 +383,83 @@ function spawnDayZPlayer(player)
 end
 
 
--- Check if the account is bugged
-function checkBuggedAccount()
-  for i, player in ipairs(getElementsByType("player")) do
-    local account = getPlayerAccount(player)
-    if not account then
-      return
-    end
-    if getElementData(player, "logedin") and getElementModel(player) == 0 then
-      spawnDayZPlayer(player)
-      outputChatBox("A conta de " .. getPlayerName(player) .. " está bugada e está sendo resetada.", getRootElement(), 22, 255, 22, true)
-    end
+
+-- --------------------------------------------------------
+-- When a player register or die, he get some initial datas. 
+-- E.g. default skin, status, initial items.
+-- --------------------------------------------------------
+function DZ_GivePlayerInitialData(thePlayer)
+	-- @toDo: we need to set value 0 to all the other items that are not listed on list below, like weapons 
+	--			and all the other items.
+	local playerInitialData = {
+		{"skin", 73},
+		{"blood", 12000},
+		{"temperature", 37},
+		{"brokenbone", false},
+		{"pain", false},
+		{"cold", false},
+		{"food", 100},
+		{"thirst", 100},
+		{"currentweapon_1", false},
+		{"currentweapon_2", false},
+		{"currentweapon_3", false},
+		{"bandit", false},
+		{"humanity", 2500},
+		{"MAX_Slots", 12},
+		{gameMedicItems["Bandage"]["name"], 2},
+		{gameMedicItems["Painkiller"]["name"], 1},
+	}
+	if not thePlayer then
+		outputConsole("[DW ERROR]: DZ_GivePlayerInitialData() gets a player, but got "..thePlayer..". Occurred on file Player_s.lua")
+		return
+	end
+	for i, line in ipairs(gameDatabaseIndex) do
+		setElementData(thePlayer, line[1], false)
+	end
+	outputChatBox(gameDatabaseIndex[1][1])
+	for i, line in ipairs(playerInitialData) do
+		setElementData(thePlayer, line[1], line[2])
+	end
+end
+
+
+
+-- --------------------------------------------------------
+-- Sometimes, an account gets bugged. His skin is not setted, 
+-- and the player stays in the underground. This function 
+-- check if an account is bugged and, if yes, respawn it.
+-- --------------------------------------------------------
+function DZ_RespawnBuggedPlayer()
+	for i, player in ipairs(getElementsByType("player")) do
+    	local account = getPlayerAccount(player)
+    	if not account then return end
+    	if getElementData(player, "isLogged") and getElementModel(player) == 0 then
+      		DZ_SpawnPlayer(player)
+      		outputChatBox("A conta de " .. getPlayerName(player) .. " está bugada e está sendo resetada.", getRootElement(), 22, 255, 22, true)
+    	end
   end
 end
-setTimer(checkBuggedAccount, 90000, 0)
+setTimer(DZ_RespawnBuggedPlayer, 90000, 0)
 
 
--- Notify about explosion [2]
-function notifyAboutExplosion2()
-  for i, player in pairs(getVehicleOccupants(source)) do
-    triggerEvent("kilLDayZPlayer", player)
-  end
+
+-- --------------------------------------------------------
+-- Kill all players that were inside a vehicle when this 
+-- vehicle explodes.
+-- --------------------------------------------------------
+function DZ_KillPlayersInsideExplodedVehicle()
+	for i, player in pairs(getVehicleOccupants(source)) do
+		triggerEvent("DZ_KillPlayer", player)
+	end
 end
-addEventHandler("onVehicleExplode", getRootElement(), notifyAboutExplosion2)
+addEventHandler("onVehicleExplode", getRootElement(), DZ_KillPlayersInsideExplodedVehicle)
 
 
--- Destroy dead body // Destrói corpo morto
-function destroyDeadPlayer(ped, pedCol)
+
+-- --------------------------------------------------------
+-- When a player dies, destroy his body and his colshape.
+-- --------------------------------------------------------
+function DZ_DestroyDeadPlayer(ped, pedCol)
   destroyElement(ped)
   destroyElement(pedCol)
 end
@@ -587,7 +484,7 @@ function killPlayerWithCommand(thePlayer)
 			  local ped = createPed(skin, x, y, z, rotZ)
 			  pedCol = createColSphere(x, y, z, 1.5)
 			  killPed(ped)
-			  setTimer(destroyDeadPlayer, 1200000, 1, ped, pedCol) -- 20 minutes
+			  setTimer(DZ_DestroyDeadPlayer, 1200000, 1, ped, pedCol) -- 20 minutes
 			  attachElements(pedCol, ped, 0, 0, 0)
 			  setElementData(pedCol, "parent", ped)
 			  setElementData(pedCol, "playername", getPlayerName(thePlayer))
@@ -603,29 +500,29 @@ function killPlayerWithCommand(thePlayer)
 	if pedCol then
 		for i, data in ipairs(playerDataTable) do
 			local plusData = getElementData(thePlayer, data[1])
-			if data[1] == Weapon_PistolAmmo then
+			if data[1] == gameWeapons["Pistol_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SilencedAmmo then
+			elseif data[1] == gameWeapons["SilencedPistol_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 15)
-			elseif data[1] == Weapon_DesertAmmo then
+			elseif data[1] == gameWeapons["DesertEagle_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_UziAmmo then
+			elseif data[1] == gameWeapons["Uzi_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 30)
-			elseif data[1] == Weapon_MP5Ammo then
+			elseif data[1] == gameWeapons["MP5_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 20)
-			elseif data[1] == Weapon_AKAmmo then
+			elseif data[1] == gameWeapons["AK47_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 30)
-			elseif data[1] == Weapon_M4Ammo then
+			elseif data[1] == gameWeapons["M4_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 20)
-			elseif data[1] == Weapon_SniperAmmo then
+			elseif data[1] == gameWeapons["Sniper_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 5)
-			elseif data[1] == Weapon_CountryAmmo then
+			elseif data[1] == gameWeapons["CountryRifle_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 10)
-			elseif data[1] == Weapon_ShotgunAmmo then
+			elseif data[1] == gameWeapons["Shotgun_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SpasAmmo then
+			elseif data[1] == gameWeapons["SPAZ12_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 7)
-			elseif data[1] == Weapon_SawnOffAmmo then
+			elseif data[1] == gameWeapons["SawnOff_Ammo"]["name"] then
 				plusData = math.floor(getElementData(thePlayer, data[1]) / 2)
 			end
 			setElementData(pedCol, data[1], plusData)
@@ -650,13 +547,13 @@ function killPlayerWithCommand(thePlayer)
 	setElementData(thePlayer, "isDead", true)
 	triggerClientEvent("onRollMessageStart", getRootElement(), "#FFFFFF" .. getPlayerName(thePlayer) .. " #FFFFFFmorreu.", 0, 22, 255, "died")
 	destroyElement(getElementData(thePlayer, "playerCol"))
-	setTimer(spawnDayZPlayer, 5000, 1, thePlayer)
+	setTimer(DZ_SpawnPlayer, 5000, 1, thePlayer)
 end
 addCommandHandler("suicidar", killPlayerWithCommand)
 
 
 -- When player die // Quando jogador morre
-function kilLDayZPlayer(killer, headshot, weapon)
+function DZ_KillPlayer(killer, headshot, weapon)
 	pedCol = false
 	local account = getPlayerAccount(source)
 	if not account then
@@ -674,7 +571,7 @@ function kilLDayZPlayer(killer, headshot, weapon)
 			  local ped = createPed(skin, x, y, z, rotZ)
 			  pedCol = createColSphere(x, y, z, 1.5)
 			  killPed(ped)
-			  setTimer(destroyDeadPlayer, 2700000, 1, ped, pedCol)
+			  setTimer(DZ_DestroyDeadPlayer, 2700000, 1, ped, pedCol)
 			  attachElements(pedCol, ped, 0, 0, 0)
 			  setElementData(pedCol, "parent", ped)
 			  setElementData(pedCol, "playername", getPlayerName(source))
@@ -711,29 +608,29 @@ function kilLDayZPlayer(killer, headshot, weapon)
   if pedCol then
     for i, data in ipairs(playerDataTable) do
       local plusData = getElementData(source, data[1])
-      if data[1] == Weapon_PistolAmmo then
+      if data[1] == gameWeapons["Pistol_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SilencedAmmo then
+      elseif data[1] == gameWeapons["SilencedPistol_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 15)
-      elseif data[1] == Weapon_DesertAmmo then
+      elseif data[1] == gameWeapons["DesertEagle_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_UziAmmo then
+      elseif data[1] == gameWeapons["Uzi_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 30)
-      elseif data[1] == Weapon_MP5Ammo then
+      elseif data[1] == gameWeapons["MP5_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 20)
-      elseif data[1] == Weapon_AKAmmo then
+      elseif data[1] == gameWeapons["AK47_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 30)
-      elseif data[1] == Weapon_M4Ammo then
+      elseif data[1] == gameWeapons["M4_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 20)
-      elseif data[1] == Weapon_SniperAmmo then
+      elseif data[1] == gameWeapons["Sniper_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 5)
-      elseif data[1] == Weapon_CountryAmmo then
+      elseif data[1] == gameWeapons["CountryRifle_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 10)
-      elseif data[1] == Weapon_ShotgunAmmo then
+      elseif data[1] == gameWeapons["Shotgun_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SpasAmmo then
+      elseif data[1] == gameWeapons["SPAZ12_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 7)
-      elseif data[1] == Weapon_SawnOffAmmo then
+      elseif data[1] == gameWeapons["SawnOff_Ammo"]["name"] then
         plusData = math.floor(getElementData(source, data[1]) / 2)
       end
       setElementData(pedCol, data[1], plusData)
@@ -760,7 +657,7 @@ function kilLDayZPlayer(killer, headshot, weapon)
   setElementData(source, "armor", false)
   triggerClientEvent("onRollMessageStart", getRootElement(), "#FFFFFF" .. getPlayerName(source) .. " #FFFFFFmorreu.", 0, 22, 255, "died")
   destroyElement(getElementData(source, "playerCol"))
-  setTimer(spawnDayZPlayer, 5000, 1, source)
+  setTimer(DZ_SpawnPlayer, 5000, 1, source)
 end
-addEvent("kilLDayZPlayer", true)
-addEventHandler("kilLDayZPlayer", getRootElement(), kilLDayZPlayer)
+addEvent("DZ_KillPlayer", true)
+addEventHandler("DZ_KillPlayer", getRootElement(), DZ_KillPlayer)
