@@ -1,0 +1,6 @@
+<meta>
+	<info author="Sathler" name="fullscreen-binoculars" description="DayZ binoculars on fullscreen" type="script" version="1.3" />
+
+	<script src="binoculars_c.lua" type="client" cache="false" />
+	<file src="binoculars.png" />
+</meta>

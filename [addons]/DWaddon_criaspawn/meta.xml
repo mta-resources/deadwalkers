@@ -1,0 +1,5 @@
+<meta>
+	<info author="pDevice" name="Spawn Points Save" version="1.0.0" type="script"/>
+	<script src="file_c.lua" type="client"/>
+	<script src="file_s.lua" type="server"/>
+</meta>
