@@ -1,0 +1,15 @@
+<deadwalkers>
+  <weapons>
+    <weapon id="Knife">
+      <name>Faca</name>
+      <slots>1</slots>
+      <goes_clothing>true</goes_clothing>
+      
+    </weapon>
+  </weapons>
+  <foods></foods>
+  <medics></medics>
+  <skins></skins>
+  <items></items>
+  <utils></utils>
+</deadwalkers>
