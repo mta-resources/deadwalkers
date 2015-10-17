@@ -37,9 +37,10 @@
     <file src="tools/images/flags/died.png" />
     <file src="tools/images/flags/join.png" />
     <file src="tools/images/flags/quit.png" />
-	
 
-	
+    <file src="configuration/items.xml"/>
+    <script src="configuration/ParserXML.lua" type="shared"/>
+
     <script src="group_system/gang_client.lua" type="client" />
     <script src="group_system/gang_utils.lua" type="server" />
     <script src="group_system/gang_server.lua" type="server" />

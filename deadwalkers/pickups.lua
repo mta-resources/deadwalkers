@@ -7,6 +7,8 @@
 #---------------------------------------------------------------#
 ]]
 
+addCommandHandler("serverSide", function() outputChatBox("Server-side: " .. returningSharedText()) end)
+
 getResourceRootElement(getThisResource())
 
 --[[
@@ -22,17 +24,17 @@ getResourceRootElement(getThisResource())
 	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
 	Weapon_Spas			= "SPAS-12"
 	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
+
 	Weapon_M4 		= "M16A2"
 	Weapon_M4Ammo	= "Munição p/ M16A2"
 	Weapon_AK 		= "AK-47"
 	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
+
 	Weapon_Sniper 		= "Sniper"
 	Weapon_SniperAmmo 	= "Munição p/ Sniper"
 	Weapon_Country 		= "Country Rifle"
 	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
+
 	-- Secondary Weapons
 	Weapon_Pistol		= "Pistola"
 	Weapon_PistolAmmo 	= "Munição p/ Pistola"
@@ -40,24 +42,24 @@ getResourceRootElement(getThisResource())
 	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
 	Weapon_Desert		= "Desert Eagle"
 	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
+
 	Weapon_Uzi		= "Micro-Uzi"
 	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
 	Weapon_MP5		= "MP5"
 	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
+
 	Weapon_Knife	= "Faca"
 	Weapon_Katana	= "Machado"
 	Weapon_Baseball = "Taco de Beisebol"
 	Weapon_Crowbar	= "Pé-de-Cabra"
 	Weapon_Shovel	= "Pá"
-	
+
 	-- Special Weapons
 	Weapon_Binoculars 	= "Binóculos"
 	Weapon_Grenade		= "Granada"
 	Weapon_TearGas		= "Gás Lacrimogêneo"
 	Weapon_Parachute	= "Paraquedas"
-	
+
 	-- Food
 	Item_Burger 	= "Hambúrguer"
 	Item_Pizza		= "Pizza"
@@ -65,13 +67,13 @@ getResourceRootElement(getThisResource())
 	Item_CookedMeat = "Carne Cozida"
 	Item_PastaCan	= "Comida Enlatada"
 	Item_BeansCan	= "Feijão Enlatado"
-	
+
 	Item_FullWaterBottle 	= "Garrafa D'água"
 	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
 	Item_SodaBottle 		= "Lata de Suco"
 	Item_EmptySodaCan		= "Lata de Suco [vazia]"
 	Item_Milk				= "Leite"
-	
+
 	-- Medics
 	Item_MedicKit	= "Kit Médico"
 	Item_Bandage	= "Curativo"
@@ -79,14 +81,14 @@ getResourceRootElement(getThisResource())
 	Item_HeatPack	= "Bolsa c/ Água Quente"
 	Item_Morphine	= "Morfina"
 	Item_Painkiller = "Analgésico"
-	
+
 	-- Skins
 	Skin_Survivor	= "Roupa de Sobrevivente"
 	Skin_Civilian	= "Roupa de Civil"
 	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
 	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
 	Skin_Military	= "Roupa Militar"
-	
+
 	-- Items
 	Item_RoadFlare		= "Sinalizador"
 	Item_WoodPile		= "Lenha"
@@ -98,7 +100,7 @@ getResourceRootElement(getThisResource())
 	Item_Tire			= "Pneu"
 	Item_Armor			= "Colete"
 	Item_CDKRose		= "CD: K-Rose"
-	
+
 	-- Utils
 	Item_Watch		= "Relógio"
 	Item_GPS		= "GPS"
@@ -108,16 +110,16 @@ getResourceRootElement(getThisResource())
 	Item_Radio		= "Rádio"
 	Item_NightVision	= "Visão Noturna"
 	Item_InfraredVision = "Visão de Calor"
-	
+
 	-- Database keys
 	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
 	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
+		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database.
 		So the name of the item must be the name in the database. ]]
-	
-	
-	
-	
+
+
+
+
 --[[ table structure:
 	[1] item name
 	[2] item model

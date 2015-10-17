@@ -16,24 +16,24 @@ end
 
 --night addon
 function nightAddon1 ()
-if gameplayVariables["enablenight"] then 
+if gameplayVariables["enablenight"] then
 	addAddonInfo ("night","Night time with fading effect.")
 end
 end
 
-function nightAddon () 
+function nightAddon ()
 	setTimer(nightAddon1,10000,1)
 end
-nightAddon () 
+nightAddon ()
 ]]
 
-
+addEventHandler("onResourceStart", resourceRoot, function()
+	startResource("login")
+	startResource("slothbot")
+end)
 
 --Load Addons
 function loadAddons( res )
-
-	setGameType("MTA:DayZ")
-
 	for resourceKey, resourceValue in ipairs(getResources()) do
 	local name = getResourceName(resourceValue)
 	if string.find(name,"DWaddon_") or string.find(name, "DWbase_") then

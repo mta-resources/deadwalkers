@@ -1,15 +1,64 @@
+<!---------------------------------------------------
+  -- This file contains all items information, such
+  -- damage, name, slots, and more.
+  --------------------------------------------------->
 <deadwalkers>
+
   <weapons>
     <weapon id="Knife">
       <name>Faca</name>
       <slots>1</slots>
-      <goes_clothing>true</goes_clothing>
-      
+      <damage>1300</damage>
+    </weapon>
+
+    <weapon id="NormalPistol" type="firegun">
+      <name>Pistola</name>
+      <slots>1</slots>
+      <damage>1500</damage>
+      <ammo_name>Munição de Pistola</ammo_name>
+      <ammo_slots>0.25</ammo_slots>
+    </weapon>
+
+    <weapon id="SilencedPistol" type="firegun">
+      <name>Pistola Silenciosa</name>
+      <slots>2</slots>
+      <damage>1500</damage>
+      <ammo_name>Munição de Pistola</ammo_name>
+      <ammo_slots>0.25</ammo_slots>
+    </weapon>
+
+    <weapon id="Shotgun" type="firegun">
+      <name>Escopeta</name>
+      <slots>3</slots>
+      <damage>3000</damage>
+      <ammo_name>Munição de Escopeta</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
+    </weapon>
+
+    <weapon id="M4" type="firegun">
+      <name>M16A2</name>
+      <slots>4</slots>
+      <damage>3000</damage>
+      <ammo_name>Munição de M16A2</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
+    </weapon>
+
+    <weapon id="Sniper" type="firegun">
+      <name>Sniper</name>
+      <slots>4</slots>
+      <damage>12000</damage>
+      <ammo_name>Munição de Sniper</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
     </weapon>
   </weapons>
+
   <foods></foods>
+
   <medics></medics>
+
   <skins></skins>
+
   <items></items>
+  
   <utils></utils>
 </deadwalkers>

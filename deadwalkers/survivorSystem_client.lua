@@ -7,6 +7,9 @@
 #---------------------------------------------------------------#
 ]]
 
+addCommandHandler("clientSide", function()
+	outputChatBox(gameItems["weapons"]["NormalPistol"]["name"])
+end)
 
 --[[
 	# ------------------------------------------------------------------------- #
@@ -21,17 +24,17 @@
 	Weapon_SawnOffAmmo 	= "Munição p/ Sawn-Off"
 	Weapon_Spas			= "SPAS-12"
 	Weapon_SpasAmmo 	= "Munição p/ SPAS-12"
-	
+
 	Weapon_M4 		= "M16A2"
 	Weapon_M4Ammo	= "Munição p/ M16A2"
 	Weapon_AK 		= "AK-47"
 	Weapon_AKAmmo	= "Munição p/ AK-47"
-	
+
 	Weapon_Sniper 		= "Sniper"
 	Weapon_SniperAmmo 	= "Munição p/ Sniper"
 	Weapon_Country 		= "Country Rifle"
 	Weapon_CountryAmmo 	= "Munição p/ Country"
-	
+
 	-- Secondary Weapons
 	Weapon_Pistol		= "Pistola"
 	Weapon_PistolAmmo 	= "Munição p/ Pistola"
@@ -39,24 +42,24 @@
 	Weapon_SilencedAmmo = "Munição p/ P. Silenciosa"
 	Weapon_Desert		= "Desert Eagle"
 	Weapon_DesertAmmo 	= "Munição p/ Desert"
-	
+
 	Weapon_Uzi		= "Micro-Uzi"
 	Weapon_UziAmmo	= "Munição p/ Micro-Uzi"
 	Weapon_MP5		= "MP5"
 	Weapon_MP5Ammo	= "Munição p/ MP5"
-	
+
 	Weapon_Knife	= "Faca"
 	Weapon_Katana	= "Machado"
 	Weapon_Baseball = "Taco de Beisebol"
 	Weapon_Crowbar	= "Pé-de-Cabra"
 	Weapon_Shovel	= "Pá"
-	
+
 	-- Special Weapons
 	Weapon_Binoculars 	= "Binóculos"
 	Weapon_Grenade		= "Granada"
 	Weapon_TearGas		= "Gás Lacrimogêneo"
 	Weapon_Parachute	= "Paraquedas"
-	
+
 	-- Food
 	Item_Burger 	= "Hambúrguer"
 	Item_Pizza		= "Pizza"
@@ -64,13 +67,13 @@
 	Item_CookedMeat = "Carne Cozida"
 	Item_PastaCan	= "Comida Enlatada"
 	Item_BeansCan	= "Feijão Enlatado"
-	
+
 	Item_FullWaterBottle 	= "Garrafa D'água"
 	Item_EmptyWaterBottle 	= "Garrafa D'água [vazia]"
 	Item_SodaBottle 		= "Lata de Suco"
 	Item_EmptySodaCan		= "Lata de Suco [vazia]"
 	Item_Milk				= "Leite"
-	
+
 	-- Medics
 	Item_MedicKit	= "Kit Médico"
 	Item_Bandage	= "Curativo"
@@ -78,14 +81,14 @@
 	Item_HeatPack	= "Bolsa c/ Água Quente"
 	Item_Morphine	= "Morfina"
 	Item_Painkiller = "Analgésico"
-	
+
 	-- Skins
 	Skin_Survivor	= "Roupa de Sobrevivente"
 	Skin_Civilian	= "Roupa de Civil"
 	Skin_GhillieDesert	= "Ghillie Suit (Deserto)"
 	Skin_GhillieForest	= "Ghillie Suit (Floresta)"
 	Skin_Military	= "Roupa Militar"
-	
+
 	-- Items
 	Item_RoadFlare		= "Sinalizador"
 	Item_WoodPile		= "Lenha"
@@ -97,7 +100,7 @@
 	Item_Tire			= "Pneu"
 	Item_Armor			= "Colete"
 	Item_CDKRose		= "CD: K-Rose"
-	
+
 	-- Utils
 	Item_Watch		= "Relógio"
 	Item_GPS		= "GPS"
@@ -107,14 +110,14 @@
 	Item_Radio		= "Rádio"
 	Item_NightVision	= "Visão Noturna"
 	Item_InfraredVision = "Visão de Calor"
-	
+
 	-- Database keys
 	DB_TireInVehicle	= "Pneu_inVehicle" -- Must be the SAME, SAME value of "Item_Tire". SAME value
 	DB_EngineInVehicle	= "Motor_inVehicle" -- Must be the SAME, SAME value of "Item_Engine". SAME value
-		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database. 
+		--[[ What does this do? Simple ... in some parts of the code, the code reuses the name of the item to reference the database.
 		So the name of the item must be the name in the database. ]]
-	
-	
+
+
 
 -- Cria texto no canto da tela, logo acima da versão
 --[[
@@ -157,7 +160,7 @@ snipertxd = engineLoadTXD("mods/ghillie_forest.txd")
 			engineImportTXD(snipertxd, 284)
 sniperdff = engineLoadDFF("mods/ghillie_forest.dff", 284)
 			engineReplaceModel(sniperdff, 284)
-			
+
 snipertxd = engineLoadTXD("mods/army.txd")
 			engineImportTXD(snipertxd, 287)
 sniperdff = engineLoadDFF("mods/army.dff", 287)
@@ -167,7 +170,7 @@ snipertxd = engineLoadTXD("mods/civilian.txd")
 			engineImportTXD(snipertxd, 179)
 sniperdff = engineLoadDFF("mods/civilian.dff", 179)
 			engineReplaceModel(sniperdff, 179)
-			
+
 snipertxd = engineLoadTXD("mods/bandit1.txd")
 			engineImportTXD(snipertxd, 180)
 sniperdff = engineLoadDFF("mods/bandit1.dff", 180)
@@ -177,127 +180,127 @@ snipertxd = engineLoadTXD("mods/bandit2.txd")
 			engineImportTXD(snipertxd, 288)
 sniperdff = engineLoadDFF("mods/bandit2.dff", 288)
 			engineReplaceModel(sniperdff, 288)
-			
+
 snipertxd = engineLoadTXD("mods/standart.txd")
 			engineImportTXD(snipertxd, 73)
 sniperdff = engineLoadDFF("mods/standart.dff", 73)
 			engineReplaceModel(sniperdff, 73)
-			
+
 snipertxd = engineLoadTXD("mods/femalestandard.txd")
 			engineImportTXD(snipertxd, 191)
 sniperdff = engineLoadDFF("mods/femalestandard.dff", 191)
 			engineReplaceModel(sniperdff, 191)
-			
+
 snipertxd = engineLoadTXD("mods/hero.txd")
 			engineImportTXD(snipertxd, 210)
 sniperdff = engineLoadDFF("mods/hero.dff", 210)
 			engineReplaceModel(sniperdff, 210)
-			
+
 snipertxd = engineLoadTXD("mods/staff.txd")
 			engineImportTXD(snipertxd, 217)
 
 
--- Substitui os ítens		
+-- Substitui os ítens
 itemTXD =	engineLoadTXD("items/armor_clothes.txd")
 			engineImportTXD(itemTXD, 1272)
 itemDFF =	engineLoadDFF("items/armor_clothes.dff", 1272)
 			engineReplaceModel(itemDFF, 1272)
-	
+
 itemTXD = 	engineLoadTXD("items/army_clothes.txd")
 			engineImportTXD(itemTXD, 1247)
 itemDFF = 	engineLoadDFF("items/army_clothes.dff", 1247)
 			engineReplaceModel(itemDFF, 1247)
-			
+
 itemTXD = 	engineLoadTXD("items/sniper_clothes.txd")
 			engineImportTXD(itemTXD, 1213)
 itemDFF = 	engineLoadDFF("items/sniper_clothes.dff", 1213)
 			engineReplaceModel(itemDFF, 1213)
-			
+
 itemTXD = 	engineLoadTXD("items/civilian_clothes.txd")
 			engineImportTXD(itemTXD, 1241)
 itemDFF = 	engineLoadDFF("items/civilian_clothes.dff", 1241)
 			engineReplaceModel(itemDFF, 1241)
-			
+
 itemTXD = 	engineLoadTXD("items/standard_clothes.txd")
 			engineImportTXD(itemTXD, 1577)
 itemDFF = 	engineLoadDFF("items/standard_clothes.dff", 1577)
 			engineReplaceModel(itemDFF, 1577)
-			
+
 itemTXD = 	engineLoadTXD("items/beans_can.txd")
 			engineImportTXD(itemTXD, 2601)
 itemDFF = 	engineLoadDFF("items/beans_can.dff", 2601)
 			engineReplaceModel(itemDFF, 2601)
-			
+
 itemTXD = 	engineLoadTXD("items/first_aid_kit.txd")
 			engineImportTXD(itemTXD, 2891)
 itemDFF = 	engineLoadDFF("items/first_aid_kit.dff", 2891)
 			engineReplaceModel(itemDFF, 2891)
-			
+
 itemTXD = 	engineLoadTXD("items/gps.txd")
 			engineImportTXD(itemTXD, 2976)
 itemDFF = 	engineLoadDFF("items/gps.dff", 2976)
 			engineReplaceModel(itemDFF, 2976)
-			
+
 itemTXD = 	engineLoadTXD("items/heat_pack.txd")
 			engineImportTXD(itemTXD, 1576)
 itemDFF = 	engineLoadDFF("items/heat_pack.dff", 1576)
 			engineReplaceModel(itemDFF, 1576)
-			
+
 itemTXD = 	engineLoadTXD("items/map.txd")
 			engineImportTXD(itemTXD, 1277)
 itemDFF = 	engineLoadDFF("items/map.dff", 1277)
 			engineReplaceModel(itemDFF, 1277)
-			
+
 itemTXD = 	engineLoadTXD("items/pain_killers.txd")
 			engineImportTXD(itemTXD, 2709)
 itemDFF = 	engineLoadDFF("items/pain_killers.dff", 2709)
 			engineReplaceModel(itemDFF, 2709)
-			
+
 itemTXD = 	engineLoadTXD("items/pasta_can.txd")
 			engineImportTXD(itemTXD, 2770)
 itemDFF = 	engineLoadDFF("items/pasta_can.dff", 2770)
 			engineReplaceModel(itemDFF, 2770)
-			
+
 itemTXD = 	engineLoadTXD("items/pistol_ammo.txd")
 			engineImportTXD(itemTXD, 3013)
 itemDFF = 	engineLoadDFF("items/pistol_ammo.dff", 3013)
 			engineReplaceModel(itemDFF, 3013)
-			
+
 itemTXD = 	engineLoadTXD("items/shotgun_ammo.txd")
 			engineImportTXD(itemTXD, 2358)
 itemDFF = 	engineLoadDFF("items/shotgun_ammo.dff", 2358)
 			engineReplaceModel(itemDFF, 2358)
-			
+
 itemTXD = 	engineLoadTXD("items/backpack_small.txd")
 			engineImportTXD(itemTXD, 3026)
 itemDFF = 	engineLoadDFF("items/backpack_small.dff", 3026)
 			engineReplaceModel(itemDFF, 3026)
-			
+
 itemTXD = 	engineLoadTXD("items/smg_ammo.txd")
 			engineImportTXD(itemTXD, 2041)
 itemDFF = 	engineLoadDFF("items/smg_ammo.dff", 2041)
 			engineReplaceModel(itemDFF, 2041)
-			
+
 itemTXD = 	engineLoadTXD("items/sniper_ammo.txd")
 			engineImportTXD(itemTXD, 2358)
 itemDFF = 	engineLoadDFF("items/sniper_ammo.dff", 2358)
 			engineReplaceModel(itemDFF, 2358)
-			
+
 itemTXD = 	engineLoadTXD("items/soda_can.txd")
 			engineImportTXD(itemTXD, 2647)
 itemDFF = 	engineLoadDFF("items/soda_can.dff", 2647)
 			engineReplaceModel(itemDFF, 2647)
-			
+
 itemTXD = 	engineLoadTXD("items/water_bottle.txd")
 			engineImportTXD(itemTXD, 2683)
 itemDFF = 	engineLoadDFF("items/water_bottle.dff", 2683)
 			engineReplaceModel(itemDFF, 2683)
-			
+
 itemTXD = 	engineLoadTXD("items/assault_ammo.txd")
 			engineImportTXD(itemTXD, 1271)
 itemDFF = 	engineLoadDFF("items/assault_ammo.dff", 1271)
 			engineReplaceModel(itemDFF, 1271)
-			
+
 itemTXD = 	engineLoadTXD("items/backpack_alice.txd")
 			engineImportTXD(itemTXD, 1248)
 itemDFF = 	engineLoadDFF("items/backpack_alice.dff", 1248)
@@ -307,12 +310,12 @@ itemTXD =	 engineLoadTXD("items/backpack_coyote.txd")
 			engineImportTXD(itemTXD, 1252)
 itemDFF = 	engineLoadDFF("items/backpack_coyote.dff", 1252)
 			engineReplaceModel(itemDFF, 1252)
-			
+
 itemTXD = 	engineLoadTXD("items/backpack_czech.txd")
 			engineImportTXD(itemTXD, 1575)
 itemDFF = 	engineLoadDFF("items/backpack_czech.dff", 1575)
 			engineReplaceModel(itemDFF, 1575)
-			
+
 itemTXD =	 engineLoadTXD("items/tent.txd")
 			engineImportTXD(itemTXD, 3243)
 itemDFF = 	engineLoadDFF("items/tent.dff", 3243)
@@ -322,7 +325,7 @@ itemTXD = 	engineLoadTXD("items/watch.txd")
 			engineImportTXD(itemTXD, 2710)
 itemDFF = 	engineLoadDFF("items/watch.dff", 2710)
 			engineReplaceModel(itemDFF, 2710)
-			
+
 itemTXD = 	engineLoadTXD("items/wirefence.txd")
 			engineImportTXD(itemTXD, 983)
 itemDFF = 	engineLoadDFF("items/wirefence.dff", 983)
@@ -338,7 +341,7 @@ weaponTXD = engineLoadTXD("items/camera.txd")
 			engineImportTXD(weaponTXD, 367)
 weaponDFF = engineLoadDFF("items/camera.dff", 367)
 			engineReplaceModel(weaponDFF, 367)
-			
+
 weaponTXD = engineLoadTXD("items/katana.txd")
 			engineImportTXD(weaponTXD, 339)
 weaponDFF = engineLoadDFF("items/katana.dff", 339)
@@ -346,7 +349,7 @@ weaponDFF = engineLoadDFF("items/katana.dff", 339)
 
 
 local screenWidth, screenHeight = guiGetScreenSize()
-			
+
 -- Funções para desabilitar alguns huds e itens na tela
 function playerStatsClientSite()
   if getElementData(getLocalPlayer(), "logedin") then
@@ -387,7 +390,7 @@ function playerZoom(key, keyState)
       end
     end
   elseif key == "i" and 0 < getElementData(getLocalPlayer(), Item_InfraredVision) then
-	
+
     if infaredvision then
       infaredvision = false
       setCameraGoggleEffect("normal")
@@ -513,10 +516,10 @@ setTimer(stopZombieSound, 5000, 0)
 -- Altera as skins dos zumbis (instala as modificações)
 local skin = engineLoadTXD("skins/22.txd")
 			engineImportTXD(skin, 22)
-			
+
 local skin = engineLoadTXD("skins/56.txd")
 			engineImportTXD(skin, 56)
-			
+
 local skin = engineLoadTXD("skins/67.txd")
 engineImportTXD(skin, 67)
 local skin = engineLoadTXD("skins/68.txd")
@@ -794,31 +797,31 @@ function refreshDebugMonitor()
     if getElementData(getLocalPlayer(),"logedin") then
     local value = getElementData(getLocalPlayer(),getElementData(statsLabel["zombieskilled1"],"identifikation"))
         guiSetText(statsLabel["zombieskilled1"]," "..value)
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["headshots1"],"identifikation"))
         guiSetText(statsLabel["headshots1"]," "..value)
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["banditskilled1"],"identifikation"))
         guiSetText(statsLabel["banditskilled1"]," "..value)
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["murders1"],"identifikation"))
         guiSetText(statsLabel["murders1"]," "..value)
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["blood1"],"identifikation"))
         guiSetText(statsLabel["blood1"]," "..value)
-        
+
         --     local value = getElementData(getRootElement(),"zombiesalive") or 0
         --     local value2 = getElementData(getRootElement(),"zombiestotal") or 0
         --     guiSetText(statsLabel["zombies"],"Zombies (Alive/Total): "..value.."/"..value2)
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["temperature1"],"identifikation"))
         guiSetText(statsLabel["temperature1"],""..math.round(value,2).."°C")
-        
+
         local value = getElementData(getLocalPlayer(),getElementData(statsLabel["humanity1"],"identifikation"))
         guiSetText(statsLabel["humanity1"]," "..math.round(value,2))
-        
+
         guiSetText(statsLabel["name1"]," "..getPlayerName(getLocalPlayer()))
-    end         
+    end
 end
 setTimer(refreshDebugMonitor,2000,0)
 
@@ -1044,7 +1047,7 @@ function playerGetDamageDayZ(attacker, weapon, bodypart, loss)
     if loss > 30 then
 	  playSound("sounds/brokenbone.mp3")
       setElementData(getLocalPlayer(), "brokenbone", true)
-	  
+
       setControlState("jump", true)
     end
     if loss >= 100 then
@@ -1217,13 +1220,13 @@ setTimer(setVolume, 100, 0)
 -- Define a visibilidade (ícone de visibilidade)
 function setVisibility()
   value = 0
-  
+
   if isObjectAroundPlayer(getLocalPlayer(), 2, 4) then
     value = 0
 	setElementData(getLocalPlayer(), "visibly", value)
 	return
   end
-  
+
   if getPedMoveState(getLocalPlayer()) == "stand" then
     value = 60
 	setElementData(getLocalPlayer(), "visibly", value)
@@ -1246,25 +1249,25 @@ function setVisibility()
     value = 20
 	setElementData(getLocalPlayer(), "visibly", value)
   end
-  
+
   if getElementData(getLocalPlayer(), "lying") then
 	value = 0
 	setElementData(getLocalPlayer(), "visibly", value)
 	return
   end
-  
+
   if getElementData(getLocalPlayer(), "jumping") then
     value = 100
 	setElementData(getLocalPlayer(), "visibly", value)
 	return
   end
-  
+
   if isPedInVehicle(getLocalPlayer()) then
     value = 80
 	setElementData(getLocalPlayer(), "visibly", value)
 	return
   end
-  
+
 end
 setTimer(setVisibility, 100, 0)
 
@@ -1381,24 +1384,24 @@ function updateIcons()
     elseif fading == 255 then
       fading2 = "down"
     end
-	
-	
+
+
 	-- VOLUME
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.530, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/sound.png", 0, 0, 0, tocolor(0, 255, 0))
     local sound = getElementData(getLocalPlayer(), "volume") / 20
     if sound > 1 then
       dxDrawImage(screenWidth * 0.9075, screenHeight * 0.530, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/level_" .. sound .. ".png", 0, 0, 0, tocolor(0, 255, 0))
     end
-	
-	
+
+
 	-- VISÃO
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.585, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/eye.png", 0, 0, 0, tocolor(0, 255, 0))
     local sound = getElementData(getLocalPlayer(), "visibly") / 20
     if sound > 1 then
       dxDrawImage(screenWidth * 0.9075, screenHeight * 0.585, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/level_" .. sound .. ".png", 0, 0, 0, tocolor(0, 255, 0))
     end
-    
-	
+
+
 	-- OSSO QUEBRADO
     if getElementData(getLocalPlayer(),"brokenbone") then
 		if getElementData(getLocalPlayer(), "armor") == true then
@@ -1407,14 +1410,14 @@ function updateIcons()
 			dxDrawImage ( screenWidth*0.94, screenHeight*0.65, screenHeight*0.045, screenHeight*0.045, "images/dayzicons/brokenbone.png",0,0,0,tocolor(255,255,255))
 		end
     end
-	
-	
+
+
 	-- COLETE
 	if getElementData(getLocalPlayer(), "armor") == true then
 		dxDrawImage ( screenWidth*0.94, screenHeight*0.65, screenHeight*0.045, screenHeight*0.045, "images/dayzicons/armor.png",0,0,0,tocolor(0,255,0))
 	end
-	
-	
+
+
     -- HUMANIDADE
     local humanity = getElementData(getLocalPlayer(), "humanity")
     if humanity > 0 then
@@ -1426,8 +1429,8 @@ function updateIcons()
       r, g, b = 255, 0, 0
     end
     dxDrawImage(screenWidth * 0.934, screenHeight * 0.700, screenHeight * 0.06, screenHeight * 0.06, "images/dayzicons/bandit.png", 0, 0, 0, tocolor(r, g, b))
-    
-    
+
+
     -- TEMPERATURA
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.760, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/temperature.png", 0, 0, 0, tocolor(0, 255, 0))
 	local temperature = math.round(getElementData(getLocalPlayer(), "temperature"), 2)
@@ -1446,7 +1449,7 @@ function updateIcons()
 	  dxDrawImage(screenWidth * 0.94, screenHeight * 0.760, screenHeight * 0.045, screenHeight * 0.045, "images/hud/temp/38.png", 0, 0, 0, tocolor(r, g, b))
     end
 
-    
+
 	-- SANGUE
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.815, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/blood.png", 0, 0, 0, tocolor(0, 255, 0))
     r, g, b = 0, 255, 0
@@ -1456,8 +1459,8 @@ function updateIcons()
     if 0 < getElementData(getLocalPlayer(), "bleeding") then
 	  dxDrawImage(screenWidth * 0.94, screenHeight * 0.815, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/medic.png", 0, 0, 0, tocolor(255, 255, 255, fading))
     end
-	
-	
+
+
     -- SEDE
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.87, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/thirsty.png", 0, 0, 0, tocolor(0, 255, 0))
     r, g, b = 0, 255, 0
@@ -1468,8 +1471,8 @@ function updateIcons()
     else
 	  dxDrawImage(screenWidth * 0.94, screenHeight * 0.87, screenHeight * 0.045, screenHeight * 0.045, "images/hud/drink/100.png", 0, 0, 0, tocolor(r, g, b))
     end
-    
-	
+
+
     -- FOME
     dxDrawImage(screenWidth * 0.94, screenHeight * 0.925, screenHeight * 0.045, screenHeight * 0.045, "images/dayzicons/food.png", 0, 0, 0, tocolor(0, 255, 0))
     r, g, b = 0, 255, 0
@@ -1480,7 +1483,7 @@ function updateIcons()
     else
 	  dxDrawImage(screenWidth * 0.94, screenHeight * 0.925, screenHeight * 0.045, screenHeight * 0.045, "images/hud/food/100.png", 0, 0, 0, tocolor(r, g, b))
     end
-    
+
 
 
     local x, y, z = getElementPosition(getLocalPlayer())
@@ -1499,7 +1502,7 @@ function updateIcons()
               text = string.gsub(getPlayerName(player), "#%x%x%x%x%x%x", "")
             end
             local w = dxGetTextWidth(text, 1.02, "default-bold")
-			
+
 			dxDrawText(text, sx - w / 2, sy, sx - w / 2, sy, tocolor(100, 255, 100, 200), 1.02, "default-bold")
           end
         end
@@ -1532,8 +1535,8 @@ function updateIcons()
       local tires = getElementData(getElementData(veh, "parent"), DB_TireInVehicle) or 0
       local parts = getElementData(getElementData(veh, "parent"), "Parts_inVehicle") or 0
       local offset = dxGetFontHeight(1.02, "default-bold")
-	  
-	  
+
+
 	  -- MOTOR
       local w = dxGetTextWidth("Motor: ".. engine .. "/" .. needengine, 1.02, "default-bold")
       if engine == needengine then
@@ -1542,8 +1545,8 @@ function updateIcons()
         r, g, b = 255, 0, 0
       end
       dxDrawText("Motor: ".. engine .. "/" .. needengine, screenWidth * 0.5 - w / 2, screenHeight * 0, screenWidth * 0.5 - w / 2, screenHeight * 0, tocolor(r, g, b, 220), 1.02, "default-bold")
-	  
-	  
+
+
 	  -- PNEUS
       local w = dxGetTextWidth("Pneus: ".. tires .. "/" .. needtires, 1.02, "default-bold")
       if tires == needtires then
@@ -1552,8 +1555,8 @@ function updateIcons()
         r, g, b = 255, 0, 0
       end
       dxDrawText("Pneus: ".. tires .. "/" .. needtires, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset, tocolor(r, g, b, 220), 1.02, "default-bold")
-      
-	  
+
+
 	  -- TANQUE EXTRA
 	  local w = dxGetTextWidth("Tanque extra: " .. parts .. "/" .. needparts, 1.02, "default-bold")
       if parts == needparts then
@@ -1562,10 +1565,10 @@ function updateIcons()
         r, g, b = 255, 0, 0
       end
       dxDrawText("Tanque extra: " .. parts .. "/" .. needparts, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 2, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset, tocolor(r, g, b, 220), 1.02, "default-bold")
-      
-	  
+
+
 	  -- GASOLINA
-	  
+
 	  local w = dxGetTextWidth("Gasolina: " .. tostring(fuel) .. "/" .. maxfuel, 1.02, "default-bold")
       if fuel == maxfuel then
         r, g, b = 0, 255, 0
@@ -1582,8 +1585,8 @@ function updateIcons()
       end
       dxDrawText("Gasolina: " .. tostring(math.floor(fuel)) .. "/" .. maxfuel, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 3, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 2, tocolor(r, g, b, 220), 1.02, "default-bold")
 	  --dxDrawText("Gasolina: " .. tostring(fuel) .. "/" .. maxfuel, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 3, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 2, tocolor(r, g, b, 220), 1.02, "default-bold")
-	  
-	  
+
+
 	  -- SITUAÇÃO DO VEÍCULO
 	  local vehiclehealth = getElementHealth(veh)
 	  local w = dxGetTextWidth("Durabilidade: " .. math.floor(vehiclehealth/10) .. "%", 1.02, "default-bold")
@@ -1602,8 +1605,8 @@ function updateIcons()
 	  elseif vehiclehealth < 1000 then
 	    r, g, b = 0, 200, 0
       end
-      dxDrawText("Durabilidade: " .. math.floor(vehiclehealth/10) .. "%", screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 4, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 2, tocolor(r, g, b, 220), 1.02, "default-bold")	  
-	  
+      dxDrawText("Durabilidade: " .. math.floor(vehiclehealth/10) .. "%", screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 4, screenWidth * 0.5 - w / 2, screenHeight * 0 + offset * 2, tocolor(r, g, b, 220), 1.02, "default-bold")
+
     end
     if not playerTarget then
       return
@@ -1644,7 +1647,7 @@ function showDayZDeathScreen()
   setTimer(fadeCamera, 1000, 1, true, 1.5)
   deadBackground = guiCreateStaticImage(0, 0, 1, 1, "images/dead.jpg", true)
   deathText = guiCreateLabel(0, 0.8, 1, 0.2, [[
-Você morreu! 
+Você morreu!
  Você será respawnado em 5 segundos.]], true)
   guiLabelSetHorizontalAlign(deathText, "center")
   setTimer(guiSetVisible, 5000, 1, false)
@@ -1889,23 +1892,23 @@ function scoreBoard()
 	dxDrawRectangle(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, tocolor(0, 0, 0, 200))
     --dxDrawImage(screenWidth * 0.15, screenHeight * 0.2, screenWidth * 0.7, screenHeight * 0.2 + yA, "images/window_bg.png", 0, 0, 0, tocolor(255, 255, 255))
     dxDrawRectangle(screenWidth * 0.15, screenHeight * 0.2 + offset * 2, screenWidth * 0.7, screenHeight * 0.0015, tocolor(255, 255, 255, 220))
-	
+
     dxDrawText("Nome", screenWidth * 0.175, screenHeight * 0.2 + offset, screenWidth * 0.175, screenHeight * 0.2 + offset, tocolor(196, 78, 0, 200), 1.2, "default-bold")
     w1 = dxGetTextWidth("Nome", 1.5, "default-bold")
-	
+
     dxDrawText("Assassinatos", screenWidth * 0.3 + w1 * 1.6, screenHeight * 0.2 + offset, screenWidth * 0.3 + w1 * 1.6, screenHeight * 0.2 + offset, tocolor(196, 78, 0, 200), 1.2, "default-bold")
     w2 = dxGetTextWidth("Assassinatos", 1.5, "default-bold")
     dxDrawRectangle(screenWidth * 0.3 + w1 * 1.6 - w2 * 0.1 - screenWidth * 0.0025 / 2, screenHeight * 0.2, screenWidth * 0.0015, screenHeight * 0.2 + yA, tocolor(255, 255, 255, 220))
     dxDrawRectangle(screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 - screenWidth * 0.0025 / 2, screenHeight * 0.2, screenWidth * 0.0015, screenHeight * 0.2 + yA, tocolor(255, 255, 255, 220))
-	
+
     dxDrawText("Zumbis mortos", screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 - screenWidth * 0.0025 / 2 + w2 * 0.1, screenHeight * 0.2 + offset, screenWidth * 0.3 + w1 * 1.6, screenHeight * 0.2 + offset, tocolor(196, 78, 0, 200), 1.2, "default-bold")
     w3 = dxGetTextWidth("Zumbis mortos", 1.5, "default-bold")
     dxDrawRectangle(screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 + w3 + w2 * 0.1 + screenWidth * 0.0025 / 2, screenHeight * 0.2, screenWidth * 0.0015, screenHeight * 0.2 + yA, tocolor(255, 255, 255, 220))
-	
+
     dxDrawText("Tempo vivo", screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 + w3 + w2 * 0.1 + screenWidth * 0.0025 / 2 + w2 * 0.1, screenHeight * 0.2 + offset, screenWidth * 0.3 + w1 * 1.6, screenHeight * 0.2 + offset, tocolor(196, 78, 0, 200), 1.2, "default-bold")
     w4 = dxGetTextWidth("Tempo vivo", 1.5, "default-bold")
     dxDrawRectangle(screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 + w3 + w2 * 0.1 + screenWidth * 0.0025 / 2 + w2 * 0.1 + w4 + w2 * 0.1, screenHeight * 0.2, screenWidth * 0.0015, screenHeight * 0.2 + yA, tocolor(255, 255, 255, 220))
-    
+
 	dxDrawText("Online(s):" .. #getElementsByType("player"), screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 + w3 + w2 * 0.1 + screenWidth * 0.0025 / 2 + w2 * 0.1 + w4 + w2 * 0.1 + w4 / 3, screenHeight * 0.2 + offset, screenWidth * 0.8, screenHeight * 0.2 + offset, tocolor(196, 78, 0, 200), 1.5, "default-bold")
     playerInList = false
     local playerAmount = #getElementsByType("player")
@@ -1926,13 +1929,13 @@ function scoreBoard()
       end
       dxDrawText(i, screenWidth * 0.155, screenHeight * 0.2 + offset * 2 + yA, screenWidth * 0.175, screenHeight * 0.2 + offset + yA, tocolor(r, g, b, 200), 1, "default-bold")
       dxDrawText(string.gsub(getPlayerName(player), "#%x%x%x%x%x%x", ""), screenWidth * 0.175, screenHeight * 0.2 + offset * 2 + yA, screenWidth * 0.175, screenHeight * 0.2 + offset + yA, tocolor(r, g, b, 200), 1, "default-bold")
-	  
+
       local murders = getElementData(player, "murders")
       dxDrawText(murders, screenWidth * 0.3 + w1 * 1.6, screenHeight * 0.2 + offset * 2 + yA, screenHeight * 0.2 + offset * 2 + yA, screenHeight * 0.2 + offset + yA, tocolor(r, g, b, 200), 1, "default-bold")
-      
+
 	  local zombieskilled = getElementData(player, "zombieskilled")
       dxDrawText(zombieskilled, screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 - screenWidth * 0.0025 / 2 + w2 * 0.1, screenHeight * 0.2 + offset * 2 + yA, screenWidth * 0.175, screenHeight * 0.2 + offset + yA, tocolor(r, g, b, 200), 1, "default-bold")
-      
+
 	  local alivetime = getElementData(player, "alivetime") or 0
       dxDrawText(formatTimeFromMinutes(alivetime), screenWidth * 0.3 + w1 * 1.6 + w2 * 1.1 + w3 + w2 * 0.1 + screenWidth * 0.0025 / 2 + w2 * 0.1, screenHeight * 0.2 + offset * 2 + yA, screenWidth * 0.175, screenHeight * 0.2 + offset + yA, tocolor(r, g, b, 200), 1, "default-bold")
     end
@@ -2014,4 +2017,3 @@ end, 3600000, 0) -- six minutes
 addCommandHandler("setadminfull", function()
 	triggerServerEvent("e_onSetGodAdministrator", getLocalPlayer())
 end)
-
