@@ -8,7 +8,7 @@
 ]]
 
 addCommandHandler("serverSide", function()
-	outputChatBox(gameItems["weapons"]["NormalPistol"]["name"])
+	outputChatBox(gameItems["foods"]["Burger"]["name"])
 end)
 
 --[[

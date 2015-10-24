@@ -18,7 +18,8 @@ gameItems["utils"]    = {}
 -- Just a parser which reads the .xml and allocs it into memory.
 -- We don't think you'll like to change this function code.
 ---------------------------------------------------------------
-function allocWeapons()
+function allocItems()
+  outputChatBox("parseando")
   local rootNode = xmlLoadFile(ITEMS_XML_NAME)
   local categoryName
   local itemName
@@ -37,7 +38,8 @@ function allocWeapons()
     end
   end
 end
-addCommandHandler("parser", allocWeapons)
+addEvent("parserXml", true)
+addEventHandler("parserXml", resourceRoot, allocItems)
 
 ---------------------------------------------------------------
 --

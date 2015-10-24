@@ -1,32 +1,35 @@
-<!--
-#---------------------------------------------------------------#
-----*			DayZ MTA Script meta.xml					*----
-----* This Script is owned by Marwin, you are not allowed to use or own it.
-----* Owner: Marwin W., Germany, Lower Saxony, Otterndorf
-----* Skype: xxmavxx96										*----
-#---------------------------------------------------------------#
--->
 <meta>
-    <info author="Stanley Sathler" description="MTA:DayZ - Dead Walkers" version="1.0.1" type="gamemode" />
-    <script src="editor_server.lua" type="server" />
-    <script src="editor_client.lua" type="client" />
-    <script src="pickups.lua" type="server" />
-    <script src="spawn.lua" type="server" />
-    <script src="vehicle_spawns.lua" type="server" />
-    <script src="survivorSystem.lua" type="server" />
-    <script src="zombies.lua" type="server" />
-    <script src="zombies_client.lua" type="client" />
-    <script src="animals.lua" type="server" />
-    <script src="weather.lua" type="server" />
-    <script src="login.lua" type="server" />
+    <info author="StanleySathler" description="DeadWalkers" version="0.0.1" type="gamemode" />
+    
+    <!-- Configuration & parsers -->
+    <file src="configuration/items.xml"/>
+    <script src="configuration/ParserXML.lua" type="shared"/>
+
+    <!-- Core server-side files -->
+    <script src="game/server/Addons_s.lua" type="server"/>
+    <script src="game/server/Animals_s.lua" type="server"/>
+    <script src="game/server/editor_server.lua" type="server"/>
+    <script src="game/server/LoadXML_s.lua" type="server"/>
+    <script src="game/server/login.lua" type="server"/>
+    <script src="game/server/pickups.lua" type="server"/>
+    <script src="game/server/spawn.lua" type="server"/>
+    <script src="game/server/SurvivorSystem_s.lua" type="server"/>
+    <script src="game/server/vehicle_spawns.lua" type="server"/>
+    <script src="game/server/Weather_s.lua" type="server"/>
+    <script src="game/server/Zombies_s.lua" type="server"/>
     <script src="tools/jq_server.lua" type="server" />
-    <script src="menu_client.lua" type="client" />
-    <script src="inventory.lua" type="client" />
-    <script src="survivorSystem_client.lua" type="client" />
-    <script src="animals_client.lua" type="client" />
+
+    <!-- Core client-side files -->
+    <script src="game/client/Animals_c.lua" type="client" />
+    <script src="game/client/editor_client.lua" type="client" />
+    <script src="game/client/Inventory_c.lua" type="client" />
+    <script src="game/client/LoadXML_c.lua" type="client"/>
+    <script src="game/client/Menu_c.lua" type="client" />
+    <script src="game/client/SurvivorSystem_c.lua" type="client" />
+    <script src="game/client/Zombies_c.lua" type="client" />
+    <script src="game/client/textlib.lua" type="client" />
     <script src="tools/jq_client.lua" type="client" />
-    <script src="textlib.lua" type="client" />
-	<script src="addons.lua" type="server" />
+	
     <script src="shader/motion/motion_c.lua" type="client" />
     <file src="shader/motion/motion.fx" />
     <script src="shader/blackwhite/blackwhite_c.lua" type="client" />
@@ -38,25 +41,10 @@
     <file src="tools/images/flags/join.png" />
     <file src="tools/images/flags/quit.png" />
 
-    <file src="configuration/items.xml"/>
-    <script src="configuration/ParserXML.lua" type="shared"/>
-
-    <script src="group_system/gang_client.lua" type="client" />
-    <script src="group_system/gang_utils.lua" type="server" />
-    <script src="group_system/gang_server.lua" type="server" />
-    <script src="group_system/groupsystem.lua" type="server" />
-    <script src="group_system/groupsystem_client.lua" type="client" />
-    <export function="addGang" type="server" />
-
     <!-- Addon: Exported Functions -->
     <export function="addAddonInfo" type="server" />
-	<export function="addDayZInfoBox" type="client" />
+	  <export function="addDayZInfoBox" type="client" />
 
-    <settings>
-        <setting name="*column_name" value="Group" />
-        <setting name="*gang_list_command" value="gangs" />
-        <setting name="*gang_create_command" value="creategang" />
-    </settings>
     <file src="images/scrollmenu_1.png" />
     <file src="images/background_scoreboard.png" />
     <file src="images/white.png" />

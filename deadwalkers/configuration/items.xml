@@ -9,21 +9,93 @@
       <name>Faca</name>
       <slots>1</slots>
       <damage>1300</damage>
+      <pickupId>335</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Equipar faca</useText>
+    </weapon>
+
+    <weapon id="Hatchet">
+      <name>Machado</name>
+      <slots>3</slots>
+      <damage>2100</damage>
+      <pickupId>339</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Equipar machado</useText>
+    </weapon>
+
+    <weapon id="BaseballBat">
+      <name>Taco de Beisebol</name>
+      <slots>3</slots>
+      <damage>1000</damage>
+      <pickupId>336</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Equipar taco</useText>
+    </weapon>
+
+    <weapon id="Crowbar">
+      <name>Pé-de-cabra</name>
+      <slots>2</slots>
+      <damage>1100</damage>
+      <pickupId>333</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Equipar pé-de-cabra</useText>
+    </weapon>
+
+    <weapon id="Shovel">
+      <name>Pá</name>
+      <slots>4</slots>
+      <damage>1100</damage>
+      <pickupId>337</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Vestir roupa</useText>
     </weapon>
 
     <weapon id="NormalPistol" type="firegun">
       <name>Pistola</name>
       <slots>1</slots>
-      <damage>1500</damage>
+      <damage>1200</damage>
       <ammo_name>Munição de Pistola</ammo_name>
       <ammo_slots>0.25</ammo_slots>
+      <pickupId>346</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Equipar pistola</useText>
     </weapon>
 
     <weapon id="SilencedPistol" type="firegun">
       <name>Pistola Silenciosa</name>
       <slots>2</slots>
-      <damage>1500</damage>
+      <damage>1200</damage>
       <ammo_name>Munição de Pistola</ammo_name>
+      <ammo_slots>0.25</ammo_slots>
+    </weapon>
+
+    <weapon id="DesertEagle" type="firegun">
+      <name>Desert Eagle</name>
+      <slots>1</slots>
+      <damage>2500</damage>
+      <ammo_name>Munição de D. Eagle</ammo_name>
+      <ammo_slots>0.25</ammo_slots>
+    </weapon>
+
+    <weapon id="Uzi" type="firegun">
+      <name>Micro-UZI</name>
+      <slots>2</slots>
+      <damage>1200</damage>
+      <ammo_name>Munição de Uzi</ammo_name>
+      <ammo_slots>0.25</ammo_slots>
+    </weapon>
+
+    <weapon id="MP5" type="firegun">
+      <name>MP5</name>
+      <slots>2</slots>
+      <damage>2000</damage>
+      <ammo_name>Munição de MP5</ammo_name>
       <ammo_slots>0.25</ammo_slots>
     </weapon>
 
@@ -35,11 +107,27 @@
       <ammo_slots>0.50</ammo_slots>
     </weapon>
 
+    <weapon id="SPAZ12" type="firegun">
+      <name>SPAZ-12</name>
+      <slots>3</slots>
+      <damage>3000</damage>
+      <ammo_name>Munição de SPAZ-12</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
+    </weapon>
+
     <weapon id="M4" type="firegun">
       <name>M16A2</name>
       <slots>4</slots>
       <damage>3000</damage>
       <ammo_name>Munição de M16A2</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
+    </weapon>
+
+    <weapon id="AK47" type="firegun">
+      <name>AK-47</name>
+      <slots>4</slots>
+      <damage>3000</damage>
+      <ammo_name>Munição de AK-47</ammo_name>
       <ammo_slots>0.50</ammo_slots>
     </weapon>
 
@@ -52,13 +140,206 @@
     </weapon>
   </weapons>
 
-  <foods></foods>
+  <weapon id="CountryRifle" type="firegun">
+      <name>Espingarda</name>
+      <slots>4</slots>
+      <damage>10000</damage>
+      <ammo_name>Munição de Espingarda</ammo_name>
+      <ammo_slots>0.50</ammo_slots>
+    </weapon>
+  </weapons>
 
-  <medics></medics>
+  <foods>
+    <weapon id="Burger">
+      <name>Hambúrguer</name>
+      <slots>1</slots>
+      <hungry>50</hungry>
+      <health>1000</health>
+      <pickupId>2786</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
 
-  <skins></skins>
+    <weapon id="Pizza">
+      <name>Pizza</name>
+      <slots>3</slots>
+      <hungry>100</hungry>
+      <health>2000</health>
+      <pickupId>1582</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
+
+    <weapon id="RawMeat">
+      <name>Carne Crua</name>
+      <slots>2</slots>
+      <hungry>50</hungry>
+      <health>1000</health>
+      <pickupId>2804</pickupId>
+      <pickupScale>0.5</pickupScale>
+      <pickupRx>90</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
+
+    <weapon id="CookedMeat">
+      <name>Carne Cozida</name>
+      <slots>2</slots>
+      <hungry>70</hungry>
+      <health>1200</health>
+      <pickupId>2806</pickupId>
+      <pickupScale>0.5</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
+
+    <weapon id="PastaCan">
+      <name>Comida Enlatada</name>
+      <slots>1</slots>
+      <hungry>50</hungry>
+      <health>800</health>
+      <pickupId>2770</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
+    
+    <weapon id="BeansCan">
+      <name>Feijão Enlatada</name>
+      <slots>1</slots>
+      <hungry>50</hungry>
+      <health>800</health>
+      <pickupId>2601</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Comer</useText>
+    </weapon>
+  </foods>
+
+  <medics>
+    <medic id="MedicKit">
+      <name>Kit Médico</name>
+      <slots>2</slots>
+      <health>12000</health>
+      <pickupId>2891</pickupId>
+      <pickupScale>2.2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Usar kit médico</useText>
+    </medic>
+
+    <medic id="Bandage">
+      <name>Bandagem</name>
+      <slots>0.5</slots>
+      <health>0</health>
+      <pickupId>1578</pickupId>
+      <pickupScale>0.5</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Usar bandagem</useText>
+    </medic>
+
+    <medic id="BloodBag">
+      <name>Bolsa de Sangue</name>
+      <slots>2</slots>
+      <health>12000</health>
+      <pickupId>1580</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Curar amigo</useText>
+    </medic>
+
+    <medic id="HeatPack">
+      <name>Bolsa c/ Água Quente</name>
+      <slots>1</slots>
+      <health>0</health>
+      <pickupId>1576</pickupId>
+      <pickupScale>5</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Usar bolsa</useText>
+    </medic>
+
+    <medic id="Morphine">
+      <name>Morfina</name>
+      <slots>0.5</slots>
+      <health>0</health>
+      <pickupId>1579</pickupId>
+      <pickupScale>1</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Usar morfina</useText>
+    </medic>
+
+    <medic id="Painkiller">
+      <name>Analgésico</name>
+      <slots>0.5</slots>
+      <health>0</health>
+      <pickupId>2709</pickupId>
+      <pickupScale>3</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Usar analgésico</useText>
+    </medic>
+  </medics>
+
+  <skins>
+    <skin id="SkinSurvivor">
+      <name>Roupa de Sobrevivente</name>
+      <slots>2</slots>
+      <skin>73</skin>
+      <pickupId>1577</pickupId>
+      <pickupScale>2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Vestir roupa</useText>
+    </skin>
+
+    <skin id="SkinCivilian">
+      <name>Roupa de Civil</name>
+      <slots>2</slots>
+      <skin>179</skin>
+      <pickupId>1241</pickupId>
+      <pickupScale>2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Vestir roupa</useText>
+    </skin>
+
+    <skin id="SkinMilitary">
+      <name>Roupa Militar</name>
+      <slots>2</slots>
+      <skin>287</skin>
+      <pickupId>1247</pickupId>
+      <pickupScale>2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Vestir roupa</useText>
+    </skin>
+
+    <skin id="SkinGhillieDesert">
+      <name>Ghillie Suit (Deserto)</name>
+      <slots>2</slots>
+      <skin>285</skin>
+      <pickupId>1213</pickupId>
+      <pickupScale>2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Vestir roupa</useText>
+    </skin>
+
+    <skin id="SkinGhillieForest">
+      <name>Ghillie Suit (Floresta)</name>
+      <slots>2</slots>
+      <skin>284</skin>
+      <pickupId>1213</pickupId>
+      <pickupScale>2</pickupScale>
+      <pickupRx>0</pickupRx>
+      <useText>Vestir roupa</useText>
+    </skin>
+  </skins>
 
   <items></items>
   
   <utils></utils>
 </deadwalkers>
+
+--[[ table structure:
+  [1] item name
+  [2] item model
+  [3] item scale
+  [4] item rx position
+  [5] percentage of spawn
+]]
