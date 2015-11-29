@@ -27,11 +27,6 @@ end
 nightAddon ()
 ]]
 
-addEventHandler("onResourceStart", resourceRoot, function()
-	startResource("login")
-	startResource("slothbot")
-end)
-
 --Load Addons
 function loadAddons( res )
 	for resourceKey, resourceValue in ipairs(getResources()) do

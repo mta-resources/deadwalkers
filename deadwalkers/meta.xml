@@ -1,15 +1,18 @@
 <meta>
-    <info author="StanleySathler" description="DeadWalkers" version="0.0.1" type="gamemode" />
+    <info author="StanleySathler" description="A zombie gamemode based on MTA:DayZ, but improved, shorter and Open Source." version="0.0.1" type="gamemode" />
     
     <!-- Configuration & parsers -->
     <file src="configuration/items.xml"/>
     <script src="configuration/ParserXML.lua" type="shared"/>
 
+    <!-- Client and Server loaders -->
+    <script src="game/server/LoadXML_s.lua" type="server"/>
+    <script src="game/client/LoadXML_c.lua" type="client"/>
+
     <!-- Core server-side files -->
     <script src="game/server/Addons_s.lua" type="server"/>
     <script src="game/server/Animals_s.lua" type="server"/>
     <script src="game/server/editor_server.lua" type="server"/>
-    <script src="game/server/LoadXML_s.lua" type="server"/>
     <script src="game/server/login.lua" type="server"/>
     <script src="game/server/pickups.lua" type="server"/>
     <script src="game/server/spawn.lua" type="server"/>
@@ -23,7 +26,6 @@
     <script src="game/client/Animals_c.lua" type="client" />
     <script src="game/client/editor_client.lua" type="client" />
     <script src="game/client/Inventory_c.lua" type="client" />
-    <script src="game/client/LoadXML_c.lua" type="client"/>
     <script src="game/client/Menu_c.lua" type="client" />
     <script src="game/client/SurvivorSystem_c.lua" type="client" />
     <script src="game/client/Zombies_c.lua" type="client" />

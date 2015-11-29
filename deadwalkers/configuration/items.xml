@@ -1,7 +1,3 @@
-<!---------------------------------------------------
-  -- This file contains all items information, such
-  -- damage, name, slots, and more.
-  --------------------------------------------------->
 <deadwalkers>
 
   <weapons>
@@ -138,9 +134,8 @@
       <ammo_name>Munição de Sniper</ammo_name>
       <ammo_slots>0.50</ammo_slots>
     </weapon>
-  </weapons>
 
-  <weapon id="CountryRifle" type="firegun">
+    <weapon id="CountryRifle" type="firegun">
       <name>Espingarda</name>
       <slots>4</slots>
       <damage>10000</damage>
@@ -335,11 +330,3 @@
   
   <utils></utils>
 </deadwalkers>
-
---[[ table structure:
-  [1] item name
-  [2] item model
-  [3] item scale
-  [4] item rx position
-  [5] percentage of spawn
-]]

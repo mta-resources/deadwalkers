@@ -19,12 +19,17 @@ gameItems["utils"]    = {}
 -- We don't think you'll like to change this function code.
 ---------------------------------------------------------------
 function allocItems()
-  outputChatBox("parseando")
+
   local rootNode = xmlLoadFile(ITEMS_XML_NAME)
   local categoryName
   local itemName
   local itemId
   local attrName
+
+  if not rootNode then 
+    outputDebugString("[-] DW ERROR: The "..ITEMS_XML_NAME.." file could not be loaded. Check if exists and if there are syntax errors there.")
+    return false
+  end
 
   for _, categoryNode in ipairs(xmlNodeGetChildren(rootNode)) do
     for _, itemNode in ipairs(xmlNodeGetChildren(categoryNode)) do
