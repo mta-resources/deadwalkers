@@ -335,11 +335,3 @@
   
   <utils></utils>
 </deadwalkers>
-
---[[ table structure:
-  [1] item name
-  [2] item model
-  [3] item scale
-  [4] item rx position
-  [5] percentage of spawn
-]]
