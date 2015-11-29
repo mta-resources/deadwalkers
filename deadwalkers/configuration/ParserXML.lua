@@ -45,7 +45,3 @@ function allocItems()
 end
 addEvent("parserXml", true)
 addEventHandler("parserXml", resourceRoot, allocItems)
-
----------------------------------------------------------------
---
----------------------------------------------------------------

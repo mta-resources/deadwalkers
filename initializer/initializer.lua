@@ -1,0 +1,5 @@
+addEventHandler("onResourceStart", resourceRoot, function()
+  startResource("login")
+  startResource("slothbot")
+  startResource("deadwalkers")
+end)
