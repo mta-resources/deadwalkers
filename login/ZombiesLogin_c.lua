@@ -1,6 +1,112 @@
-﻿function createLoginScreen()
-	local path = "images/" --saves the path directory for easy edition
-	local scWidth, scHeight = guiGetScreenSize() --returns the screen size
+﻿
+--------------------------------------------------------------------
+-- Global constants applied only to this file
+--------------------------------------------------------------------
+local IMAGES_PATH = "images"
+local SOUNDS_PATH = "sounds"
+local SCREEN_WIDTH, SCREEN_HEIGHT = guiGetScreenSize()
+local DEFAULT_USERNAME_TEXT = "Username  " -- if you'll change this, keep the spaces
+local DEFAULT_PASSWORD_TEXT = "Password  " -- if you'll change this, keep the spaces
+
+
+--------------------------------------------------------------------
+-- Creates the background sound
+--------------------------------------------------------------------
+function createSound()
+	local backgroundSound = Song.create(SOUNDS_PATH .. "/login_sound.mp3")
+end
+
+
+--------------------------------------------------------------------
+-- Creates the GUI elements in the screen
+--------------------------------------------------------------------
+function createScreenUIElements()
+
+	-- Creates the screen background
+	local imageBackground = GuiStaticImage.create(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IMAGES_PATH.."/background.jpg", false)
+				GuiElement.setProperty(imageBackground, "ZOrderChangeEnabled", "False")
+
+	-- Creates the game brand in the screen
+	local gameBrand	= GuiStaticImage.create(0, 100, 539, 93, IMAGES_PATH.."/game-brand.png", false)
+				GuiElement.setProperty(gameBrand, "HorizontalAlignment", "Centre")
+
+	-- Creates the window itself (with text fields and buttons)
+	local imageWindow = GuiStaticImage.create(0, 0, 489, 348, IMAGES_PATH.."/login-window-background.png", false)
+				GuiElement.setProperty(imageWindow, "HorizontalAlignment", "Centre")
+				GuiElement.setProperty(imageWindow, "VerticalAlignment", "Centre")
+				GuiElement.setProperty(imageWindow, "ZOrderChangeEnabled", "False")
+
+  -- Creates the login button
+	local buttonLogin = GuiStaticImage.create(0, 210, 373, 48,IMAGES_PATH.."/btn_background.png", false, imageWindow)
+				GuiElement.setProperty(buttonLogin, "HorizontalAlignment", "Centre")
+
+	-- Crates the label to be applied to login button, since login button isn't a real button but an image
+	local labelLogin = GuiLabel.create(0, 0, 45, 15, "Connect", false, buttonLogin)
+				GuiElement.setProperty(labelLogin, "HorizontalAlignment", "Centre")
+				GuiElement.setProperty(labelLogin, "VerticalAlignment", "Centre")
+				GuiElement.setFont(labelLogin, "default-bold-small")
+
+  -- Creates the register button
+	local buttonRegister = GuiStaticImage.create(0, 260, 373, 48, IMAGES_PATH.."/btn_background.png", false, imageWindow)
+				GuiElement.setProperty(buttonRegister, "HorizontalAlignment", "Centre")
+
+	-- Crates the label to be applied to register button, since register button isn't a real button but an image
+	local labelRegister = GuiLabel.create(0, 0, 50, 15, "Register", false, buttonRegister)
+				GuiElement.setProperty(labelRegister, "HorizontalAlignment", "Centre")
+				GuiElement.setProperty(labelRegister, "VerticalAlignment", "Centre")
+				GuiElement.setFont(labelRegister, "default-bold-small")
+
+  -- Creates the text field for username insertion
+	local editUsername = GuiEdit.create(0, 70, 373, 48, DEFAULT_USERNAME_TEXT, false, imageWindow)
+				GuiElement.setProperty(editUsername, "HorizontalAlignment", "Centre")
+
+  -- Creates the text field for password insertion
+	local editPassword = GuiEdit.create(0, 120, 373, 48, DEFAULT_PASSWORD_TEXT, false, imageWindow)
+				GuiElement.setProperty(editPassword, "HorizontalAlignment", "Centre")
+
+  -- Creates the checkbox for save password and username
+	local chbxRemember = GuiCheckBox.create(315, 180, 130, 20, "Remember", false, false, imageWindow)
+				GuiElement.setFont(chbxRemember, "default-bold-small")
+
+  -- Creates those two zombies in the screen, just for make it better :)
+	local imageZombieOne = GuiStaticImage.create(SCREEN_WIDTH*0.5 - 355, SCREEN_HEIGHT*0.5 - 200, 188, 414, IMAGES_PATH.."/zombie_1.png", false)
+	local imageZombieTwo = GuiStaticImage.create(SCREEN_WIDTH*0.5 + 150, SCREEN_HEIGHT*0.5 - 200, 340, 402, IMAGES_PATH.."/zombie_2.png", false)
+
+	addEventHandler("onClientGUIClick", buttonLogin, createPlaceholderOnClick, false)
+	addEventHandler("onClientGUIClick", buttonRegister, createPlaceholderOnClick, false)
+
+  -- Shows the cursor on the screen
+	showCursor(true)
+
+end
+addEventHandler("onClientResourceStart", resourceRoot, createScreenUIElements)
+
+
+--------------------------------------------------------------------
+-- Creates the placeholder effect when click on field
+--------------------------------------------------------------------
+function createPlaceholderOnClick(button, state, absoluteX, absoluteY, targetField)
+
+	-- If button pressed was the left mouse button
+	if button == "left" then
+
+		-- Gets the current clicked field text
+		local currentText = GuiEdit.getText(source)
+
+		-- If current text is "Username" or "Password", erases its content
+		if currentText == DEFAULT_USERNAME_TEXT or currentText == DEFAULT_PASSWORD_TEXT then
+			GuiEdit.setText(source, "")
+		end
+
+	end
+
+end
+
+
+
+--[[
+function createLoginScreen()
+	configs.screenSize.width, configs.screenSize.height = guiGetScreenSize()
 	
 	guiSetInputMode("no_binds_when_editing")
 	
@@ -220,6 +326,7 @@
 
 end
 addEventHandler("onClientResourceStart", resourceRoot, createLoginScreen)
+]]
 
 addEvent("onErrorOccurs", true)
 function showErrorMessage(message)
