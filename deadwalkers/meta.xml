@@ -1,0 +1,7 @@
+<meta>
+  <info author="StanleySathler" type="gamemode" description="A zombie gamemode based on MTA:DAYZ." />
+  <oop>true</oop>
+  <script src="game/server/LoginServer.lua" type="server" />
+  <export function="login" type="server" />
+</meta>
+  

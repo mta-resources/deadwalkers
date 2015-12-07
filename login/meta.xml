@@ -1,7 +1,6 @@
 <meta>
 	<info author="StanleySathler" type="script" description="A login screen, usable in any zombie server, but originally created for DeadWalkers gamemode." />
 	<oop>true</oop>
-	<script src="ZombiesLogin_s.lua" type="server" />
 	<script src="ZombiesLogin_c.lua" type="client" />
 	<file src="images/background.jpg" />
 	<file src="images/game-brand.png" />
