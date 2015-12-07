@@ -22,6 +22,6 @@ addEventHandler("dwLoginServerEvent", resourceRoot, login)
 -- @param string response:  text containing a response
 -- @param string type:      error type (e.g. successful or error)
 --------------------------------------------------------------------
-function loginResponse(logged, response, type)
-  triggerClientEvent("dwLoginClientEvent", resourceRoot, logged, response, type)
+function loginResponse(logged)
+  triggerClientEvent("dwLoginClientEvent", resourceRoot, logged)
 end

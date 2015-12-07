@@ -9,11 +9,16 @@ local DEFAULT_USERNAME_TEXT = "Username  " -- if you'll change this, keep the sp
 local DEFAULT_PASSWORD_TEXT = "Password  " -- if you'll change this, keep the spaces
 local USER_INFO_FILE_NAME = "@dw_userdata.xml"
 local oldFieldText = ""
+
+--------------------------------------------------------------------
+-- Global variables that is used to store CEGUI elements
+--------------------------------------------------------------------
 local backgroundSound
 local imageBackground
 local editUsername
 local editPassword
 local labelError
+local chbxRemember
 
 --------------------------------------------------------------------
 -- Creates the background sound
@@ -30,8 +35,8 @@ function createScreenUIElements()
 	createSound()
 
 	-- Creates the screen background
-	imageBackground = GuiStaticImage.create(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IMAGES_PATH.."/background.jpg", false)
-				GuiElement.setProperty(imageBackground, "ZOrderChangeEnabled", "False")
+	--imageBackground = GuiStaticImage.create(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IMAGES_PATH.."/background.jpg", false)
+				--GuiElement.setProperty(imageBackground, "ZOrderChangeEnabled", "False")
 
 	-- Creates the game brand in the screen
 	local gameBrand	= GuiStaticImage.create(0, 100, 539, 93, IMAGES_PATH.."/game-brand.png", false, imageBackground)
@@ -71,15 +76,20 @@ function createScreenUIElements()
 	editPassword = GuiEdit.create(0, 120, 373, 48, DEFAULT_PASSWORD_TEXT, false, imageWindow)
 				GuiElement.setProperty(editPassword, "HorizontalAlignment", "Centre")
 
-  -- Creates the checkbox for save password and username
-	local chbxRemember = GuiCheckBox.create(315, 180, 130, 20, "Remember", false, false, imageWindow)
-				GuiElement.setFont(chbxRemember, "default-bold-small")
+	local savedUsername, savedPassword = loadUserXML()
+	GuiElement.setText(editUsername, savedUsername)
+	GuiElement.setText(editPassword, savedPassword)
 
+	-- Creates the error label which will shows error messages
 	labelError = GuiLabel.create(0, 180, 373, 20, "", false, imageWindow)
 				GuiElement.setProperty(labelError, "HorizontalAlignment", "Centre")
 				GuiElement.setProperty(labelError, "HorzFormatting", "LeftAligned")
 				GuiElement.setFont(labelError, "default-bold-small")
 				GuiLabel.setColor(labelError, 255, 0, 0)
+
+  -- Creates the checkbox for save password and username
+	chbxRemember = GuiCheckBox.create(315, 180, 130, 20, "Remember", false, false, imageWindow)
+				GuiElement.setFont(chbxRemember, "default-bold-small")
 
   -- Creates those two zombies in the screen, just for make it better :)
 	local imageZombieOne = GuiStaticImage.create(SCREEN_WIDTH*0.5 - 355, SCREEN_HEIGHT*0.5 - 200, 188, 414, IMAGES_PATH.."/zombie_1.png", false, imageBackground)
@@ -100,6 +110,8 @@ addEventHandler("onClientResourceStart", resourceRoot, createScreenUIElements)
 
 --------------------------------------------------------------------
 -- Checks if login information is valid
+-- @param string user: 	text that comes from username field
+-- @param string pass:	text that comes from password field
 --------------------------------------------------------------------
 function validateLogin(user, pass)
 	if user ~= DEFAULT_USERNAME_TEXT and user ~= "" and pass ~= DEFAULT_PASSWORD_TEXT and pass ~= "" then
@@ -110,6 +122,7 @@ end
 
 --------------------------------------------------------------------
 -- Registers a new player
+-- @params: default from onClientGUIClick event
 --------------------------------------------------------------------
 function register(button, state, absoluteX, absoluteY)
 
@@ -117,6 +130,8 @@ end
 
 --------------------------------------------------------------------
 -- Sets an error message
+-- @param string message:		a text containing a message
+-- @param integer r, g, b: 	red, green and blue (0-255)
 --------------------------------------------------------------------
 function setLoginMessage(message, r, g, b)
 	r = r or 255
@@ -132,6 +147,13 @@ end
 function login(button, state, absoluteX, absoluteY)
 	local currUser = GuiElement.getText(editUsername)
 	local currPass = GuiElement.getText(editPassword)
+
+	-- If "remember-me" is selected
+	if GuiCheckBox.getSelected(chbxRemember) then
+		saveUserXML(currUser, currPass)
+	end
+
+	-- If fields are filled properly
 	if validateLogin(currUser, currPass) then
 		setLoginMessage("")
 		triggerServerEvent("dwLoginServerEvent", resourceRoot, getLocalPlayer(), currUser, currPass)
@@ -144,8 +166,9 @@ end
 -- Destroys login screen
 --------------------------------------------------------------------
 function hideLoginScreen()
-	Element.destroy()
+	Element.destroy(backgroundSound)
 	Element.destroy(imageBackground)
+	showCursor(false)
 end
 
 --------------------------------------------------------------------
@@ -154,13 +177,13 @@ end
 -- @param string response:	text containing response from server
 -- @param string type:			contains error type
 --------------------------------------------------------------------
-function loginClientResponse(logged, response, type)
+function loginClientResponse(logged)
 	local r = 0
 	local g = 0
 	local b = 0
 	if not logged then
 		r = 255
-		setLoginMessage(response, r, g, b)
+		setLoginMessage("Invalid username and/or password.", r, g, b)
 	else
 		hideLoginScreen()
 	end
@@ -200,7 +223,8 @@ function createUserXML(user, pass)
 	local passNode = XML.createChild(xmlFile, "password")
 	XML.setValue(userNode, user)
 	XML.setValue(passNode, pass)
-
+	XML.saveFile(xmlFile)
+	XML.unload(xmlFile)
 	return xmlFile, userNode, passNode
 end	
 
@@ -210,16 +234,18 @@ end
 -- @param string pass:	player's password
 --------------------------------------------------------------------
 function saveUserXML(user, pass)
-	local xmlFile = XML.load(USER_INFO_FILE_NAME)
-	local userNode = nil
-	local passNode = nil
+	local xmlFile  = XML.load(USER_INFO_FILE_NAME)
+	local userNode = ""
+	local passNode = ""
 	if not xmlFile then
-		xmlFile, userNode, passNode = createUserXML(user, pass)
+		createUserXML(user, pass)
 	else
 		userNode = XML.findChild(xmlFile, "username", 0)
 		passNode = XML.findChild(xmlFile, "password", 0)
 		XML.setValue(userNode, user)
 		XML.setValue(passNode, pass)
+		XML.saveFile(xmlFile)
+		XML.unload(xmlFile)
 	end
 end
 
@@ -235,6 +261,6 @@ function loadUserXML()
 	end
 	local userValue = XML.getValue(userNode)
 	local passValue = XML.getValue(passNode)
-
+	XML.unload(xmlFile)
 	return userValue, passValue
 end

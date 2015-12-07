@@ -9,12 +9,36 @@
 function login(player, user, pass, origin, callback)
   local account = getAccount(user, pass)
   if not account then 
-    call(getResourceFromName(origin), callback, false, "Invalid login and/or username", "error") 
+    call(getResourceFromName(origin), callback, false) 
     return false
   end
 
   if logIn(player, account, pass) then
-    call(getResourceFromName(origin), callback, true, "Logged successfully", "success")
+    call(getResourceFromName(origin), callback, true)
+    spawnPlayerOnMap(player)
     return true
   end
 end
+
+--------------------------------------------------------------------
+-- Gets the last player positions
+-- @param Player thePlayer:   current player
+--------------------------------------------------------------------
+function spawnPlayerOnMap(thePlayer)
+
+  -- Gets the last player's x, y and z positions
+  local x, y, z = dwGetLastPlayerPosition(thePlayer)
+  if not x or not y or not z then
+    -- first time playing, we need to create it
+    -- temporary vars
+    x = 0
+    y = 0
+    z = 0
+  end
+
+  -- Spawns the player on the map
+  spawnPlayer(thePlayer, x, y, z+1.5, 0, dwGetPlayerSkin(thePlayer))
+  fadeCamera(thePlayer, true)
+  setCameraTarget(thePlayer, thePlayer)
+end
+
