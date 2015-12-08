@@ -35,8 +35,8 @@ function createScreenUIElements()
 	createSound()
 
 	-- Creates the screen background
-	--imageBackground = GuiStaticImage.create(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IMAGES_PATH.."/background.jpg", false)
-				--GuiElement.setProperty(imageBackground, "ZOrderChangeEnabled", "False")
+	imageBackground = GuiStaticImage.create(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IMAGES_PATH.."/background.jpg", false)
+				GuiElement.setProperty(imageBackground, "ZOrderChangeEnabled", "False")
 
 	-- Creates the game brand in the screen
 	local gameBrand	= GuiStaticImage.create(0, 100, 539, 93, IMAGES_PATH.."/game-brand.png", false, imageBackground)
@@ -75,10 +75,7 @@ function createScreenUIElements()
   -- Creates the text field for password insertion
 	editPassword = GuiEdit.create(0, 120, 373, 48, DEFAULT_PASSWORD_TEXT, false, imageWindow)
 				GuiElement.setProperty(editPassword, "HorizontalAlignment", "Centre")
-
-	local savedUsername, savedPassword = loadUserXML()
-	GuiElement.setText(editUsername, savedUsername)
-	GuiElement.setText(editPassword, savedPassword)
+				GuiEdit.setMasked(editPassword, true)
 
 	-- Creates the error label which will shows error messages
 	labelError = GuiLabel.create(0, 180, 373, 20, "", false, imageWindow)
@@ -94,6 +91,14 @@ function createScreenUIElements()
   -- Creates those two zombies in the screen, just for make it better :)
 	local imageZombieOne = GuiStaticImage.create(SCREEN_WIDTH*0.5 - 355, SCREEN_HEIGHT*0.5 - 200, 188, 414, IMAGES_PATH.."/zombie_1.png", false, imageBackground)
 	local imageZombieTwo = GuiStaticImage.create(SCREEN_WIDTH*0.5 + 150, SCREEN_HEIGHT*0.5 - 200, 340, 402, IMAGES_PATH.."/zombie_2.png", false, imageBackground)
+
+	-- Gets saved username and password from XML
+	local savedUsername, savedPassword = loadUserXML()
+	if(savedUsername ~= "" and savedPassword ~= "") then
+		GuiElement.setText(editUsername, savedUsername)
+		GuiElement.setText(editPassword, savedPassword)
+		GuiCheckBox.setSelected(chbxRemember, true)
+	end
 
 	addEventHandler("onClientGUIFocus", editUsername, 	createPlaceholderOnClick, false)
 	addEventHandler("onClientGUIFocus", editPassword, 	createPlaceholderOnClick, false)
@@ -117,7 +122,7 @@ function validateLogin(user, pass)
 	if user ~= DEFAULT_USERNAME_TEXT and user ~= "" and pass ~= DEFAULT_PASSWORD_TEXT and pass ~= "" then
 		return true
 	end
-	return false
+	setLoginMessage("User/password can not be empty.", 255, 0, 0)
 end
 
 --------------------------------------------------------------------
@@ -125,7 +130,13 @@ end
 -- @params: default from onClientGUIClick event
 --------------------------------------------------------------------
 function register(button, state, absoluteX, absoluteY)
-
+	local currUser = GuiElement.getText(editUsername)
+	local currPass = GuiElement.getText(editPassword)
+	saveUserdataIfRememberIsChecked(currUser, currPass)
+	if(validateLogin(currUser, currPass)) then
+		setLoginMessage("")
+		triggerServerEvent("dwRegisterServerEvent", resourceRoot, getLocalPlayer(), currUser, currPass)
+	end
 end
 
 --------------------------------------------------------------------
@@ -142,23 +153,29 @@ function setLoginMessage(message, r, g, b)
 end
 
 --------------------------------------------------------------------
+-- Saves into .xml file if checkbox is selected
+-- @param string username:	the player's username
+-- @param string password: 	the player's password
+--------------------------------------------------------------------
+function saveUserdataIfRememberIsChecked(username, password)
+	if GuiCheckBox.getSelected(chbxRemember) then
+		saveUserXML(username, password)
+	end
+end
+
+--------------------------------------------------------------------
 -- Does login in the game
 --------------------------------------------------------------------
 function login(button, state, absoluteX, absoluteY)
 	local currUser = GuiElement.getText(editUsername)
 	local currPass = GuiElement.getText(editPassword)
 
-	-- If "remember-me" is selected
-	if GuiCheckBox.getSelected(chbxRemember) then
-		saveUserXML(currUser, currPass)
-	end
+	saveUserdataIfRememberIsChecked(currUser, currPass)
 
 	-- If fields are filled properly
 	if validateLogin(currUser, currPass) then
 		setLoginMessage("")
 		triggerServerEvent("dwLoginServerEvent", resourceRoot, getLocalPlayer(), currUser, currPass)
-	else
-		setLoginMessage("User/password can not be empty.", 255, 0, 0)
 	end
 end
 
@@ -173,9 +190,7 @@ end
 
 --------------------------------------------------------------------
 -- Gets the login response from Deadwalkers
--- @param bool logged:			indicates if user was logged or not
--- @param string response:	text containing response from server
--- @param string type:			contains error type
+-- @param bool logged: 	indicates if user was logged or not
 --------------------------------------------------------------------
 function loginClientResponse(logged)
 	local r = 0
@@ -190,6 +205,24 @@ function loginClientResponse(logged)
 end
 addEvent("dwLoginClientEvent", true)
 addEventHandler("dwLoginClientEvent", resourceRoot, loginClientResponse)
+
+--------------------------------------------------------------------
+-- Gets the register response from Deadwalkers
+-- @param bool registered:	indicates if user was registered or not
+--------------------------------------------------------------------
+function registerClientResponse(registered)
+	local r = 0
+	local g = 0
+	local b = 0
+	if not registered then
+		r = 255
+		setLoginMessage("User could not be registered. Try another.", r, g, b)
+	else
+		hideLoginScreen()
+	end
+end
+addEvent("dwRegisterClientEvent", true)
+addEventHandler("dwRegisterClientEvent", resourceRoot, registerClientResponse)
 
 --------------------------------------------------------------------
 -- Creates the placeholder effect when focus on field
@@ -257,8 +290,11 @@ function loadUserXML()
 	local userNode  = nil
 	local passNode  = nil
 	if not xmlFile then
+		outputDebugString("not xmlfile")
 		xmlFile, userNode, passNode = createUserXML("", "")
 	end
+	local userNode	= XML.findChild(xmlFile, "username", 0)
+	local passNode 	= XML.findChild(xmlFile, "password", 0)
 	local userValue = XML.getValue(userNode)
 	local passValue = XML.getValue(passNode)
 	XML.unload(xmlFile)

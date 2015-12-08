@@ -5,6 +5,7 @@
 -- @param string pass:        player's password
 -- @param string origin:      the resource's name which is calling this function
 -- @param string callback:    function (in origin resource) that will receive the response
+-- @exported_function
 --------------------------------------------------------------------
 function login(player, user, pass, origin, callback)
   local account = getAccount(user, pass)
@@ -17,6 +18,27 @@ function login(player, user, pass, origin, callback)
     call(getResourceFromName(origin), callback, true)
     spawnPlayerOnMap(player)
     return true
+  end
+end
+
+--------------------------------------------------------------------
+-- Registers a player in to the game
+-- @param Player player:      the player that is trying to login
+-- @param string user:        player's username
+-- @param string pass:        player's password
+-- @param string origin:      the resource's name which is calling this function
+-- @param string callback:    function (in origin resource) that will receive the response
+-- @exported_function
+--------------------------------------------------------------------
+function register(player, user, pass, origin, callback)
+  local registered = addAccount(user, pass)
+  if registered then
+    call(getResourceFromName(origin), callback, true)
+    login(player, user, pass, origin, callback)
+    return true
+  else
+    call(getResourceFromName(origin), callback, false)
+    return false
   end
 end
 

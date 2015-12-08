@@ -5,6 +5,7 @@
 	<script src="ZombiesLogin_s.lua" type="server" />
 	
 	<export function="loginResponse" type="server" />
+	<export function="registerResponse" type="server" />
 
 	<file src="images/background.jpg" />
 	<file src="images/game-brand.png" />

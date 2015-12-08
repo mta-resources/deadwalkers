@@ -25,3 +25,26 @@ addEventHandler("dwLoginServerEvent", resourceRoot, login)
 function loginResponse(logged)
   triggerClientEvent("dwLoginClientEvent", resourceRoot, logged)
 end
+
+--------------------------------------------------------------------
+-- Calls deadwalkers' register() function
+-- @param Player player:  player that is trying to register
+-- @param string user:    player's username
+-- @param string pass:    player's password
+--------------------------------------------------------------------
+function register(player, user, pass)
+  exports[DEADWALKERS_GAMEMODE_NAME]:register(player, user, pass, getResourceName(getThisResource()), "registerResponse")
+end
+addEvent("dwRegisterServerEvent", true)
+addEventHandler("dwRegisterServerEvent", resourceRoot, register)
+
+--------------------------------------------------------------------
+-- Gets the response from Deadwalkers after try to register
+-- This function needs to be exported in meta.xml
+-- @param bool logged:      indicates if user was successfully logged or not
+-- @param string response:  text containing a response
+-- @param string type:      error type (e.g. successful or error)
+--------------------------------------------------------------------
+function registerResponse(registered)
+  triggerClientEvent("dwRegisterClientEvent", resourceRoot, registered)
+end
