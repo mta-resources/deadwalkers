@@ -15,14 +15,23 @@ function VehicleServer:createVehicleAccount(id, vehicleName)
   return true
 end
 
+function VehicleServer:createVehicle(type)
+  local name = type.name
+  for n, position in pairs(type["spawns"]) do
+    local veh = Vehicle.create(type.model, position[1], position[2], position[3])
+    local vehCol = ColShape.Sphere(position[1], position[2], position[3], 2)
+    Element.setData(veh, "parent", vehCol)
+    Element.setData(vehCol, "parent", veh)
+    Element.setData(vehCol, "is_vehicle", true)
+    Element.attach(vehCol, veh, 0, 0, 0)
+    self:createVehicleAccount(n, type.name)
+  end
+end
+
 function VehicleServer:spawnVehicles()
-  local sanchez     = VehiclesConfig:getSanchez()
-  local vehicleName = sanchez.name
-  for n, pos in ipairs(sanchez.spawns) do
-    local vehicle     = Vehicle.create(468, pos[1], pos[2], pos[3])
-    local vehColShape = ColShape.Sphere(pos[1], pos[2], pos[3], 2)
-    Element.attach(vehColShape, vehicle, 0, 0, 0)
-    self:createVehicleAccount(n, vehicleName)
+  local allVehicles = VehiclesConfig:getAllVehicles()
+  for i, veh in pairs(allVehicles) do -- ipairs() doesn't work when you're navigating through an object
+    self:createVehicle(veh)
   end
 end
 

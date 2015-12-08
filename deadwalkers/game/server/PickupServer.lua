@@ -31,7 +31,6 @@ function PickupServer:createItemLoot(type, x, y, z)
   local colSphere = ColShape.Sphere(x, y, z, 1.25)
   setElementData(colSphere, "is_loot", true)
   setElementData(colSphere, "max_slots", 12)
-  
 end
 
 --------------------------------------------------------------------
