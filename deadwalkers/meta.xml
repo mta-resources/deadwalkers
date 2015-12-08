@@ -1,9 +1,16 @@
 <meta>
   <info author="StanleySathler" type="gamemode" description="A zombie gamemode based on MTA:DAYZ." />
   <oop>true</oop>
+
+  <!-- Server-side scripts -->
   <script src="game/server/LoginServer.lua" type="server" />
   <script src="game/server/UtilitiesServer.lua" type="server" />
   <script src="game/server/UserDataManagerServer.lua" type="server" />
+
+  <!-- Client-side scripts -->
+  <script src="game/config/PlayerSpawnsConfig.lua" type="shared" />
+
+  <!-- Exported functions available for addons -->
   <export function="login" type="server" />
   <export function="register" type="server" />
 </meta>

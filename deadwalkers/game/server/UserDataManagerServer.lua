@@ -1,28 +1,32 @@
 --------------------------------------------------------------------
 -- Global object which means the "class"
 --------------------------------------------------------------------
-UserDataManagerServer = {}
+UserDataManagerServer = {
+  lastX = "last_x",
+  lastY = "last_y",
+  lastZ = "last_z"
+}
 
 --------------------------------------------------------------------
 -- Sets the last player position
 -- @param Player thePlayer: the player
 --------------------------------------------------------------------
-function UserDataManagerServer.setLastPlayerPosition(thePlayer)
+function UserDataManagerServer:setLastPlayerPosition(thePlayer)
   local account = getPlayerAccount(thePlayer)
   local x, y, z = getElementPosition(thePlayer)
-  setAccountData(account, "last_x", x)
-  setAccountData(account, "last_y", y)
-  setAccountData(account, "last_z", z)
+  setAccountData(account, self.lastX, x)
+  setAccountData(account, self.lastY, y)
+  setAccountData(account, self.lastZ, z)
 end
 
 --------------------------------------------------------------------
 -- Gets the last player position
 -- @param Player thePlayer: the player
 --------------------------------------------------------------------
-function UserDataManagerServer.getLastPlayerPosition(thePlayer)
+function UserDataManagerServer:getLastPlayerPosition(thePlayer)
   local account = getPlayerAccount(thePlayer)
-  local x = getAccountData(account, "last_x")
-  local y = getAccountData(account, "last_y")
-  local z = getAccountData(account, "last_z")
+  local x = getAccountData(account, self.lastX)
+  local y = getAccountData(account, self.lastY)
+  local z = getAccountData(account, self.lastZ)
   return x, y, z
 end

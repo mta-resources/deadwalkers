@@ -44,18 +44,18 @@ end
 
 --------------------------------------------------------------------
 -- Gets the last player positions
--- @param Player thePlayer:   current player
+-- @param Player thePlayer: current player
 --------------------------------------------------------------------
 function spawnPlayerOnMap(thePlayer)
-
-  -- Gets the last player's x, y and z positions
-  local x, y, z = UserDataManagerServer.getLastPlayerPosition(thePlayer)
+  local x, y, z = UserDataManagerServer:getLastPlayerPosition(thePlayer)
   if not x or not y or not z then
-    x = 0
-    y = 0
-    z = 0
+    local spawns = PlayerSpawnsConfig:getSpawnsList()
+    local n = math.random(#spawns)
+    x = spawns[n][1]
+    y = spawns[n][2]
+    z = spawns[n][3]
   end
-  spawnPlayer(thePlayer, x, y, z+1.5, 0, dwGetPlayerSkin(thePlayer))
+  spawnPlayer(thePlayer, x, y, z + 1.5, 0, dwGetPlayerSkin(thePlayer))
   fadeCamera(thePlayer, true)
   setCameraTarget(thePlayer, thePlayer)
 end
@@ -65,7 +65,7 @@ end
 -- @param Player thePlayer: current player
 --------------------------------------------------------------------
 function savePlayerData(thePlayer)
-  UserDataManagerServer.setLastPlayerPosition(thePlayer)
+  UserDataManagerServer:setLastPlayerPosition(thePlayer)
 end
 
 function ePlayerQuit(quitType, reason, responsibleElement)
@@ -77,4 +77,3 @@ function ePlayerLogout()
   savePlayerData(source)
 end
 addEventHandler("onPlayerLogout", getRootElement(), ePlayerLogout)
-
