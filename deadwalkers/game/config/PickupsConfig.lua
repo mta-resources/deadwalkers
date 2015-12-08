@@ -1,7 +1,7 @@
 --------------------------------------------------------------------
 -- Global object which means the "class"
 --------------------------------------------------------------------
-ItemsSpawnsConfig = {
+PickupsConfig = {
   industrial = {
     {202.46388,1860.1702,13.140625},
     {2776.3916015625,-2445.9912109375,13.63644695282},
@@ -2623,5 +2623,80 @@ ItemsSpawnsConfig = {
     {2294.79296875,2486.5478515625,3.2734375},
     {2233.494140625,2467.16796875,-7.4475412368774},
     {2233.9970703125,2448.5634765625,-7.453125},
-  }
+  },
+
+  itemTable = {
+    industrial = {
+      {"Item_Toolbox", 2969, 0.5, 0, 6}, 
+      {"Item_Tire", 1073, 1, 0, 4}, 
+      {"Motor", 929, 0.3, 0, 3.5}, 
+      {"Weapon_Shotgun", 349, 1, 90, 3}, 
+      {"Item_FullWaterBottle", 2683, 1, 0, 4}, 
+      {"Item_PastaCan", 2770, 1, 0, 4}, 
+      {"Item_BeansCan", 2601, 1, 0, 4}, 
+      {"Item_Burger", 2768, 1, 0, 4}, 
+      {"Item_EmptySodaCan", 2673, 0.5, 0, 12}, 
+      {"Item_SodaBottle", 2647, 1, 0, 4}, 
+      {"Item_EmptyPatrol", 1650, 1, 0, 6}, 
+      {"Item_FullPatrol", 1650, 1, 0, 1.5}, 
+      {"Item_Map", 1277, 1, 0, 3}, 
+      {"Item_Watch", 2710, 1, 0, 2}, 
+      {"Item_BoxOfMatches", 328, 0.4, 90, 5}, 
+      {"Item_WoodPile", 1463, 0.4, 0, 2}, 
+      {"Weapon_Pistol", 346, 1, 90, 1.5}, 
+      {"Weapon_Uzi", 352, 1, 90, 2}, 
+      {"Weapon_Knife", 335, 1, 90, 2}, 
+      {"Weapon_Katana", 339, 1, 90, 1.5}, 
+      {"Item_Pizza", 1582, 1, 0, 4}, 
+      {"Item_RoadFlare", 324, 1, 90, 5}, 
+      {"Item_Milk", 2856, 1, 0, 4}, 
+      {"Assault Pack (ACU)", 3026, 1, 0, 6}, 
+      {"Coyote Backpack", 1252, 1, 0, 1.1}, 
+      {"Item_Radio", 330, 1, 0, 6}, 
+      {"Weapon_Crowbar", 333, 1, 90, 1.5}, 
+      {"Weapon_Baseball", 336, 1, 90, 1.5}, 
+      {"Weapon_Shovel", 337, 1, 90, 1.5}, 
+      {"Item_NightVision", 368, 1, 90, 1.5}, 
+      {"Item_CDKRose", 1961, 0.3, 90, 3}
+    },
+    residential = {},
+    supermarket = {},
+    farm = {},
+    military = {},
+  },
 }
+
+--------------------------------------------------------------------
+-- Gets all residential pickup spawns
+--------------------------------------------------------------------
+function PickupsConfig:getResidentialSpawns()
+  return self.residential
+end
+
+--------------------------------------------------------------------
+-- Gets all industrial pickup spawns
+--------------------------------------------------------------------
+function PickupsConfig:getIndustrialSpawns()
+  return self.industrial
+end
+
+--------------------------------------------------------------------
+-- Gets all farm pickup spawns
+--------------------------------------------------------------------
+function PickupsConfig:getFarmSpawns()
+  return self.farm
+end
+
+--------------------------------------------------------------------
+-- Gets all military pickup spawns
+--------------------------------------------------------------------
+function PickupsConfig:getMilitarySpawns()
+  return self.military
+end
+
+--------------------------------------------------------------------
+-- Gets all supermarket pickup spawns
+--------------------------------------------------------------------
+function PickupsConfig:getSupermarketSpawns()
+  return self.supermarket
+end

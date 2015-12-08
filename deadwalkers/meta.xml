@@ -5,9 +5,17 @@
   <!-- Server-side scripts -->
   <script src="game/server/LoginServer.lua" type="server" />
   <script src="game/server/UserDataManagerServer.lua" type="server" />
-
+  <script src="game/server/PickupServer.lua" type="server" />
+  <script src="game/server/VehicleServer.lua" type="server" />
+  
   <!-- Client-side scripts -->
+  <script src="game/client/DevelopmentModeClient.lua" type="client" />
+
+  <!-- Both-side scripts -->
   <script src="game/config/PlayerSpawnsConfig.lua" type="shared" />
+  <script src="game/config/PickupsConfig.lua" type="shared" />
+  <script src="game/config/WeaponsConfig.lua" type="shared" />
+  <script src="game/config/VehiclesConfig.lua" type="shared" />
 
   <!-- Exported functions available for addons -->
   <export function="login" type="server" />
