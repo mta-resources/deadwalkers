@@ -255,6 +255,7 @@ addEventHandler("hideLoginScreen", getRootElement(), hideLoginWindow)
 
 
 
+
 -- This function load informations from XML file
 function loadLoginFromXML() --Загрузка логина и пароля из XML
 	local xml_save_log_File = xmlLoadFile ("userdata.xml")
