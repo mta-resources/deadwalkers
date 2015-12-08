@@ -2,9 +2,13 @@
   <info author="StanleySathler" type="gamemode" description="A zombie gamemode based on MTA:DAYZ." />
   <oop>true</oop>
 
+  <!-- Both-side scripts -->
+  <script src="game/shared/ElementDataListShared.lua" type="shared"/>
+
   <!-- Server-side scripts -->
   <script src="game/server/LoginServer.lua" type="server" />
-  <script src="game/server/UserDataManagerServer.lua" type="server" />
+  <script src="game/server/AccountDataManagerServer.lua" type="server" />
+  <script src="game/server/ElementDataManagerServer.lua" type="server" />
   <script src="game/server/PickupServer.lua" type="server" />
   <script src="game/server/VehicleServer.lua" type="server" />
   
@@ -12,7 +16,7 @@
   <script src="game/client/DevelopmentModeClient.lua" type="client" />
   <script src="game/client/InventoryClient.lua" type="client" />
 
-  <!-- Both-side scripts -->
+  <!-- Config scripts -->
   <script src="game/config/PlayerSpawnsConfig.lua" type="shared" />
   <script src="game/config/PickupsConfig.lua" type="shared" />
   <script src="game/config/WeaponsConfig.lua" type="shared" />

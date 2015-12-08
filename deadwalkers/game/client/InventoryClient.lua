@@ -18,7 +18,7 @@ InventoryClient = {
 --------------------------------------------------------------------
 -- A custom "self", since, in some cases, self isn't available
 --------------------------------------------------------------------
-obj = InventoryClient
+local obj = InventoryClient
 
 --------------------------------------------------------------------
 -- Creates the inventory main GUI
@@ -39,6 +39,10 @@ function InventoryClient:createWindow()
   self.playerButtonAll  = GuiButton.create(0.53, 0.52, 0.04, 0.35, "<<", true, self.mainWindow)
 
   GuiElement.setVisible(self.mainWindow, false)
+end
+
+function InventoryClient:refreshPlayerItems()
+
 end
 
 --------------------------------------------------------------------

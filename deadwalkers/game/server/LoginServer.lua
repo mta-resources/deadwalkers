@@ -47,7 +47,7 @@ end
 -- @param Player thePlayer: current player
 --------------------------------------------------------------------
 function spawnPlayerOnMap(thePlayer)
-  local x, y, z = UserDataManagerServer:getLastPosition(thePlayer)
+  local x, y, z = AccountDataManagerServer:getLastPosition(thePlayer)
   if not x or not y or not z then
     local spawns = PlayerSpawnsConfig:getSpawnsList()
     local n = math.random(#spawns)
@@ -55,7 +55,7 @@ function spawnPlayerOnMap(thePlayer)
     y = spawns[n][2]
     z = spawns[n][3]
   end
-  spawnPlayer(thePlayer, x, y, z + 1.5, 0, UserDataManagerServer:getSkin(thePlayer))
+  spawnPlayer(thePlayer, x, y, z + 1.5, 0, AccountDataManagerServer:getSkin(thePlayer))
   fadeCamera(thePlayer, true)
   setCameraTarget(thePlayer, thePlayer)
 end
@@ -65,7 +65,7 @@ end
 -- @param Player thePlayer: current player
 --------------------------------------------------------------------
 function savePlayerData(thePlayer)
-  UserDataManagerServer:setLastPosition(thePlayer)
+  AccountDataManagerServer:setLastPosition(thePlayer)
 end
 
 function ePlayerQuit(quitType, reason, responsibleElement)
