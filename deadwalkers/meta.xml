@@ -10,6 +10,7 @@
   
   <!-- Client-side scripts -->
   <script src="game/client/DevelopmentModeClient.lua" type="client" />
+  <script src="game/client/InventoryClient.lua" type="client" />
 
   <!-- Both-side scripts -->
   <script src="game/config/PlayerSpawnsConfig.lua" type="shared" />

@@ -6,8 +6,14 @@ VehicleServer = {
   accountPassword = "abcd"
 }
 
-function VehicleServer:createVehicleAccount(id, vehicleName)
-  local account = addAccount(self.accountPrefix .. vehicleName .. "_" .. id, self.accountPassword, false)
+--------------------------------------------------------------------
+-- Creates a vehicle account, so, things can be saved (like their 
+-- positions) when resource is stopped
+-- @param integer index:        just and index for create sequencial vehicles
+-- @param string vehicleName:   name of the vehicle (e.g. Sanchez, Patriot) 
+--------------------------------------------------------------------
+function VehicleServer:createVehicleAccount(index, vehicleName)
+  local account = addAccount(self.accountPrefix .. vehicleName .. "_" .. index, self.accountPassword, false)
   if not account then
     -- @toDo: print error message
     return false
@@ -15,6 +21,10 @@ function VehicleServer:createVehicleAccount(id, vehicleName)
   return true
 end
 
+--------------------------------------------------------------------
+-- Creates a vehicle itself and its colshape on map
+-- @param VehiclesConfig.vehicles type: the vehicle (e.g. Sanchez, Patriot)
+--------------------------------------------------------------------
 function VehicleServer:createVehicle(type)
   local name = type.name
   for n, position in pairs(type["spawns"]) do
@@ -28,6 +38,9 @@ function VehicleServer:createVehicle(type)
   end
 end
 
+--------------------------------------------------------------------
+-- Gets all vehicles and creates them, one by one
+--------------------------------------------------------------------
 function VehicleServer:spawnVehicles()
   local allVehicles = VehiclesConfig:getAllVehicles()
   for i, veh in pairs(allVehicles) do -- ipairs() doesn't work when you're navigating through an object
@@ -35,6 +48,16 @@ function VehicleServer:spawnVehicles()
   end
 end
 
+--------------------------------------------------------------------
+-- Saves all vehicles information
+--------------------------------------------------------------------
+function VehicleServer:saveAllVehicles()
+  -- to be implemented
+end
+
+--------------------------------------------------------------------
+-- 
+--------------------------------------------------------------------
 function VehicleServer:destroyVehicles()
   local allVehicles = Element.getAllByType("vehicle")
   for _, vehicle in ipairs(allVehicles) do
