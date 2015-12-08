@@ -49,18 +49,32 @@ end
 function spawnPlayerOnMap(thePlayer)
 
   -- Gets the last player's x, y and z positions
-  local x, y, z = dwGetLastPlayerPosition(thePlayer)
+  local x, y, z = UserDataManagerServer.getLastPlayerPosition(thePlayer)
   if not x or not y or not z then
-    -- first time playing, we need to create it
-    -- temporary vars
     x = 0
     y = 0
     z = 0
   end
-
-  -- Spawns the player on the map
   spawnPlayer(thePlayer, x, y, z+1.5, 0, dwGetPlayerSkin(thePlayer))
   fadeCamera(thePlayer, true)
   setCameraTarget(thePlayer, thePlayer)
 end
+
+--------------------------------------------------------------------
+-- Saves player's data
+-- @param Player thePlayer: current player
+--------------------------------------------------------------------
+function savePlayerData(thePlayer)
+  UserDataManagerServer.setLastPlayerPosition(thePlayer)
+end
+
+function ePlayerQuit(quitType, reason, responsibleElement)
+  savePlayerData(source)
+end
+addEventHandler("onPlayerQuit", getRootElement(), ePlayerQuit)
+
+function ePlayerLogout()
+  savePlayerData(source)
+end
+addEventHandler("onPlayerLogout", getRootElement(), ePlayerLogout)
 
