@@ -4,7 +4,6 @@
 
   <!-- Server-side scripts -->
   <script src="game/server/LoginServer.lua" type="server" />
-  <script src="game/server/UtilitiesServer.lua" type="server" />
   <script src="game/server/UserDataManagerServer.lua" type="server" />
 
   <!-- Client-side scripts -->
