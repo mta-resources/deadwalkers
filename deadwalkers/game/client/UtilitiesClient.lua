@@ -15,6 +15,17 @@ function UtilitiesClient:createLabelCenteredAndBold(x, y, width, height, text, r
 end
 
 --------------------------------------------------------------------
+-- Creates a grid list row and applies a text to it
+--------------------------------------------------------------------
+function UtilitiesClient:createGridListRow(gridlist, column, text, section, number)
+  section = section or false
+  number = number or false
+  local row = guiGridListAddRow(gridlist) -- GuiGridlist isn't working yet
+  guiGridListSetItemText(gridlist, row, column, text, section, number)
+  return row
+end
+
+--------------------------------------------------------------------
 -- This function is our best friend. It looks through all GUI elements 
 -- in our resource, and changes cursor visibility, hiding only when 
 -- there aren't any other GUI as visible.

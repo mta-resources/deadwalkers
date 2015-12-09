@@ -36,7 +36,8 @@ function InventoryClient:createWindow()
   self.lootGridAmount   = guiGridListAddColumn(self.lootGrid, "", 0.2)
   self.lootButtonOne    = GuiButton.create(0.42, 0.17, 0.04, 0.35, ">", true, self.mainWindow)
   self.lootButtonAll    = GuiButton.create(0.42, 0.52, 0.04, 0.35, ">>", true, self.mainWindow)
-  self.lootSlots        = UtilitiesClient:createLabelCenteredAndBold(0.07, 0.94, 0.29, 0.04, "Total spaces: 0/0", true, self.mainWindow)
+  self.lootSlots        = UtilitiesClient:createLabelCenteredAndBold(0.07, 0.94, 0.29, 0.04, "", true, self.mainWindow)
+  self:createCategoriesTitles(self.lootGrid, self.lootGridColumn)
 
   self.playerHeadline   = UtilitiesClient:createLabelCenteredAndBold(0.6, 0.06, 0.34, 0.09, "Player's inventory", true, self.mainWindow)
   self.playerGrid       = guiCreateGridList(0.57, 0.1, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
@@ -44,13 +45,24 @@ function InventoryClient:createWindow()
   self.playerGridAmount = guiGridListAddColumn(self.playerGrid, "", 0.2)
   self.playerButtonOne  = GuiButton.create(0.53, 0.17, 0.04, 0.35, "<", true, self.mainWindow)
   self.playerButtonAll  = GuiButton.create(0.53, 0.52, 0.04, 0.35, "<<", true, self.mainWindow)
-  self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, self:createSlotsText(getLocalPlayer()), true, self.mainWindow)
+  self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, "", true, self.mainWindow)
+  self:createCategoriesTitles(self.playerGrid, self.playerGridColumn)
 
   GuiElement.setVisible(self.mainWindow, false)
 end
 
-function InventoryClient:refreshPlayerItems()
+function InventoryClient:createCategoriesTitles(gridlist, column)
+  for i, category in pairs(ElementDataListShared:getCategories()) do
+    UtilitiesClient:createGridListRow(gridlist, column, category, true, false)
+  end
+end
 
+function InventoryClient:refreshLoot(gridlist, column)
+  
+end
+
+function InventoryClient:changeSlotsText(loot, label)
+  GuiElement.setText(label, self:createSlotsText(loot))
 end
 
 function InventoryClient:createSlotsText(loot)
@@ -72,6 +84,8 @@ end
 -- Shows the inventory GUI
 --------------------------------------------------------------------
 function InventoryClient:showWindow()
+  self:changeSlotsText(getLocalPlayer(), self.playerSlots)
+  self:refreshLoot(self.playerGrid, self.playerGridColumn)
   GuiElement.setVisible(self.mainWindow, true)
   showCursor(true)
 end
@@ -91,10 +105,10 @@ addEventHandler("onClientResourceStart", resourceRoot, function()
   obj:createWindow()
 end)
 
-bindKey("j", "down", function()
-  obj:changeWindowVisibility()
+addEventHandler("onClientColShapeHit", resourceRoot, function()
+  -- to implement
 end)
 
-addCommandHandler("hey", function()
-  setElementData(getLocalPlayer(), "max_slots", 16)
+bindKey("j", "down", function()
+  obj:changeWindowVisibility()
 end)
