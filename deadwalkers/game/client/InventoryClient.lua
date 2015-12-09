@@ -3,16 +3,20 @@
 --------------------------------------------------------------------
 InventoryClient = {
   mainWindow,
+  lootHeadline,
   lootGrid,
   lootGridColumn,
   lootGridAmount,
   lootButtonOne,
   lootButtonAll,
+  lootSlots,
+  playerHeadline,
   playerGrid,
   playerGridColumn,
   playerGridAmount,
   playerButtonOne,
-  playerButtonAll
+  playerButtonAll,
+  playerSlots
 }
 
 --------------------------------------------------------------------
@@ -26,17 +30,21 @@ local obj = InventoryClient
 function InventoryClient:createWindow()
   self.mainWindow       = GuiWindow.create(0.15, 0.28, 0.72, 0.63, "", true)
 
+  self.lootHeadline     = UtilitiesClient:createLabelCenteredAndBold(0.03, 0.06, 0.39, 0.09, "Loot", true, self.mainWindow)
   self.lootGrid         = guiCreateGridList(0.03, 0.1, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
   self.lootGridColumn   = guiGridListAddColumn(self.lootGrid, "Loot", 0.7)
   self.lootGridAmount   = guiGridListAddColumn(self.lootGrid, "", 0.2)
   self.lootButtonOne    = GuiButton.create(0.42, 0.17, 0.04, 0.35, ">", true, self.mainWindow)
   self.lootButtonAll    = GuiButton.create(0.42, 0.52, 0.04, 0.35, ">>", true, self.mainWindow)
+  self.lootSlots        = UtilitiesClient:createLabelCenteredAndBold(0.07, 0.94, 0.29, 0.04, "Total spaces: 0/0", true, self.mainWindow)
 
-  self.playerGrid       = guiCreateGridList(0.57, 0.11, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
+  self.playerHeadline   = UtilitiesClient:createLabelCenteredAndBold(0.6, 0.06, 0.34, 0.09, "Player's inventory", true, self.mainWindow)
+  self.playerGrid       = guiCreateGridList(0.57, 0.1, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
   self.playerGridColumn = guiGridListAddColumn(self.playerGrid, "Inventory", 0.7)
   self.playerGridAmount = guiGridListAddColumn(self.playerGrid, "", 0.2)
   self.playerButtonOne  = GuiButton.create(0.53, 0.17, 0.04, 0.35, "<", true, self.mainWindow)
   self.playerButtonAll  = GuiButton.create(0.53, 0.52, 0.04, 0.35, "<<", true, self.mainWindow)
+  self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, "Total spaces: 0/0", true, self.mainWindow)
 
   GuiElement.setVisible(self.mainWindow, false)
 end

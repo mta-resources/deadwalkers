@@ -16,6 +16,7 @@ function login(player, user, pass, origin, callback)
 
   if logIn(player, account, pass) then
     call(getResourceFromName(origin), callback, true)
+    ElementDataManagerServer:saveAllPropertiesFromAccountData(account, player)
     spawnPlayerOnMap(player)
     return true
   end

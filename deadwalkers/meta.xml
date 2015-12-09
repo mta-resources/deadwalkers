@@ -13,6 +13,7 @@
   <script src="game/server/VehicleServer.lua" type="server" />
   
   <!-- Client-side scripts -->
+  <script src="game/client/UtilitiesClient.lua" type="client" />
   <script src="game/client/DevelopmentModeClient.lua" type="client" />
   <script src="game/client/InventoryClient.lua" type="client" />
 
