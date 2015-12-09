@@ -18,3 +18,7 @@ ElementDataListShared = {
 function ElementDataListShared:getProperties()
   return self.properties
 end
+
+function ElementDataListShared:getMaxSlotsProperty()
+  return self.properties.max_slots[1]
+end

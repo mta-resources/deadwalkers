@@ -44,7 +44,7 @@ function InventoryClient:createWindow()
   self.playerGridAmount = guiGridListAddColumn(self.playerGrid, "", 0.2)
   self.playerButtonOne  = GuiButton.create(0.53, 0.17, 0.04, 0.35, "<", true, self.mainWindow)
   self.playerButtonAll  = GuiButton.create(0.53, 0.52, 0.04, 0.35, "<<", true, self.mainWindow)
-  self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, "Total spaces: 0/0", true, self.mainWindow)
+  self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, self:createSlotsText(getLocalPlayer()), true, self.mainWindow)
 
   GuiElement.setVisible(self.mainWindow, false)
 end
@@ -53,12 +53,18 @@ function InventoryClient:refreshPlayerItems()
 
 end
 
+function InventoryClient:createSlotsText(loot)
+  return "Total spaces: " .. "0/" .. Element.getData(loot, ElementDataListShared:getMaxSlotsProperty())
+end
+
 --------------------------------------------------------------------
 -- Changes inventory GUI visibility
 --------------------------------------------------------------------
 function InventoryClient:changeWindowVisibility()
-  if GuiElement.getVisible(self.mainWindow) then self:hideWindow()
-  else self:showWindow()
+  if GuiElement.getVisible(self.mainWindow) then 
+    self:hideWindow()
+  else 
+    self:showWindow()
   end
 end
 
@@ -67,7 +73,7 @@ end
 --------------------------------------------------------------------
 function InventoryClient:showWindow()
   GuiElement.setVisible(self.mainWindow, true)
-  showCursor(true) -- to be removed
+  showCursor(true)
 end
 
 --------------------------------------------------------------------
@@ -75,7 +81,7 @@ end
 --------------------------------------------------------------------
 function InventoryClient:hideWindow()
   GuiElement.setVisible(self.mainWindow, false)
-  showCursor(false) -- to be removed
+  UtilitiesClient:hideCursorIfNotGui()
 end
 
 --------------------------------------------------------------------
@@ -87,4 +93,8 @@ end)
 
 bindKey("j", "down", function()
   obj:changeWindowVisibility()
+end)
+
+addCommandHandler("hey", function()
+  setElementData(getLocalPlayer(), "max_slots", 16)
 end)
