@@ -33,7 +33,7 @@ function InventoryClient:createWindow()
   self.lootHeadline     = UtilitiesClient:createLabelCenteredAndBold(0.03, 0.06, 0.39, 0.09, "Loot", true, self.mainWindow)
   self.lootGrid         = guiCreateGridList(0.03, 0.1, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
   self.lootGridColumn   = guiGridListAddColumn(self.lootGrid, "Loot", 0.7)
-  self.lootGridAmount   = guiGridListAddColumn(self.lootGrid, "", 0.2)
+  self.lootGridAmount   = guiGridListAddColumn(self.lootGrid, "Amount", 0.2)
   self.lootButtonOne    = GuiButton.create(0.42, 0.17, 0.04, 0.35, ">", true, self.mainWindow)
   self.lootButtonAll    = GuiButton.create(0.42, 0.52, 0.04, 0.35, ">>", true, self.mainWindow)
   self.lootSlots        = UtilitiesClient:createLabelCenteredAndBold(0.07, 0.94, 0.29, 0.04, "", true, self.mainWindow)
@@ -42,7 +42,7 @@ function InventoryClient:createWindow()
   self.playerHeadline   = UtilitiesClient:createLabelCenteredAndBold(0.6, 0.06, 0.34, 0.09, "Player's inventory", true, self.mainWindow)
   self.playerGrid       = guiCreateGridList(0.57, 0.1, 0.39, 0.83, true, self.mainWindow) -- GuiGridlist.create() isn't working yet
   self.playerGridColumn = guiGridListAddColumn(self.playerGrid, "Inventory", 0.7)
-  self.playerGridAmount = guiGridListAddColumn(self.playerGrid, "", 0.2)
+  self.playerGridAmount = guiGridListAddColumn(self.playerGrid, "Amount", 0.2)
   self.playerButtonOne  = GuiButton.create(0.53, 0.17, 0.04, 0.35, "<", true, self.mainWindow)
   self.playerButtonAll  = GuiButton.create(0.53, 0.52, 0.04, 0.35, "<<", true, self.mainWindow)
   self.playerSlots      = UtilitiesClient:createLabelCenteredAndBold(0.62, 0.94, 0.29, 0.04, "", true, self.mainWindow)
@@ -60,8 +60,12 @@ function InventoryClient:createCategoriesTitles(gridlist, column)
   end
 end
 
-function InventoryClient:refreshLoot(gridlist, column)
-  
+function InventoryClient:refreshLoot()
+  for i, category in pairs(ElementDataListShared:getCategories()) do
+  end
+end
+
+function InventoryClient:refreshPlayerLoot()
 end
 
 function InventoryClient:changeSlotsText(loot, label)
@@ -106,6 +110,7 @@ end
 --------------------------------------------------------------------
 addEventHandler("onClientResourceStart", resourceRoot, function()
   obj:createWindow()
+  setElementData(getLocalPlayer(), "M4", 1)
 end)
 
 addEventHandler("onClientColShapeHit", resourceRoot, function()
@@ -113,5 +118,6 @@ addEventHandler("onClientColShapeHit", resourceRoot, function()
 end)
 
 bindKey("j", "down", function()
+  obj:refreshPlayerLoot(getLocalPlayer())
   obj:changeWindowVisibility()
 end)

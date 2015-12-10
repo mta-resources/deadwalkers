@@ -20,6 +20,7 @@ end
 function UtilitiesClient:createGridListRow(gridlist, column, text, section, number)
   section = section or false
   number = number or false
+  text = text or "Empty String"
   local row = guiGridListAddRow(gridlist) -- GuiGridlist isn't working yet
   guiGridListSetItemText(gridlist, row, column, text, section, number)
   return row

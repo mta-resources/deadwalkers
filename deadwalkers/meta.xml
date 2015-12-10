@@ -11,6 +11,7 @@
   <script src="game/server/ElementDataManagerServer.lua" type="server" />
   <script src="game/server/PickupServer.lua" type="server" />
   <script src="game/server/VehicleServer.lua" type="server" />
+  <script src="game/server/Server.lua" type="server" />
   
   <!-- Client-side scripts -->
   <script src="game/client/UtilitiesClient.lua" type="client" />

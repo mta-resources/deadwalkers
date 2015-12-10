@@ -38,6 +38,17 @@ function ElementDataListShared:getCategories()
   return reordered
 end
 
+function ElementDataListShared:getPrimaryWeaponsCategory()
+  return self.categories.primary_weapons
+end
+
 function ElementDataListShared:getMaxSlotsProperty()
   return self.properties.max_slots[1]
+end
+
+function ElementDataListShared:addWeaponsToProperties()
+  local weapons = WeaponsConfig:getWeapons()
+  for i, weapon in pairs(weapons) do
+    self.properties[weapon.id] = {weapon.id, 0}
+  end
 end
