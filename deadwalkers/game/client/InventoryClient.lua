@@ -51,6 +51,9 @@ function InventoryClient:createWindow()
   GuiElement.setVisible(self.mainWindow, false)
 end
 
+--------------------------------------------------------------------
+-- Creates item categories in inventory
+--------------------------------------------------------------------
 function InventoryClient:createCategoriesTitles(gridlist, column)
   for i, category in pairs(ElementDataListShared:getCategories()) do
     UtilitiesClient:createGridListRow(gridlist, column, category, true, false)

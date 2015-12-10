@@ -3,13 +3,15 @@
 --------------------------------------------------------------------
 ElementDataListShared = {
   categories = {
-    primary_weapons = "Primary Weapons",
-    secondary_weapons = "Secondary Weapons",
-    special_weapons = "Special Weapons",
-    ammo = "Ammo",
-    items = "Items",
-    food = "Food",
-    others = "Others"
+    -- pairs() doesn't order this object as should be, 
+    -- so, this second value in each item is really needed
+    primary_weapons = {"Primary Weapons", 1},
+    secondary_weapons = {"Secondary Weapons", 2},
+    special_weapons = {"Special Weapons", 3},
+    ammo = {"Ammo", 4},
+    items = {"Items", 5},
+    food = {"Food", 6},
+    others = {"Others", 7},
   },
   properties = {
     skin = {"skin", 15},
@@ -29,7 +31,11 @@ function ElementDataListShared:getProperties()
 end
 
 function ElementDataListShared:getCategories()
-  return self.categories
+  local reordered = {}
+  for i, item in pairs(self.categories) do
+    table.insert(reordered, item[2], item[1])
+  end
+  return reordered
 end
 
 function ElementDataListShared:getMaxSlotsProperty()
