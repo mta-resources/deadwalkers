@@ -6,6 +6,7 @@
   <script src="game/shared/ElementDataListShared.lua" type="shared"/>
 
   <!-- Server-side scripts -->
+  <script src="game/server/UtilitiesServer.lua" type="server" />
   <script src="game/server/LoginServer.lua" type="server" />
   <script src="game/server/AccountDataManagerServer.lua" type="server" />
   <script src="game/server/ElementDataManagerServer.lua" type="server" />

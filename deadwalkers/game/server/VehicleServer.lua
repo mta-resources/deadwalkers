@@ -66,6 +66,20 @@ function VehicleServer:destroyVehicles()
 end
 
 --------------------------------------------------------------------
+-- Turns off vehicle's engine
+--------------------------------------------------------------------
+function VehicleServer:engineOff(vehicle)
+  Vehicle.setEngineState(vehicle, false)
+end
+
+--------------------------------------------------------------------
+-- Turns on vehicle's engine
+--------------------------------------------------------------------
+function VehicleServer:engineOn(vehicle)
+  Vehicle.setEngineState(vehicle, true)
+end
+
+--------------------------------------------------------------------
 -- Event handlers which only calls functions of this class
 --------------------------------------------------------------------
 addEventHandler("onResourceStart", resourceRoot, function()
