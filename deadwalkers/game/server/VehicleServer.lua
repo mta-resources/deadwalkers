@@ -56,7 +56,7 @@ function VehicleServer:saveAllVehicles()
 end
 
 --------------------------------------------------------------------
--- 
+-- Destroy all vehicles
 --------------------------------------------------------------------
 function VehicleServer:destroyVehicles()
   local allVehicles = Element.getAllByType("vehicle")
@@ -85,7 +85,6 @@ end
 addEventHandler("onResourceStart", resourceRoot, function()
   VehicleServer:spawnVehicles()
 end)
-
 addEventHandler("onResourceStop", resourceRoot, function()
   VehicleServer:destroyVehicles()
 end)
